@@ -9,7 +9,7 @@ const Home = () => {
     const loggedIn = Auth.loggedIn();
 
     return (
-        <button>Log In</button>
+        <div>Home</div>
     )
 };
 

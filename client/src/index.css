@@ -1,13 +1,71 @@
+:root {
+  --rich-black: #042a2bff;
+  --maximum-blue: #5eb1bfff;
+  --light-cyan: #cdedf6ff;
+  --mandarin: #ef7b45ff;
+  --fire-engine-red: #c22229ff;
+}
+
+@font-face {
+  font-family: AvenirNextRegular;
+  src: url('./assets/AvenirNext-Regular.ttf');
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  font-family: 'AvenirNextRegular', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  color: var(--rich-black);
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+#header {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 1rem;
+}
+
+.logo-wrapper {
+  display: flex;
+  align-items: center;
+  width: 20%;
+}
+
+#navigation {
+  display: flex;
+  align-content: center;
+}
+
+#navigation a {
+  text-decoration: none;
+  padding: 1rem 0.5rem;
+  color: var(--fire-engine-red);
+}
+
+
+#navigation a:hover {
+  color: var(--rich-black);
+}
+
+#logo {
+  width: 100%;
+  height: auto;
+}
+
+#adminMenu {
+  padding: 0rem 1.5rem;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.actions a {
+  text-decoration: none;
+  color: var(--maximum-blue);
 }
