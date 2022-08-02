@@ -44,7 +44,7 @@ const CreatePost = (props) => {
     if(auth.loggedIn()) { return (
         <main>
             <div>
-                <form onSubmit={handleFormSubmit}>
+                <form id='post-form' onSubmit={handleFormSubmit}>
                 <input
                         className='form-input'
                         placeholder='Header'
@@ -86,6 +86,7 @@ const CreatePost = (props) => {
                         <option value='Knee'>Knee</option>
                         <option value='Shoulder'>Shoulder</option>
                         <option value='Information for Physical Therapists'>Information for Physical Therapists</option>
+                        <option value='News and Updates'>News and Updates</option>
                         <option value='Testimonials'>Testimonials</option>
                     </select>
                     <button type='submit'>Create Post</button>

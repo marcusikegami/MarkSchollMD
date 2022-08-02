@@ -1,5 +1,5 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { Post } = require('../models');
+const { Post, Testimonial } = require('../models');
 const { signToken } = require('../utils/auth');
 require('dotenv').config();
 const resolvers = {
@@ -10,6 +10,9 @@ const resolvers = {
         posts: async (parent, { category }) => {
             const params = category ? { category} : {};
             return Post.find(params);
+        },
+        testimonials: async () => {
+            return Testimonial.find();
         }
     },
 
@@ -54,6 +57,14 @@ const resolvers = {
                 return deletedThought;
             }
             throw new AuthenticationError('Not logged in!');
+        },
+        postTestimonial: async (parent, args) => {
+            try {
+                const testimonial = await Testimonial.create({...args});
+                return testimonial;
+            } catch (err) {
+                console.error(err);
+            };
         }
 
     }

@@ -16,10 +16,10 @@ const Header = () => {
           </div>
           <nav id='navigation'>
             <a href='/'>Home</a>
-            <a href=''>Information for Patients</a>
-            <a href=''>Information for Physical Therapists</a>
-            <a href=''>News and Updates</a>
-            <a href=''>Testimonials</a>
+            <a href='/'>Information for Patients</a>
+            <a href='/'>Information for Physical Therapists</a>
+            <a href='/'>News and Updates</a>
+            <a href='/'>Testimonials</a>
             {auth.loggedIn() ? (
                 <a href='/' onClick={logout}>Logout</a>
                 ) : (

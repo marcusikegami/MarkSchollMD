@@ -1,3 +1,3 @@
 const Post = require('./Post');
-
-module.exports = { Post };
+const Testimonial = require('./Testimonial');
+module.exports = { Post, Testimonial };
