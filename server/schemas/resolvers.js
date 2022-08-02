@@ -65,6 +65,17 @@ const resolvers = {
             } catch (err) {
                 console.error(err);
             };
+        },
+        editTestimonial: async (parent, { _id, approval }, context) => {
+            if (context.admin) {
+                const testimonial = await Testimonial.findOneAndUpdate(
+                    { _id: _id,},
+                    { approval: approval},
+                    { new: true }
+                );
+                return testimonial;
+            }
+            throw new AuthenticationError('Not logged in!');
         }
 
     }

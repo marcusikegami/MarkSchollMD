@@ -32,7 +32,7 @@ const typeDefs = gql`
         editPost(_id: ID!, header: String!, body: String!, video: String, category: String!): Post
         removePost(_id: ID): Post
         postTestimonial(body: String!, name: String!): Testimonial
-        editTestimonial(approval: Boolean!): Testimonial
+        editTestimonial(_id: ID!, approval: Boolean!): Testimonial
     }
 `;
 
