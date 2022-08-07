@@ -1,4 +1,4 @@
-import Logo from '../assets/images/logo.png';
+import Logo from '../assets/images/logo.jpg';
 import auth from '../utils/auth';
 
 
@@ -19,19 +19,14 @@ const Header = () => {
             <a href='/'>Information for Patients</a>
             <a href='/'>Information for Physical Therapists</a>
             <a href='/'>News and Updates</a>
-            <a href='/'>Testimonials</a>
-            {auth.loggedIn() ? (
-                <a href='/' onClick={logout}>Logout</a>
-                ) : (
-                      <></>
-                    )}
-                    
+            <a href='/testimonials'>Testimonials</a>
           </nav>
         </header>
           {auth.loggedIn() && (
             <div id='adminMenu'>
                 <div className='actions'>
                     <a href='/create-post'>Create Post</a>
+                    <a href='/' onClick={logout}>Logout</a>
                 </div>
             </div>
           )}

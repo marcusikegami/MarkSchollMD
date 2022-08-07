@@ -27,7 +27,7 @@ const CreatePost = (props) => {
             const { data } = await createPost({
                 variables: { ...formState }
             });
-            console.log(data);
+
         } catch (err) {
             console.error(error);
 ;       }
@@ -41,7 +41,8 @@ const CreatePost = (props) => {
     };
 
 
-    if(auth.loggedIn()) { return (
+    if(auth.loggedIn()) { 
+        return (
         <main>
             <div>
                 <form id='post-form' onSubmit={handleFormSubmit}>

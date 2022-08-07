@@ -24,3 +24,13 @@ export const QUERY_POST = gql`
     }
 `;
 
+export const QUERY_TESTIMONIALS = gql`
+    query Query {
+        testimonials {
+          _id
+          body
+          name
+          approval
+        }
+    }
+`;

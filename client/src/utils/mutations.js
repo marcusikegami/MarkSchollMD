@@ -43,3 +43,24 @@ export const REMOVE_POST = gql`
         }
     }
 `;
+
+export const POST_TESTIMONIAL = gql`
+    mutation postTestimonial($body: String!, $name: String!) {
+        postTestimonial(body: $body, name: $name) {
+          _id
+          body
+          name
+        }
+    }
+`;
+
+export const EDIT_TESTIMONIAL = gql `
+    mutation EditTestimonial($id: ID!, $approval: Boolean!) {
+        editTestimonial(_id: $id, approval: $approval) {
+          _id
+          body
+          name
+          approval
+        }
+    }
+`;
