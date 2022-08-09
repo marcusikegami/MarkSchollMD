@@ -14,6 +14,7 @@ import auth from './utils/auth';
 import Header from './components/Header';
 import CreatePost from './pages/CreatePost';
 import Testimonials from './pages/Testimonials';
+import Approval from './pages/pendingTestimonials';
 
 const httpLink = createHttpLink({
   uri: 'http://localhost:3001/graphql',
@@ -44,6 +45,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/create-post" element={<CreatePost />} />
           <Route path="/testimonials" element={<Testimonials />} />
+          <Route path="/pending-testimonials" element={<Approval />} />
         </Routes>
      </Router>
      {/* <div id='footer'>Mark D. Scholl, M.D., P.C</div> */}
