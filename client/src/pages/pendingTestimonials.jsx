@@ -5,8 +5,8 @@ import { QUERY_TESTIMONIALS } from '../utils/queries';
 import auth from '../utils/auth';
 
 const Approval = () => {
-    const [editTestimonial, { error }] = useMutation(EDIT_TESTIMONIAL);
-    const { loading, data } = useQuery(QUERY_TESTIMONIALS);
+    const [editTestimonial] = useMutation(EDIT_TESTIMONIAL);
+    const { data } = useQuery(QUERY_TESTIMONIALS);
     const testimonials = data?.testimonials || [];
     
         const handleDecision = async (id, approval) => {

@@ -1,16 +1,11 @@
 import Logo from '../assets/images/logo.jpg';
 import auth from '../utils/auth';
-import { useQuery } from '@apollo/client';
-import { QUERY_TESTIMONIALS } from '../utils/queries';
-import TestimonialCounter from './TestimonialCounter';
 
 const Header = () => {
     const logout = event => {
         event.preventDefault();
         auth.logout();
-    }
-    
-    
+    } 
     return (
         <div className='App'>
         <header id='header'>
@@ -21,7 +16,7 @@ const Header = () => {
             <a href='/'>Home</a>
             <a href='/'>Information for Patients</a>
             <a href='/'>Information for Physical Therapists</a>
-            <a href='/'>News and Updates</a>
+            <a href='/news-and-updates'>News and Updates</a>
             <a href='/testimonials'>Testimonials</a>
           </nav>
         </header>

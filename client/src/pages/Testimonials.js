@@ -6,7 +6,7 @@ import { POST_TESTIMONIAL } from '../utils/mutations';
 const Testimonials = () => {
     const [formState, setFormState] = useState({ body: '', name: '' })
     const [postTestimonial, { error }] = useMutation(POST_TESTIMONIAL);
-    const { loading, data } = useQuery(QUERY_TESTIMONIALS);
+    const { data } = useQuery(QUERY_TESTIMONIALS);
     const testimonials = data?.testimonials;
 
     const handleChange = (event) => {
@@ -65,7 +65,7 @@ const Testimonials = () => {
                 {testimonials?.map(element => {
                     if(element.approval) {
                         return (
-                            <div key={element._id} id="testimonial">
+                            <div key={element._id} className="testimonial">
                                 <p>"{element.body}"</p>
                                 <h3>–{element.name}</h3>
                             </div>

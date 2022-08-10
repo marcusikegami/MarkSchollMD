@@ -24,7 +24,7 @@ const CreatePost = (props) => {
         event.preventDefault();
         console.log(formState);
         try {
-            const { data } = await createPost({
+             await createPost({
                 variables: { ...formState }
             });
 
