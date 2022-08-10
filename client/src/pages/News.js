@@ -17,7 +17,7 @@ const News = () => {
                                 <iframe title={post.title} className="post-iframe" src={post.video} />
                             </div>
                         )
-                    } else {
+                    } else if (post.category === "News and Updates")  {
                         return (
                             <div key={post._id} className="post">
                                 <h1 className="post-title">{post.header}</h1>
@@ -25,6 +25,7 @@ const News = () => {
                             </div>
                         )
                     }
+                    return null;
                 })};
             </div>
         </main>

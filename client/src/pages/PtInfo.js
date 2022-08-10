@@ -17,15 +17,17 @@ const PtInfo = () => {
                                 <iframe title={post.title} className="post-iframe" src={post.video} />
                             </div>
                         )
-                    } else {
+                    } else if (post.category === "Information for Physical Therapists") {
                         return (
                             <div key={post._id} className="post">
                                 <h1 className="post-title">{post.header}</h1>
                                 <p className="post-body">{post.body}</p>
                             </div>
                         )
-                    }
-                })};
+                    } 
+                    return null;
+                }
+                )};
             </div>
         </main>
     )

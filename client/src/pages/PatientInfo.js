@@ -9,7 +9,7 @@ const PatientInfo = () => {
         <main>
             <div id='posts-wrapper'>
                 {posts.map(post => {
-                    if(post.category === "Patient Education" && post.video) {
+                    if((post.category === "Information about surgery with Dr. Scholl" || post.category === "Patient Education" || post.category === "Knee" || post.category === "Shoulder") && post.video) {
                         return (
                             <div key={post._id} className="post">
                                 <h1 className="post-title">{post.header}</h1>
@@ -17,7 +17,7 @@ const PatientInfo = () => {
                                 <iframe title={post.title} className="post-iframe" src={post.video} />
                             </div>
                         )
-                    } else {
+                    } else if (post.category === "Information about surgery with Dr. Scholl" || post.category === "Patient Education" || post.category === "Knee" || post.category === "Shoulder") {
                         return (
                             <div key={post._id} className="post">
                                 <h1 className="post-title">{post.header}</h1>
@@ -25,6 +25,7 @@ const PatientInfo = () => {
                             </div>
                         )
                     }
+                    return null;
                 })};
             </div>
         </main>

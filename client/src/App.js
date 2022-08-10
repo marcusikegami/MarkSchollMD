@@ -15,6 +15,8 @@ import CreatePost from './pages/CreatePost';
 import Testimonials from './pages/Testimonials';
 import Approval from './pages/pendingTestimonials';
 import News from './pages/News';
+import PatientInfo from './pages/PatientInfo';
+import PtInfo from './pages/PtInfo';
 
 const httpLink = createHttpLink({
   uri: 'http://localhost:3001/graphql',
@@ -47,6 +49,8 @@ function App() {
           <Route path="/testimonials" element={<Testimonials />} />
           <Route path="/pending-testimonials" element={<Approval />} />
           <Route path="/news-and-updates" element={<News />} />
+          <Route path="/info-for-physical-therapists" element={<PtInfo />} />
+          <Route path="/patient-education" element={<PatientInfo />} />
         </Routes>
      </Router>
      {/* <div id='footer'>Mark D. Scholl, M.D., P.C</div> */}
