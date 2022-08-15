@@ -21,8 +21,8 @@ export const ADD_POST = gql`
 `;
 
 export const EDIT_POST = gql`
-    mutation EditPost($id: ID!, $header: String!, $body: String!, $category: String!, $video: String) {
-        editPost(_id: $id, header: $header, body: $body, category: $category, video: $video) {
+    mutation EditPost($_id: ID!, $header: String!, $body: String!, $category: String!, $video: String) {
+        editPost(_id: $_id, header: $header, body: $body, category: $category, video: $video) {
           _id
           header
           body
@@ -33,8 +33,8 @@ export const EDIT_POST = gql`
 `;
 
 export const REMOVE_POST = gql`
-    mutation RemovePost($id: ID) {
-        removePost(_id: $id) {
+    mutation RemovePost($_id: ID) {
+        removePost(_id: $_id) {
           _id
           header
           body
@@ -55,8 +55,8 @@ export const POST_TESTIMONIAL = gql`
 `;
 
 export const EDIT_TESTIMONIAL = gql `
-    mutation EditTestimonial($id: ID!, $approval: Boolean!) {
-        editTestimonial(_id: $id, approval: $approval) {
+    mutation EditTestimonial($_id: ID!, $approval: Boolean!) {
+        editTestimonial(_id: $_id, approval: $approval) {
           _id
           body
           name

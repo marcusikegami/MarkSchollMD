@@ -12,6 +12,7 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import Header from './components/Header';
 import CreatePost from './pages/CreatePost';
+import EditPost from './pages/EditPost';
 import Testimonials from './pages/Testimonials';
 import Approval from './pages/pendingTestimonials';
 import News from './pages/News';
@@ -51,6 +52,7 @@ function App() {
           <Route path="/news-and-updates" element={<News />} />
           <Route path="/info-for-physical-therapists" element={<PtInfo />} />
           <Route path="/patient-education" element={<PatientInfo />} />
+          <Route path="/edit-post/:_id" element={<EditPost />} />
         </Routes>
      </Router>
      {/* <div id='footer'>Mark D. Scholl, M.D., P.C</div> */}

@@ -1,51 +1,38 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useMutation } from '@apollo/client';
-import { ADD_POST } from '../utils/mutations';
+import { EDIT_POST } from '../utils/mutations';
 
-import auth from '../utils/auth';
+const PostForm = ({post}) => {
+    
+    const { header, body, video, category, _id } = post ;
 
-const CreatePost = (props) => {
-    if(!auth.loggedIn()) {
-        window.location.assign('/');
-    }
-    const [formState, setFormState] = useState({ header: '', body: '', category: '', video: '' });
-    const [createPost, { error }] = useMutation(ADD_POST);
-
-    const handleChange = (event) => {
-        const { name, value } = event.target;
-
-        setFormState({
-            ...formState,
-            [name]: value,
-        });
-    };
-
-    const handleFormSubmit = async (event) => {
-        event.preventDefault();
-        console.log(formState);
-        try {
-             await createPost({
-                variables: { ...formState }
-            });
-
-        } catch (err) {
-            console.error(error);
-;       }
-
-        setFormState({
-            header: '', 
-            body: '', 
-            category: '', 
-            video: '' 
-        })
-    };
-
-
-    if(auth.loggedIn()) { 
-        return (
-        <main>
-            <div>
-                <form id='post-form' onSubmit={handleFormSubmit}>
+     const [formState, setFormState] = useState({ _id: _id, header: header, body: body, category: category, video: video });
+    //  const [formState, setFormState] = useState({ header: '', body: '', category: '', video: '' });
+     const [editPost, { error }] = useMutation(EDIT_POST);
+ 
+     const handleChange = (event) => {
+         const { name, value } = event.target;
+         console.log(post);
+         setFormState({
+             ...formState,
+             [name]: value,
+         });
+     };
+ 
+     const handleFormSubmit = async (event) => {
+         event.preventDefault();
+         try {
+              await editPost({
+                 variables: { ...formState,  }
+             });
+ 
+         } catch (err) {
+             console.error(error);
+         }
+        };
+    
+    return (
+        <form id='post-form' onSubmit={handleFormSubmit}>
                 <input
                         className='form-input'
                         placeholder='Header'
@@ -70,7 +57,7 @@ const CreatePost = (props) => {
                         name='video'
                         type='text'
                         id='post-video'
-                        value={formState.username}
+                        value={formState.video}
                         onChange={handleChange}
                     />
                 <select
@@ -88,14 +75,11 @@ const CreatePost = (props) => {
                         <option value='Shoulder'>Shoulder</option>
                         <option value='Information for Physical Therapists'>Information for Physical Therapists</option>
                         <option value='News and Updates'>News and Updates</option>
+                        <option value='Testimonials'>Testimonials</option>
                     </select>
-                    <button type='submit'>Create Post</button>
+                    <button type='submit'>Save Post</button>
                 </form>
-            </div>
-        </main>
-    ) } else {
-        window.location.assign('/');
-    }
-}
+    )
+};
 
-export default CreatePost;
+export default PostForm;
