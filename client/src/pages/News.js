@@ -1,9 +1,6 @@
 import { useQuery } from '@apollo/client';
 import { QUERY_POSTS } from '../utils/queries';
 import Post from '../components/Post';
-import { Link } from 'react-router-dom';
-import EditPost from './EditPost';
-import auth from '../utils/auth';
 
 const News = () => {
     let { data } = useQuery(QUERY_POSTS);
@@ -20,7 +17,7 @@ const News = () => {
                     }
                     return null;
                 }
-                )};
+                )}
             </div>
         </main>
     )

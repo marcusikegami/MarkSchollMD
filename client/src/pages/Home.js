@@ -14,8 +14,6 @@ const Home = () => {
     return (
         <div className='logo-links'>
             <img alt="Heiden Orthopedics Logo" src={heidenlogo} />
-            <img alt="Salt Lake Surgical Logo" src={slslogo} />
-            <img alt="Ortho Info Aaos Logo" src={orthoinfologo} />
         </div>
     )
 };

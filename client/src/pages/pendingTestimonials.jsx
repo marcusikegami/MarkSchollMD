@@ -29,7 +29,7 @@ const Approval = () => {
                                 <div key={element._id} id="testimonial">
                                     <p>"{element.body}"</p>
                                     <h3>–{element.name}</h3>
-                                    <button onClick={ () => {handleDecision(element._id, true)}}>Approve</button>
+                                    <button className="button" onClick={ () => {handleDecision(element._id, true)}}>Approve</button>
                                 </div>
                             );
                         } 

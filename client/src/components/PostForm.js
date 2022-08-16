@@ -77,7 +77,7 @@ const PostForm = ({post}) => {
                         <option value='News and Updates'>News and Updates</option>
                         <option value='Testimonials'>Testimonials</option>
                     </select>
-                    <button type='submit'>Save Post</button>
+                    <button className="button" type='submit'>Save Post</button>
                 </form>
     )
 };

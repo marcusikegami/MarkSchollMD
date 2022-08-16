@@ -28,3 +28,36 @@ add space for clients to place tesimonials
 Logo: 
 
 Use Circle Part
+
+
+
+Remarkable Tablet
+
+Homepage: 
+Testimonials with right column next to formal bio
+increase size of Heiden Link
+Right Column Informal Bio
+
+
+Footer: 
+
+Contact Info,
+Associated Links
+
+POSTS:
+Populate with some Articles from Web, remind Scholl
+
+
+Headshot:
+
+Formal Bio
+
+Outside Headshot:
+
+Informal Bio
+
+
+Color Accenting: 
+Borders Solid Colors, between hero and right column,
+
+Colored Bullets

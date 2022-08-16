@@ -30,21 +30,16 @@ const CreatePost = (props) => {
 
         } catch (err) {
             console.error(error);
+            window.alert(`${err}, A category is required.`);
 ;       }
-
-        setFormState({
-            header: '', 
-            body: '', 
-            category: '', 
-            video: '' 
-        })
+        
     };
 
 
     if(auth.loggedIn()) { 
         return (
         <main>
-            <div>
+            <div className='form-container'>
                 <form id='post-form' onSubmit={handleFormSubmit}>
                 <input
                         className='form-input'
@@ -54,12 +49,16 @@ const CreatePost = (props) => {
                         id='post-header'
                         value={formState.header}
                         onChange={handleChange}
+                        onBlur={() => {
+                            if(formState.header === "") {
+                                window.alert('Header is a required field');
+                            }
+                        }}
                     />
                 <textarea
                         className='form-textarea'
                         placeholder='Body Text'
                         name='body'
-                        type='text'
                         id='post-body'
                         value={formState.body}
                         onChange={handleChange}
@@ -82,6 +81,7 @@ const CreatePost = (props) => {
                         value={formState.category}
                         onChange={handleChange}
                     >
+                        <option value=''>Post Category</option>
                         <option value='Patient Education'>Patient Education</option>
                         <option value='Information about surgery with Dr. Scholl'>Information about surgery with Dr. Scholl</option>
                         <option value='Knee'>Knee</option>
@@ -89,7 +89,7 @@ const CreatePost = (props) => {
                         <option value='Information for Physical Therapists'>Information for Physical Therapists</option>
                         <option value='News and Updates'>News and Updates</option>
                     </select>
-                    <button type='submit'>Create Post</button>
+                    <button className="button" type='submit'>Create Post</button>
                 </form>
             </div>
         </main>

@@ -72,7 +72,7 @@ const Testimonials = () => {
                         );
                     } 
                     return null;
-                })};
+                })}
             </div>
         </main>
     )
