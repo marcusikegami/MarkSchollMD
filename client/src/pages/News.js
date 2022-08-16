@@ -1,6 +1,7 @@
 import { useQuery } from '@apollo/client';
 import { QUERY_POSTS } from '../utils/queries';
 import Post from '../components/Post';
+import PostPreview from '../components/PostPreview';
 
 const News = () => {
     let { data } = useQuery(QUERY_POSTS);
@@ -12,7 +13,7 @@ const News = () => {
                 {posts && posts.map(post => {
                     if(post.category === "News and Updates") {
                         return (
-                           <Post key={post._id} post={post} /> 
+                           <PostPreview key={post._id} post={post} /> 
                         )
                     }
                     return null;

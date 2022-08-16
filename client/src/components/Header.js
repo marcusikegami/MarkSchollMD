@@ -1,11 +1,23 @@
 import Logo from '../assets/images/logo.jpg';
 import auth from '../utils/auth';
+import bars from '../assets/images/bars.svg';
 
 const Header = () => {
-    const logout = event => {
-        event.preventDefault();
-        auth.logout();
-    } 
+
+  function dropdown() {
+    if(window.matchMedia("(max-width: 800px)").matches) {
+         var x = document.getElementById("navigation");
+    if (x.style.display === "flex") {
+      x.style.display = "none";
+    } else {
+      x.style.display = "flex";
+   } 
+   }
+  }
+  const logout = event => {
+      event.preventDefault();
+      auth.logout();
+  } 
     return (
         <div>
           {auth.loggedIn() && (
@@ -19,18 +31,25 @@ const Header = () => {
             </div>
           )}
         <header id='header'>
-          <div className='logo-wrapper'>
-            <img id='logo' src={Logo} alt='Mark D. Scholl, M.D., P.C'/>
-            <h1>Mark D. Scholl, M.D.</h1>
+          <div id='header-wrapper'>
+            <div className='logo-wrapper'>
+              <img id='logo' src={Logo} alt='Mark D. Scholl, M.D., P.C'/>
+              <h1>Mark D. Scholl, M.D.</h1>
+            </div>
+            <div class="dropdown">
+              <button class="button" onClick={() => dropdown()}>
+                  <img id="hamburger-icon" src={bars} alt="dropdown menu" />
+              </button> 
+            </div>
           </div>
+        </header>
           <nav id='navigation'>
             <a href='/'>Home</a>
-            <a href='/patient-education'>Information for Patients</a>
             <a href='/info-for-physical-therapists'>Information for Physical Therapists</a>
+            <a href='/patient-education'>Information for Patients</a>
             <a href='/news-and-updates'>News and Updates</a>
             <a href='/testimonials'>Testimonials</a>
           </nav>
-        </header>
         <div id='header-border'/>
       </div>
     )

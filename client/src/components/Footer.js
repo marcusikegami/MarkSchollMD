@@ -1,4 +1,5 @@
-
+import slslogo from '../assets/images/slslogo.png';
+import orthoinfologo from '../assets/images/orthoinfologo.png';
 
 const Footer = () => {
     return (
@@ -8,3 +9,5 @@ const Footer = () => {
         </div>
     )
 }
+
+export default Footer;

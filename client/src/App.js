@@ -11,6 +11,7 @@ import { setContext } from '@apollo/client/link/context';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Header from './components/Header';
+import Footer from './components/Footer';
 import CreatePost from './pages/CreatePost';
 import EditPost from './pages/EditPost';
 import Testimonials from './pages/Testimonials';
@@ -54,7 +55,9 @@ function App() {
           <Route path="/patient-education" element={<PatientInfo />} />
           <Route path="/edit-post/:_id" element={<EditPost />} />
         </Routes>
+        {/* <Footer /> */}
      </Router>
+      
      {/* <div id='footer'>Mark D. Scholl, M.D., P.C</div> */}
     </ApolloProvider>
   );
