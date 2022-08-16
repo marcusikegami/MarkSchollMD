@@ -7,6 +7,7 @@ const typeDefs = gql`
         body: String
         video: String
         category: String
+        createdAt: String
     }
 
     type Testimonial {

@@ -8,6 +8,7 @@ export const QUERY_POSTS = gql`
             body
             video
             category 
+            createdAt
         }
     }
 `;
@@ -20,6 +21,7 @@ export const QUERY_POST = gql`
             body
             video
             category
+            createdAt
         }
     }
 `;

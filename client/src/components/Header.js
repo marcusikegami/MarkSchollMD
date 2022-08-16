@@ -7,10 +7,21 @@ const Header = () => {
         auth.logout();
     } 
     return (
-        <div className='App'>
+        <div>
+          {auth.loggedIn() && (
+            <div id='adminMenu'>
+                <p>Logged in as Admin</p>
+                <div className='actions'>
+                    <a href='/create-post'>Create Post</a>
+                    <a href='/pending-testimonials'>Pending Testimonials</a>
+                    <a href='/' onClick={logout}>Logout</a>
+                </div>
+            </div>
+          )}
         <header id='header'>
           <div className='logo-wrapper'>
             <img id='logo' src={Logo} alt='Mark D. Scholl, M.D., P.C'/>
+            <h1>Mark D. Scholl, M.D.</h1>
           </div>
           <nav id='navigation'>
             <a href='/'>Home</a>
@@ -20,15 +31,7 @@ const Header = () => {
             <a href='/testimonials'>Testimonials</a>
           </nav>
         </header>
-          {auth.loggedIn() && (
-            <div id='adminMenu'>
-                <div className='actions'>
-                    <a href='/create-post'>Create Post</a>
-                    <a href='/' onClick={logout}>Logout</a>
-                    <a href='/pending-testimonials'>Pending Testimonials</a>
-                </div>
-            </div>
-          )}
+        <div id='header-border'/>
       </div>
     )
 }

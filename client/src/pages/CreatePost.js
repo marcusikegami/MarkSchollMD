@@ -55,8 +55,8 @@ const CreatePost = (props) => {
                         value={formState.header}
                         onChange={handleChange}
                     />
-                <input
-                        className='form-input'
+                <textarea
+                        className='form-textarea'
                         placeholder='Body Text'
                         name='body'
                         type='text'

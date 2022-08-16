@@ -29,13 +29,25 @@ code {
 #header {
   display: flex;
   justify-content: space-between;
-  padding: 0.5rem 1rem;
+  align-items: center;
+  padding: 0 1rem;
+}
+
+#header-border {
+  display: block;
+  padding: 2px 0;
+  background: linear-gradient(to left, #042a2bff 0%, #5eb1bfff 15%, #cdedf6ff 50%, #ef7b45ff 75%, #c22229ff 100%);
 }
 
 .logo-wrapper {
   display: flex;
   align-items: center;
-  width: 20%;
+  width: 30%;
+}
+
+.logo-wrapper h1 {
+  font-size: 20px;
+  color: var(--fire-engine-red)
 }
 
 #navigation {
@@ -60,12 +72,45 @@ code {
 }
 
 #adminMenu {
-  padding: 0rem 1.5rem;
+  padding: 0.5rem 1rem;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
+  background-color: var(--maximum-blue);
+}
+
+#adminMenu p {
+  margin: 0;
+  font-weight: 900;
+  color: white;
+}
+
+#adminMenu a {
+  text-decoration: none;
+  padding: 1rem 0.5rem;
+  color: white;
+}
+
+#adminMenu a:hover {
+  color: var(--light-cyan)
 }
 
 .actions a {
   text-decoration: none;
   color: var(--maximum-blue);
+}
+
+.logo-links {
+  display: flex;
+  height: 100px;
+  justify-content: center;
+  padding: 3rem 0 1rem 0;
+}
+
+.logo-links img {
+  max-height: 50%;
+  padding: 0 3rem;
+}
+
+.post {
+  white-space: pre-wrap;
 }
