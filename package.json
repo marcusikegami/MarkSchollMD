@@ -11,6 +11,7 @@
     "watch": "nodemon",
     "develop": "concurrently \"cd server && npm run-script watch\" \"cd client && npm start\"",
     "install": "cd server && npm i && cd ../client && npm i",
+    "heroku-postbuild": "cd client && npm run build --prod",
     "build": "cd client && npm run build"
   },
   "repository": {

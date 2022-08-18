@@ -21,7 +21,7 @@ import PatientInfo from './pages/PatientInfo';
 import PtInfo from './pages/PtInfo';
 
 const httpLink = createHttpLink({
-  uri: 'http://localhost:3001/graphql',
+  uri: '/graphql',
 });
 
 const authLink = setContext((_, { headers }) => {
