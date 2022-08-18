@@ -26,6 +26,26 @@ code {
     monospace;
 }
 
+.red {
+  background: var(--fire-engine-red);
+}
+
+.orange {
+  background: var(--mandarin);
+}
+
+.cyan {
+  background: var(--light-cyan);
+}
+
+.blue {
+  background: var(--maximum-blue);
+}
+
+.black {
+  background: var(--rich-black);
+}
+
 h1,
 h2,
 h3,
@@ -92,27 +112,28 @@ main {
 
 #header {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
-  align-items: center;
-  padding: 0 1rem;
+  width: 100%;
 }
 
 #header-wrapper {
+  padding: 0 1rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-#header-border {
+.header-border {
   display: block;
-  padding-top: 3px;
-  background: linear-gradient(to left, #042a2bff 0%, #5eb1bfff 15%, #cdedf6ff 50%, #ef7b45ff 75%, #c22229ff 100%);
+  padding-top: 2px;
+  /* background: linear-gradient(to left, #042a2bff 0%, #5eb1bfff 15%, #cdedf6ff 50%, #ef7b45ff 75%, #c22229ff 100%); */
 }
 
 .logo-wrapper {
   display: flex;
+  flex: 1 1 0;
   align-items: center;
-  width: 30%;
 }
 
 .logo-wrapper h1 {
@@ -122,8 +143,23 @@ main {
 }
 
 #logo {
-  width: 15%;
-  height: auto;
+  width: auto;
+  /* height: auto; */
+  max-height: 75px;
+}
+
+#dropdown {
+  
+}
+
+.dropdown {
+  display: flex;
+  align-items: center;
+  background-color: var(--fire-engine-red);
+    border: 2px solid var(rgb(239, 69, 69));
+    border-radius: 4px;
+    color: white;
+    padding: 0.2rem 0.2rem;
 }
 
 #navigation {
@@ -131,11 +167,12 @@ main {
   text-align: right;
   flex-direction: column;
   justify-content: flex-end;
+  align-content: flex-end;
 }
 
 #navigation a {
   text-decoration: none;
-  padding: 1rem 0.5rem;
+  padding: 0rem 0.5rem 1rem 0.5rem;
   color: var(--fire-engine-red);
 }
 
@@ -227,12 +264,30 @@ main {
 }
 
 
-@media screen and (min-width: 900px) {
+@media screen and (min-width: 1100px) {
+  #header {
+    flex-direction: row;
+  }
+
+  .logo-wrapper h1 {
+    word-wrap: ;
+  }
+
   .dropdown {
     display: none;
+    
   }
-  .navigation {
-    display: block;
+
+  #navigation {
+    display: flex;
+    align-items: center;
+    padding: 0;
+    flex-direction: row;
+  }
+
+  #navigation a {
+    padding: 0 0.5rem;
+    text-align: center;
   }
 }
 @media screen and (min-width: 1024px) {

@@ -9,10 +9,10 @@ const Approval = () => {
     const { data } = useQuery(QUERY_TESTIMONIALS);
     const testimonials = data?.testimonials || [];
     
-        const handleDecision = async (id, approval) => {
+        const handleDecision = async (_id, approval) => {
             try {
                 await editTestimonial({
-                    variables: { id, approval }
+                    variables: { _id, approval }
                 });
             } catch (err) {
                 console.error(err);
@@ -24,12 +24,13 @@ const Approval = () => {
         <main>
             <div id="testimonials-wrapper">
                 {testimonials?.map(element => {
+                    let id = element._id;
                         if(!element.approval) {
                             return (
                                 <div key={element._id} id="testimonial">
                                     <p>"{element.body}"</p>
                                     <h3>–{element.name}</h3>
-                                    <button className="button" onClick={ () => {handleDecision(element._id, true)}}>Approve</button>
+                                    <button className="button" onClick={ () => {handleDecision(id, true)}}>Approve</button>
                                 </div>
                             );
                         } 

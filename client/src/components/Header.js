@@ -5,7 +5,7 @@ import bars from '../assets/images/bars.svg';
 const Header = () => {
 
   function dropdown() {
-    if(window.matchMedia("(max-width: 800px)").matches) {
+    if(window.matchMedia("(max-width: 1100px)").matches) {
          var x = document.getElementById("navigation");
     if (x.style.display === "flex") {
       x.style.display = "none";
@@ -36,21 +36,23 @@ const Header = () => {
               <img id='logo' src={Logo} alt='Mark D. Scholl, M.D., P.C'/>
               <h1>Mark D. Scholl, M.D.</h1>
             </div>
-            <div class="dropdown">
-              <button class="button" onClick={() => dropdown()}>
-                  <img id="hamburger-icon" src={bars} alt="dropdown menu" />
+            <div id="dropdown">
+              <button class="dropdown" onClick={() => dropdown()}>
+                  <img id="hamburger-icon" src={bars} alt="dropdown menu" width="16" height="16"/>
               </button> 
             </div>
           </div>
-        </header>
-          <nav id='navigation'>
+            <nav id='navigation'>
             <a href='/'>Home</a>
             <a href='/info-for-physical-therapists'>Information for Physical Therapists</a>
             <a href='/patient-education'>Information for Patients</a>
             <a href='/news-and-updates'>News and Updates</a>
             <a href='/testimonials'>Testimonials</a>
           </nav>
-        <div id='header-border'/>
+        </header>
+        <div className='header-border red'/>
+          
+        {/* <div className='header-border orange'/> */}
       </div>
     )
 }

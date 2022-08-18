@@ -20,17 +20,6 @@ links to orthoinfo.aaos.org
 
 PT INFO:
 
-
-Testimonials:
-
-add space for clients to place tesimonials
-
-Logo: 
-
-Use Circle Part
-
-
-
 Remarkable Tablet
 
 Homepage: 

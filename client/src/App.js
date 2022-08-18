@@ -20,8 +20,12 @@ import News from './pages/News';
 import PatientInfo from './pages/PatientInfo';
 import PtInfo from './pages/PtInfo';
 
+// const httpLink = createHttpLink({
+//   uri: '/graphql'
+// });
+
 const httpLink = createHttpLink({
-  uri: '/graphql',
+  uri: 'http://localhost:3001/graphql'
 });
 
 const authLink = setContext((_, { headers }) => {
