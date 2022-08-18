@@ -10,7 +10,7 @@
     "develop": "concurrently \"cd server && npm run-script watch\" \"cd client && npm start\"",
     "install": "cd server && npm i && cd ../client && npm i",
     "seed": "cd server && npm run seed",
-    "build": "cd client && npm run build" 
+    "build": "cd client && npm run build"
   },
   "repository": {
     "type": "git",
@@ -25,5 +25,8 @@
   "homepage": "https://github.com/marcusikegami/documentation-creator#readme",
   "devDependencies": {
     "concurrently": "^7.2.2"
+  },
+  "dependencies": {
+    "heroku": "^7.62.0"
   }
 }
