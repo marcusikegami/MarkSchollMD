@@ -36,7 +36,7 @@ const Header = () => {
               <img id='logo' src={Logo} alt='Mark D. Scholl, M.D., P.C'/>
               <h1>Mark D. Scholl, M.D.</h1>
             </div>
-            <div id="dropdown">
+            <div id="dropdown-wrapper">
               <button class="dropdown" onClick={() => dropdown()}>
                   <img id="hamburger-icon" src={bars} alt="dropdown menu" width="16" height="16"/>
               </button> 

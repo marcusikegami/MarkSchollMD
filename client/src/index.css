@@ -4,6 +4,7 @@
   --light-cyan: #cdedf6ff;
   --mandarin: #ef7b45ff;
   --fire-engine-red: #c22229ff;
+  --white: #
 }
 
 @font-face {
@@ -103,11 +104,18 @@ a {
   border-color: var(--mandarin);
 }
 
+#root {
+  max-width: 100%;
+  overflow: none;
+}
+
 main {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin: 2% 10%;
+  /* margin: 2% 10%; */
+  padding: 2% 10%;
+  max-width: 100%;
 }
 
 #header {
@@ -148,18 +156,26 @@ main {
   max-height: 75px;
 }
 
-#dropdown {
-  
-}
+
 
 .dropdown {
   display: flex;
   align-items: center;
   background-color: var(--fire-engine-red);
-    border: 2px solid var(rgb(239, 69, 69));
-    border-radius: 4px;
-    color: white;
-    padding: 0.2rem 0.2rem;
+  border: 2px solid var(--fire-engine-red);
+  border-radius: 4px;
+  color: white;
+  padding: 0.2rem 0.2rem;
+}
+
+.dropdown:active {
+  box-shadow: -2px 1px var(--mandarin);
+  background-color: rgba(194, 34, 42, 0.846)
+}
+
+
+#hamburger-icon {
+  filter: invert(100%) sepia(0%) saturate(7445%) hue-rotate(75deg) brightness(106%) contrast(100%);
 }
 
 #navigation {
@@ -242,6 +258,12 @@ main {
   border-top: 1px solid black;
 }
 
+.post-body {
+  max-width: 100%;
+  width: min-content;
+  overflow: hidden;
+}
+
 .form-container {
   display: flex;
   justify-content: center;
@@ -267,10 +289,6 @@ main {
 @media screen and (min-width: 1100px) {
   #header {
     flex-direction: row;
-  }
-
-  .logo-wrapper h1 {
-    word-wrap: ;
   }
 
   .dropdown {

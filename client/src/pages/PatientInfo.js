@@ -1,6 +1,6 @@
 import { useQuery } from '@apollo/client';
 import { QUERY_POSTS } from '../utils/queries';
-import Post from '../components/Post';
+import PostPreview from '../components/PostPreview';
 import orthoinfologo from '../assets/images/orthoinfologo.png';
 
 const PatientInfo = () => {
@@ -16,7 +16,7 @@ const PatientInfo = () => {
                 {posts.map(post => {
                     if(post.category === "Information about surgery with Dr. Scholl" || post.category === "Patient Education" || post.category === "Knee" || post.category === "Shoulder") {
                         return (
-                            <Post post={post} />
+                            <PostPreview post={post} />
                         )
                     }
                     return null;
