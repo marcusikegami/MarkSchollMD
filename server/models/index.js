@@ -1,3 +1,2 @@
-const Post = require('./Post');
-const Testimonial = require('./Testimonial');
-module.exports = { Post, Testimonial };
+export {default as Post} from './Post.js';
+export {default as Testimonial} from './Testimonial.js';

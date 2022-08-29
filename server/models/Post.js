@@ -1,5 +1,6 @@
-const { Schema, model } = require('mongoose');
-const dateFormat = require('../utils/dateFormat');
+import mongoose from 'mongoose';
+const { Schema } = mongoose;
+import { dateFormat } from '../utils/dateFormat.js';
 
 const postSchema = new Schema(
     {
@@ -32,6 +33,6 @@ const postSchema = new Schema(
     }
 );
 
-const Post = model('Post', postSchema);
+const Post = mongoose.model('Post', postSchema);
 
-module.exports = Post;
+export default Post;

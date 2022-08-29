@@ -145,15 +145,15 @@ main {
 }
 
 .logo-wrapper h1 {
-  font-size: 30px;
+  font-size: 28px;
   color: var(--fire-engine-red);
   margin: 0;
 }
 
 #logo {
   width: auto;
-  /* height: auto; */
-  max-height: 75px;
+  height: auto;
+  max-height: 70px;
 }
 
 

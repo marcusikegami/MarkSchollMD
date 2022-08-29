@@ -1,10 +1,10 @@
-const jwt = require('jsonwebtoken');
+import jwt from 'jsonwebtoken';
 
 const secret = 'MdSchollAdmin';
 const expiration = '2h';
 
-module.exports = {
-    authMiddleware: function({ req }) {
+
+    const authMiddleware = function({ req }) {
         let token = req.body.token || req.query.token || req.headers.authorization;
 
         if (req.headers.authorization) {
@@ -26,10 +26,6 @@ module.exports = {
         }
 
         return req;
-    },
-    signToken: function({ admin }) {
-        const payload = { admin };
-
-        return jwt.sign({ data: payload }, secret, { expiresIn: expiration });
     }
-};
+    
+    export default authMiddleware;

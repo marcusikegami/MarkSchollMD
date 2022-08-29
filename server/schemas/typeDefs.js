@@ -1,6 +1,14 @@
-const { gql } = require('apollo-server-express');
-
+import { gql } from "apollo-server-express";
 const typeDefs = gql`
+
+    scalar Upload
+
+    type File {
+        filename: String!
+        mimetype: String!
+        enconding: String!
+    }
+
     type Post {
         _id: ID
         header: String
@@ -25,6 +33,7 @@ const typeDefs = gql`
         post(_id: ID!): Post
         posts(category: String): [Post]
         testimonials: [Testimonial]
+        otherFields: Boolean!
     }
 
     type Mutation {
@@ -34,7 +43,8 @@ const typeDefs = gql`
         removePost(_id: ID): Post
         postTestimonial(body: String!, name: String!): Testimonial
         editTestimonial(_id: ID!, approval: Boolean!): Testimonial
+        singleUpload(file: Upload!): File!
     }
 `;
 
-module.exports = typeDefs;
+export default typeDefs;

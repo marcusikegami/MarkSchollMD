@@ -16,6 +16,16 @@ const Home = () => {
                     <img alt="Heiden Orthopedics Logo" src={heidenlogo} />
                 </a>
             </div>
+            <div className="left-column">
+                <div id="formal-bio">
+                    
+                </div>
+            </div>
+            <div className='right-column'>
+                <div id="informal-bio">
+
+                </div>
+            </div>
         </main>
     )
 };

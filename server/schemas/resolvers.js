@@ -1,8 +1,15 @@
-const { AuthenticationError } = require('apollo-server-express');
-const { Post, Testimonial } = require('../models');
-const { signToken } = require('../utils/auth');
-require('dotenv').config();
+import { AuthenticationError } from 'apollo-server-express';
+import Post from '../models/Post.js';
+import Testimonial from '../models/Testimonial.js';
+import signToken from '../utils/signToken.js';
+import dotenv from'dotenv';
+dotenv.config();
+import GraphQLUpload from 'graphql-upload/GraphQLUpload.mjs';
+import { finished } from 'stream/promises';
+
 const resolvers = {
+    Upload: GraphQLUpload,
+
     Query: {
         post: async(parent, { _id }) => {
             return Post.findOne({ _id });
@@ -29,6 +36,17 @@ const resolvers = {
             const token = signToken(admin);
 
             return { token };
+        },
+        singleUpload: async (parent, { file }, context) => {
+            if (context.admin) {
+                const { createReadStream, filename, mimetype, encoding } = await file;
+                const stream = createReadStream();
+                const out = require('fs').createWriteStream('local-file-output.txt');
+                stream.pipe(out);
+                await finished(out);
+
+                return { filename, mimetype, encoding };
+            }
         },
         addPost: async (parent, args, context) => {
             if (context.admin) {
@@ -80,4 +98,4 @@ const resolvers = {
     }
 };
 
-module.exports = resolvers;
+export default resolvers;

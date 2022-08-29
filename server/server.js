@@ -1,18 +1,26 @@
-const express = require('express');
-const { ApolloServer } = require('apollo-server-express');
-const path = require('path');
-
-const { typeDefs, resolvers } = require('./schemas');
-const db = require('./config/connection');
-const { authMiddleware } = require('./utils/auth');
+import mongoose from 'mongoose';
+import graphqlUploadExpress from 'graphql-upload/graphqlUploadExpress.mjs';
+import express from 'express';
+import { ApolloServer } from 'apollo-server-express';
+import { ApolloServerPluginLandingPageLocalDefault } from 'apollo-server-core';
+import path from 'path';
+import typeDefs from './schemas/typeDefs.js';
+import resolvers from './schemas/resolvers.js';
+import authMiddleware from './utils/auth.js';
 
 const PORT = process.env.PORT || 3001;
 const app = express();
+app.use(graphqlUploadExpress());
 
 const startServer = async () => {
     const server = new ApolloServer({
         typeDefs,
         resolvers,
+        csrfPrevention: true,
+        cache: 'bounded',
+        plugins: [
+            ApolloServerPluginLandingPageLocalDefault({ embed: true}),
+        ],
         context: authMiddleware,
     });
     await server.start();
@@ -33,7 +41,15 @@ app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, '../client/build/index.html'));
   });
 
-db.once('open', () => {
+mongoose.connect(
+  process.env.MONGODB_URI || 'mongodb://localhost:27017/documentation-creator',
+  {
+      useNewUrlParser: true,
+      useUnifiedTopology: true
+  }
+);
+
+mongoose.connection.once('open', () => {
     app.listen(PORT, () => {
         console.log(`API server running on port ${PORT}!`);
     });
