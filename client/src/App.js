@@ -19,6 +19,7 @@ import Approval from './pages/pendingTestimonials';
 import News from './pages/News';
 import PatientInfo from './pages/PatientInfo';
 import PtInfo from './pages/PtInfo';
+import SinglePost from './pages/SinglePost';
 
 // const httpLink = createHttpLink({
 //   uri: '/graphql'
@@ -58,6 +59,7 @@ function App() {
           <Route path="/info-for-physical-therapists" element={<PtInfo />} />
           <Route path="/patient-education" element={<PatientInfo />} />
           <Route path="/edit-post/:_id" element={<EditPost />} />
+          <Route path="/post/:_id" element={<SinglePost />} />
         </Routes>
         {/* <Footer /> */}
      </Router>
