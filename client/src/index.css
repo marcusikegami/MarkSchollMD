@@ -134,8 +134,8 @@ main {
 
 .header-border {
   display: block;
-  padding-top: 2px;
-  /* background: linear-gradient(to left, #042a2bff 0%, #5eb1bfff 15%, #cdedf6ff 50%, #ef7b45ff 75%, #c22229ff 100%); */
+  padding-top: 1px;
+  background: linear-gradient(to left, #042a2bff 0%, #5eb1bfff 15%, #cdedf6ff 50%, #ef7b45ff 75%, #c22229ff 100%);
 }
 
 .logo-wrapper {
@@ -239,6 +239,10 @@ main {
 .logo-links img {
   max-height: 100%;
   padding: 0 1rem;
+}
+
+#post-wrapper {
+  padding: 0 4rem;
 }
 
 .post {

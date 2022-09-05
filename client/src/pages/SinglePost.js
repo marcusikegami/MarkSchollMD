@@ -13,10 +13,14 @@ const SinglePost = () => {
     });
 
     const post = data?.post;
-
+    if(loading) {
+        return (
+            <div>Loading...</div>
+        )
+    } else {
     return (
         <main>
-            <div id='posts-wrapper'>
+            <div id='post-wrapper'>
                 <div key={post._id} className="post">
                     {auth.loggedIn() && (<Link className="button" to={`/edit-post/${post._id}`}>Edit Post</Link>)}
                         <h2 className="post-title">{post.header}</h2>
@@ -27,7 +31,7 @@ const SinglePost = () => {
                 </div>
             </div>
         </main>
-    )
+    )}
 }
 
 export default SinglePost;
