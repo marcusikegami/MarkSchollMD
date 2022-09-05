@@ -20,18 +20,25 @@ const CreatePost = (props) => {
         });
     };
 
+    let urlValidate = /[(http(s)?):\/\/(www\.)?a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/;
+
     const handleFormSubmit = async (event) => {
         event.preventDefault();
-        console.log(formState);
-        try {
-             await createPost({
-                variables: { ...formState }
-            });
-
-        } catch (err) {
-            console.error(error);
-            window.alert(`${err}, A category is required.`);
-;       }
+        let urlValidate = /[(http(s)?):\/\/(www\.)?a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/;
+        if (formState.video.match(urlValidate) || formState.video === '') {
+            console.log(formState);
+            try {
+                 await createPost({
+                    variables: { ...formState }
+                });
+    
+            } catch (err) {
+                console.error(error);
+                window.alert(`${err}, A category is required.`);
+           }
+        } else {
+            window.alert('submitted');
+        }
         
     };
 
@@ -62,6 +69,11 @@ const CreatePost = (props) => {
                         id='post-body'
                         value={formState.body}
                         onChange={handleChange}
+                        onBlur={() => {
+                            if(formState.body === "") {
+                                window.alert('Body is a required field');
+                            }
+                        }}
                     />
                 <input
                         className='form-input'
@@ -69,7 +81,7 @@ const CreatePost = (props) => {
                         name='video'
                         type='text'
                         id='post-video'
-                        value={formState.username}
+                        value={formState.video}
                         onChange={handleChange}
                     />
                 <select
@@ -80,6 +92,11 @@ const CreatePost = (props) => {
                         id='post-category'
                         value={formState.category}
                         onChange={handleChange}
+                        onBlur={() => {
+                            if(formState.category === "") {
+                                window.alert('Category is a required field');
+                            }
+                        }}
                     >
                         <option value=''>Post Category</option>
                         <option value='Patient Education'>Patient Education</option>
