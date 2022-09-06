@@ -39,7 +39,7 @@ const CreatePost = (props) => {
         } else {
             window.alert('submitted');
         }
-        
+        window.location.href = `/`;
     };
 
 
@@ -83,7 +83,11 @@ const CreatePost = (props) => {
                         id='post-video'
                         value={formState.video}
                         onChange={handleChange}
+                        // onBlur={() => {
+                        //     if()
+                        // }}
                     />
+                    {(formState.video !== "" && !formState.video.match(urlValidate)) && <p id="invalid">URL IS INVALID</p>}
                 <select
                         className='form-select'
                         placeholder='Post Category'
