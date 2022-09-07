@@ -28,18 +28,18 @@ const CreatePost = (props) => {
         if (formState.video.match(urlValidate) || formState.video === '') {
             console.log(formState);
             try {
-                 await createPost({
+                 const { data } = await createPost({
                     variables: { ...formState }
                 });
     
+                window.location.href = `/post/${data.addPost._id}`;
             } catch (err) {
                 console.error(error);
-                window.alert(`${err}, A category is required.`);
+                window.alert(`${err}`);
            }
         } else {
             window.alert('submitted');
         }
-        window.location.href = `/`;
     };
 
 
