@@ -50,3 +50,10 @@ Color Accenting:
 Borders Solid Colors, between hero and right column,
 
 Colored Bullets
+
+9/9: Some Info for meeting with dr scholl,
+develop hero, left and right column, add image slideshow to right column
+
+add left column contents
+
+create footer with logo links

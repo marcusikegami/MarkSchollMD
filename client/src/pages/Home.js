@@ -12,6 +12,10 @@ const Home = () => {
     const loggedIn = Auth.loggedIn();
 
     return (
+    <div className="main-wrapper">
+            <div id="hero">
+
+            </div>
         <main>
             <div className='logo-links'>
                 <a href='https://heidenortho.com/'>
@@ -34,6 +38,7 @@ const Home = () => {
                 </div>
             </div>
         </main>
+    </div>
     )
 };
 

@@ -156,8 +156,6 @@ main {
   max-height: 70px;
 }
 
-
-
 .dropdown {
   display: flex;
   align-items: center;
@@ -223,6 +221,13 @@ main {
 .actions a {
   text-decoration: none;
   color: var(--maximum-blue);
+}
+
+#hero {
+  background-image: url('./assets/images/hero.jpeg');
+  background-position: 40%;
+  width: 100%;
+  height: auto;
 }
 
 .logo-links {
