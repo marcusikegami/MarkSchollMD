@@ -50,7 +50,7 @@ const Header = () => {
             <a href='/testimonials'>Testimonials</a>
           </nav>
         </header>
-        <div className='header-border'/>
+        {/* <div className='header-border'/> */}
           
         {/* <div className='header-border orange'/> */}
       </div>

@@ -42,12 +42,12 @@ const CreatePost = (props) => {
         }
     };
 
-
     if(auth.loggedIn()) { 
         return (
         <main>
             <div className='form-container'>
                 <form id='post-form' onSubmit={handleFormSubmit}>
+                <h2>Header</h2>
                 <input
                         className='form-input'
                         placeholder='Header'
@@ -62,6 +62,7 @@ const CreatePost = (props) => {
                             }
                         }}
                     />
+                    <h2>Body</h2>
                 <textarea
                         className='form-textarea'
                         placeholder='Body Text'
@@ -75,6 +76,7 @@ const CreatePost = (props) => {
                             }
                         }}
                     />
+                    <h2>Video Link</h2>
                 <input
                         className='form-input'
                         placeholder='Video Link'
@@ -88,6 +90,7 @@ const CreatePost = (props) => {
                         // }}
                     />
                     {(formState.video !== "" && !formState.video.match(urlValidate)) && <p id="invalid">URL IS INVALID</p>}
+                    <h2>Post Category</h2>
                 <select
                         className='form-select'
                         placeholder='Post Category'

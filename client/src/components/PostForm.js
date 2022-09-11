@@ -22,10 +22,10 @@ const PostForm = ({post}) => {
      const handleFormSubmit = async (event) => {
          event.preventDefault();
          try {
-              await editPost({
+              const { data } = await editPost({
                  variables: { ...formState,  }
              });
- 
+              window.location.href = `/post/${data.editPost._id}`;
          } catch (err) {
              console.error(error);
          }
