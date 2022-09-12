@@ -3,6 +3,7 @@ import { QUERY_POSTS } from '../utils/queries';
 // import Auth from '../utils/auth';
 import heidenlogo from '../assets/images/heidenlogo.png';
 import CategoryPreviews from '../components/CategoryPreviews';
+import informalheadshot from '../../src/assets/images/informalheadshot.jfif';
 import headshot from '../../src/assets/images/markheadshot.jfif';
 import One from '../../src/assets/images/slideshow/1.jfif';
 import Two from '../../src/assets/images/slideshow/2.jfif';
@@ -33,7 +34,7 @@ const Home = () => {
         slideIndex++;
         if (slideIndex > slides.length) {slideIndex = 1}
         slides[slideIndex-1].style.display = "block";
-        setTimeout(showSlides, 4500); // Change image every 2 seconds
+        setTimeout(showSlides, 5500); // Change image every 2 seconds
         }
     }
 
@@ -72,21 +73,7 @@ const Home = () => {
                     coast to the West coast for matches here in the USA. He has also cared for many individual
                     professional athletes from skiers to climbers, runners, cyclists, MMA fighters and the
                     occasional supercross rider, among various other sports.
-                    Personally, Mark enjoys time in the mountains and challenges of endurance. He is an allmountain skier and a trail runner / Ultramarathoner having completed dozens of races from trail
-                    marathons to 50 and 100 mile ultra runs. He has more recently taken up hockey and plays in a
-                    Men’s League to enjoy some competition with a scoreboard. For recreation, he likes to travel or
-                    to go camping in the desert or in the mountains with his wife and children. Occasionally, he will
-                    go off-roading in the vast open lands of Utah with some slightly rowdy friends. No surprise for
-                    an orthopedic surgeon, he likes to build things at home, whether Jeep modifications, basement
-                    renovations or building a treehouse fifteen feet in the air with a sliding glass door out to the
-                    balcony, he is always looking for the next project.
-                    In his practice, Dr. Scholl puts a high priority on explaining the injuries, and surgeries (or other
-                    therapies) to patients, and educating them about the many steps they will travel together on
-                    the journey to recovery. He lists the goal for every patient as: “becoming comfortable and
-                    functional in the simplest way possible.” Every patient has their own goals for what that
-                    function means, whether it is putting away the dishes without pain or returning to professional
-                    sports at the highest level, and Dr. Scholl looks forward to helping anyone with an injury
-                    achieve that goal.
+                    
                     </p>
                 </div>
                 <div className='category-preview'>
@@ -150,7 +137,24 @@ const Home = () => {
                 <span className="dot"></span>
                 </div>
                 <div id="informal-bio">
-
+                        <img alt='headshot of Dr. Scholl in Running Garb' src={informalheadshot} />
+                        <p>
+                        Personally, Mark enjoys time in the mountains and challenges of endurance. He is an allmountain skier and a trail runner / Ultramarathoner having completed dozens of races from trail
+                        marathons to 50 and 100 mile ultra runs. He has more recently taken up hockey and plays in a
+                        Men’s League to enjoy some competition with a scoreboard. For recreation, he likes to travel or
+                        to go camping in the desert or in the mountains with his wife and children. Occasionally, he will
+                        go off-roading in the vast open lands of Utah with some slightly rowdy friends. No surprise for
+                        an orthopedic surgeon, he likes to build things at home, whether Jeep modifications, basement
+                        renovations or building a treehouse fifteen feet in the air with a sliding glass door out to the
+                        balcony, he is always looking for the next project.
+                        In his practice, Dr. Scholl puts a high priority on explaining the injuries, and surgeries (or other
+                        therapies) to patients, and educating them about the many steps they will travel together on
+                        the journey to recovery. He lists the goal for every patient as: “becoming comfortable and
+                        functional in the simplest way possible.” Every patient has their own goals for what that
+                        function means, whether it is putting away the dishes without pain or returning to professional
+                        sports at the highest level, and Dr. Scholl looks forward to helping anyone with an injury
+                        achieve that goal.
+                        </p>
                 </div>
             </div>
         </main>

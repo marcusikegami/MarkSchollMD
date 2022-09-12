@@ -264,6 +264,17 @@ a {
   height: 100%;
 }
 
+#informal-bio {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#informal-bio img {
+  max-width: 300px;
+  height: auto;
+}
+
 .logo-links {
   display: flex;
   height: 70px;
@@ -441,6 +452,7 @@ a {
 
   #main {
     flex-direction: row;
+    align-items: flex-start;
     margin: 2% 1% 2% 2%;
   }
 
@@ -451,6 +463,7 @@ a {
   
   .right-column {
     width: 30%;
+    padding: 0 2%;
   }
 }
 @media screen and (min-width: 1024px) {
