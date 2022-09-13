@@ -68,23 +68,23 @@ h6 {
 }
 
 h1 {
-  font-size: 2.25rem;
-}
-
-h2 {
   font-size: 2rem;
 }
 
-h3 {
+h2 {
   font-size: 1.75rem;
 }
 
-h4 {
+h3 {
   font-size: 1.5rem;
 }
 
-h5 {
+h4 {
   font-size: 1.25rem;
+}
+
+h5 {
+  font-size: 1.rem;
 }
 
 h6 {
@@ -130,9 +130,11 @@ a {
 #main {
   display: flex;
   flex-direction: column;
+  flex-basis: 0;
   align-items: center;
-  margin: 2% 4%;
+  padding: 0 4%;
   max-width: 100%;
+  border-top: 2px solid var(--fire-engine-red);
 }
 
 #header {
@@ -250,12 +252,21 @@ a {
 
 
 #formal-bio {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  /* display: flex; */
+  /* flex-direction: row; */
+  /* align-items: center; */
+}
+
+#formal-bio p {
+  text-align: justify;
+}
+
+.headshot-wrapepr {
+  float: left;
 }
 
 #formal-headshot {
+  display: inline;
   max-width: 300px;
   height: auto;
 }
@@ -277,13 +288,9 @@ a {
 
 .logo-links {
   display: flex;
-  height: 70px;
+  height: 75px;
   justify-content: flex-end;
   /* padding: 2rem 0 1rem 0; */
-}
-
-.logo-links a {
-  background-color: rgb(255, 255, 255);
 }
 
 .logo-links a {
@@ -293,6 +300,14 @@ a {
 .logo-links img {
   max-height: 100%;
   padding: 0 1rem;
+}
+
+.left-column {
+  padding-top: 2%;
+}
+
+.right-column {
+  padding-top: 2%;
 }
 
 #post-wrapper {
@@ -452,18 +467,22 @@ a {
 
   #main {
     flex-direction: row;
+    flex: 1 1 0;
     align-items: flex-start;
-    margin: 2% 1% 2% 2%;
+    margin: 0 1% 2% 2%;
   }
 
   .left-column {
     width: 70%;
-    /* padding: 0 2%; */
+    padding-right: 2%;
+    border-right: 2px solid var(--mandarin)
   }
   
   .right-column {
+    height: 100%;
     width: 30%;
-    padding: 0 2%;
+    padding-left: 2%;
+    border-left: 0px solid var(--mandarin)
   }
 }
 @media screen and (min-width: 1024px) {

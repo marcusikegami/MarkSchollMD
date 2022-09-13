@@ -44,9 +44,9 @@ const Header = () => {
           </div>
             <nav id='navigation'>
             <a href='/'>Home</a>
-            <a href='/info-for-physical-therapists'>Information for Physical Therapists</a>
-            <a href='/patient-education'>Information for Patients</a>
-            <a href='/news-and-updates'>News and Updates</a>
+            <a href='/info-for-physical-therapists'>Info for Physical Therapists</a>
+            <a href='/patient-education'>Info for Patients</a>
+            <a href='/news-and-updates'>News</a>
             <a href='/testimonials'>Testimonials</a>
           </nav>
         </header>
