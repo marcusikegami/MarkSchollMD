@@ -1,6 +1,7 @@
 import Logo from '../assets/images/logo.jpg';
 import auth from '../utils/auth';
 import bars from '../assets/images/bars.svg';
+import heidenlogo from '../assets/images/heidenlogo.png';
 
 const Header = () => {
 
@@ -37,7 +38,7 @@ const Header = () => {
               <h1>Mark D. Scholl, M.D.</h1>
             </div>
             <div id="dropdown-wrapper">
-              <button class="dropdown" onClick={() => dropdown()}>
+              <button className="dropdown" onClick={() => dropdown()}>
                   <img id="hamburger-icon" src={bars} alt="dropdown menu" width="16" height="16"/>
               </button> 
             </div>
@@ -49,6 +50,11 @@ const Header = () => {
             <a href='/news-and-updates'>News</a>
             <a href='/testimonials'>Testimonials</a>
           </nav>
+          <div className='logo-links'>
+                <a href='https://heidenortho.com/'>
+                    <img alt="Heiden Orthopedics Logo" src={heidenlogo} />
+                </a>
+            </div>
         </header>
         {/* <div className='header-border'/> */}
           

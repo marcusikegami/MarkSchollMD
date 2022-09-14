@@ -17,21 +17,16 @@ const Home = () => {
 
     return (
     <div className="main-wrapper">
-            <div className='logo-links'>
-                <a href='https://heidenortho.com/'>
-                    <img alt="Heiden Orthopedics Logo" src={heidenlogo} />
-                </a>
-            </div>
+            
             <div id="hero">
 
             </div>
         <main id="main">
             <div className="left-column">
                 <div id="formal-bio">
-                    <h1>Mark D. Scholl, M.D.</h1>
+                    {/* <h1>Mark D. Scholl, M.D.</h1> */}
                     <div className="headshot-wrapper">
                         <img id="formal-headshot" alt="Headshot of Mark Scholl, M.D." src={headshot} />
-                    </div>
                     <p>
                         Mark D. Scholl, M.D., is an Orthopedic Sports Medicine Surgeon who performs complex and
                         advanced techniques of repair and reconstruction primarily of the knee and shoulder. He has
@@ -53,6 +48,7 @@ const Home = () => {
                         professional athletes from skiers to climbers, runners, cyclists, MMA fighters and the
                         occasional supercross rider, among various other sports.
                     </p>
+                    </div>
                 </div>
                 <div className='category-preview'>
                     <div id="news-and-updates">
@@ -61,7 +57,6 @@ const Home = () => {
                 </div>
             </div>
             <div className='right-column'>
-                <Slideshow />
                 <div id="informal-bio">
                         <img alt='headshot of Dr. Scholl in Running Garb' src={informalheadshot} />
                         <p>
@@ -82,6 +77,7 @@ const Home = () => {
                         achieve that goal.
                         </p>
                 </div>
+                <Slideshow />
             </div>
         </main>
     </div>
