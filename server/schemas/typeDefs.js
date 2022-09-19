@@ -33,6 +33,7 @@ const typeDefs = gql`
         post(_id: ID!): Post
         posts(category: String): [Post]
         testimonials: [Testimonial]
+        approvedTestimonials: [Testimonial]
         otherFields: Boolean!
     }
 

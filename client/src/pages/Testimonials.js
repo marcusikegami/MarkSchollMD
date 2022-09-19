@@ -39,10 +39,11 @@ const Testimonials = () => {
     return (
         <main>
             <div id="testimonial-form">
+                <h1>Have feedback for Dr. Scholl?</h1>
                 <form onSubmit={handleFormSubmit}>
                     <input
                         className='form-input'
-                        placeholder='Insert Testimonial Here'
+                        placeholder='Testimonial'
                         name='body'
                         type='text'
                         value={formState.body}
@@ -50,13 +51,13 @@ const Testimonials = () => {
                     />
                     <input
                         className='form-input'
-                        placeholder='name'
+                        placeholder='Name'
                         name='name'
                         type='text'
                         value={formState.name}
                         onChange={handleChange}
                     />
-                    <button type='submit'>Submit Testimonial</button>
+                    <button type='submit'>Submit</button>
                 </form>
 
                 {error && <div>Submission Failed: Try again later</div>}

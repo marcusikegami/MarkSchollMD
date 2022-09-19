@@ -210,7 +210,8 @@ a {
 }
 
 #navigation a:hover {
-  color: var(--rich-black);
+  color: var(--mandarin);
+  text-decoration: underline;;
 }
 
 
@@ -276,7 +277,7 @@ a {
 }
 
 #informal-bio img {
-  max-width: 300px;
+  max-width: 100%;
   height: auto;
   padding-bottom: 1rem;
 }
@@ -307,6 +308,10 @@ a {
   padding-top: 4%;
 }
 
+#posts-wrapper {
+  padding: 0 1rem;
+}
+
 #post-wrapper {
   padding: 0 4rem;
 }
@@ -334,6 +339,51 @@ a {
   overflow: hidden;
 }
 
+#testimonial-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#testimonial-form form {
+  width: 25%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem 0;
+}
+
+#testimonial-form input {
+  width: 100%;
+  margin: 0.5rem 0;
+  padding: 0.5rem 0.25rem;
+}
+
+#testimonial-form button {
+  color: white;
+  height: 25px;
+  width: 25%;
+  background-color: var(--mandarin);
+  border: 2px solid var(--mandarin);
+  border-radius: 10px;
+}
+
+#testimonial-form button:hover {
+  background-color: rgba(239, 123, 69, 0.847);
+  text-decoration: underline;
+}
+
+#testimonials-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+}
+
+.testimonial {
+  width: 75%;
+}
+
 .form-textarea {
   height: 400px;
 }
@@ -359,10 +409,20 @@ a {
   border-top: 1px solid rgb(169, 169, 169);
 }
 
+#previews-wrapper h1 {
+  background-color: var(--fire-engine-red);
+}
+
 .preview h1 {
+  font-size: 1.25rem;
   text-align: center;
   /* background-color: var(--fire-engine-red); */
   color: white;
+  padding: 0.25rem 0;
+}
+
+.preview h2 {
+  font-size: 1.5rem;
 }
 
 #news-preview {
@@ -387,11 +447,12 @@ a {
   display: block;
   color: var(--maximum-blue);
   font-weight: bold;
+  font-size: 0.75rem;
   text-shadow: -1px 1px var(--light-cyan);
   margin: 0;
 }
 
-.ellipse:hover {
+.post-anchor:hover, .ellipse:hover {
   text-decoration: underline;
 }
 
@@ -499,6 +560,7 @@ a {
   }
 
   .left-column {
+    max-height: 100%;
     width: 80%;
     padding-right: 4%;
     border-right: 1px solid var(--maximum-blue);
@@ -508,6 +570,10 @@ a {
     height: 100%;
     width: 20%;
     padding-left: 4%;
+  }
+
+  #posts-wrapper {
+    padding: 0 4rem;
   }
 }
 @media screen and (min-width: 1400px) {

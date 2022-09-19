@@ -20,7 +20,17 @@ const resolvers = {
         },
         testimonials: async () => {
             return Testimonial.find();
-        }
+        },
+        approvedTestimonials: async () => {
+            return Testimonial.find({ approval: true}, function (err, docs) {
+                if (err){
+                    console.log(err);
+                }
+                else{
+                    console.log("First function call : ", docs);
+                }
+            });
+        },
     },
 
     Mutation: {

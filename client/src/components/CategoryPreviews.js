@@ -24,17 +24,17 @@ const CategoryPreviews = ({posts}) => {
     }
     return (
         <div id="previews-wrapper">
-            <h1>Recent Posts</h1>
+            {/* <h1>Recent Posts</h1> */}
             <div className="preview">
-                {/* <h1 id="news-preview">News</h1> */}
+                <h1 id="news-preview">NEWS</h1>
                 { news && news.map(post => <PostPreview key={post._id} post={post} />)}
             </div>
             <div className="preview">
-                {/* <h1 id="patient-preview">Information for Patients</h1> */}
+                <h1 id="patient-preview">INFORMATION FOR PATIENTS</h1>
                 { patientInfo && patientInfo.map(post => <PostPreview key={post._id} post={post} />)}
             </div>
             <div className="preview">
-                {/* <h1 id="pt-preview">Information for Physical Therapists</h1> */}
+                <h1 id="pt-preview">INFORMATION FOR PHYSICAL THERAPISTS</h1>
                 { ptInfo && ptInfo.map(post => <PostPreview key={post._id} post={post} />)}
             </div>
         </div>
