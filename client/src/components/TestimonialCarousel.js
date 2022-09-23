@@ -25,7 +25,7 @@ const [current, setCurrent] = useState(0);
                 <FaArrowAltCircleLeft className="left-arrow" onClick={previousSlide} />
             {testimonials && testimonials.map((testimonial, index) => {
                 return (
-                    <div className={index === current ? 'slide-active' : 'slide'}>
+                    <div className={index === current ? 'slide-active' : 'slide'} key={index}>
                         <p>{testimonial.body}</p>
                         <h3>{testimonial.name}</h3>
                     </div>
