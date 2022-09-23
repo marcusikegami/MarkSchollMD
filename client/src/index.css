@@ -58,7 +58,6 @@ code {
   background: var(--rich-black);
 }
 
-h1,
 h2,
 h3,
 h4,
@@ -70,6 +69,7 @@ h6 {
 
 h1 {
   font-size: 2rem;
+  font-weight: 700;
 }
 
 h2 {
@@ -167,6 +167,7 @@ a {
   font-size: 28px;
   color: var(--fire-engine-red);
   margin: 0;
+  word-wrap: none;
 }
 
 #logo {
@@ -205,6 +206,7 @@ a {
 
 #navigation a {
   text-decoration: none;
+  text-align: left;
   padding: 0rem 0.5rem 1rem 0.5rem;
   color: var(--fire-engine-red);
 }
@@ -251,20 +253,37 @@ a {
   
   border-top: 1px solid var(--fire-engine-red);
 }
-
-
+.headshot-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
 #formal-bio h1 {
   color: var(--maximum-blue);
 }
 
 #formal-headshot {
-  display: inline;
-  max-width: 300px;
+  display: block;
+  max-width: 250px;
   height: auto;
-   float: left;
-   padding: 0 1rem 0rem 0;
+   padding: 0 0 1rem 0;
 }
+
+@media screen and (min-width: 600px) {
+  #formal-headshot {
+    display: inline;
+    max-width: 300px;
+    height: auto;
+     float: left;
+     padding: 0 1rem 0rem 0;
+  }
+  .headshot-wrapper {
+    display: block;
+  }
+}
+
+
 
 #formal-headshot img {
   height: 100%;
@@ -277,7 +296,7 @@ a {
 }
 
 #informal-bio img {
-  max-width: 100%;
+  max-width: 300px;
   height: auto;
   padding-bottom: 1rem;
 }
@@ -380,6 +399,36 @@ a {
   padding: 1rem;
 }
 
+#testimonial-slideshow {
+  display: flex;
+  flex-direction: row;
+  height: 500px;
+  flex: 1 1 1;
+}
+
+.slide {
+  display: none;
+}
+.slide-active {
+  display: block;
+  width: 90%;
+}
+.left-arrow {
+  color: var(--maximum-blue);
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+  padding-right: 0.5rem;
+}
+
+.right-arrow {
+  color: var(--maximum-blue);
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+  padding-left: 0.5rem;
+}
+
 .testimonial {
   width: 75%;
 }
@@ -452,7 +501,7 @@ a {
   margin: 0;
 }
 
-.post-anchor:hover, .ellipse:hover {
+.post-anchor:hover {
   text-decoration: underline;
 }
 
@@ -530,6 +579,9 @@ a {
 }
 
 @media screen and (min-width: 1100px) {
+  #main, #header{
+    padding: 0 10%;
+  }
   #header {
     flex-direction: row;
   }
@@ -548,7 +600,6 @@ a {
 
   #navigation a {
     padding: 0 0.75rem;
-    text-align: center;
     font-weight: bold;
   }
 
@@ -563,7 +614,7 @@ a {
     max-height: 100%;
     width: 80%;
     padding-right: 4%;
-    border-right: 1px solid var(--maximum-blue);
+    border-right: 1px solid var(--mandarin);
   }
   
   .right-column {
@@ -575,9 +626,13 @@ a {
   #posts-wrapper {
     padding: 0 4rem;
   }
+
+  #informal-bio img {
+  max-width: 100%;
+  }
 }
 @media screen and (min-width: 1400px) {
   #main, #header{
-    padding: 0 10%;
+    padding: 0 15%;
   }
 }

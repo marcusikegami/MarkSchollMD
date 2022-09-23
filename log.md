@@ -19,8 +19,23 @@ total: 17 hours
 8/16: 10:30 - 1:00
 8/18: 11:30 - 1:30
 8/27: 8:00 - 11:00
+
+aug total: 24 hours 
+
 9/4:  9:00 - 10:00
 9/6: 10:00-3:00
 9/11: 2:00 - 5:00
 9/13 9:30 - 11:30, 5:00-7:00
-total: 36 hours
+9/20 10:00 - 12:00
+9/23: 11:45 -
+total:  15 hours
+
+
+to do :
+
+style postpreview image thumbnail,
+image incorporation into post body,
+style testimonial input box,
+style testimonials and turn it into color rainbow,
+lessen width of posts-wrapper in large monitors,
+add delete button for testimonials and posts

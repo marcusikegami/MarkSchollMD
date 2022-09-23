@@ -6,14 +6,14 @@ import CategoryPreviews from '../components/CategoryPreviews';
 import informalheadshot from '../../src/assets/images/informalheadshot.jfif';
 import headshot from '../../src/assets/images/markheadshot.jfif';
 import Slideshow from '../components/Slideshow';
-import TestimonialSlideshow from '../components/TestimonialSlideshow';
+import TestimonialCarousel from '../components/TestimonialCarousel';
 
 const Home = () => {
     const { data } = useQuery(QUERY_POSTS);
     const posts = data?.posts || [];
 
     // const loggedIn = Auth.loggedIn();
-    
+    const main = document.getElementById('main');
 
     return (
     <div className="main-wrapper">
@@ -57,7 +57,7 @@ const Home = () => {
                 </div>
             </div>
             <div className='right-column'>
-                <TestimonialSlideshow />
+                {main && <TestimonialCarousel />}
                 <div id="informal-bio">
                         <img alt='headshot of Dr. Scholl in Running Garb' src={informalheadshot} />
                         <p>

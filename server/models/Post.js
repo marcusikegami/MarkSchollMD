@@ -12,6 +12,14 @@ const postSchema = new Schema(
             type: String,
             required: true
         },
+        image: {
+            type: String,
+            required: false
+        },
+        imagecaption: {
+            type: String,
+            required: false
+        },
         video: {
             type: String,
             required: false
