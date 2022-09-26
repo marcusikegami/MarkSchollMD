@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useQuery } from "@apollo/client";
 import { QUERY_TESTIMONIALS } from "../utils/queries";
 import {FaArrowAltCircleRight, FaArrowAltCircleLeft} from 'react-icons/fa';
@@ -10,6 +10,21 @@ const [current, setCurrent] = useState(0);
     const { loading, data } = useQuery(QUERY_TESTIMONIALS);
     const testimonials = data?.testimonials;
     const length = testimonials?.length || 0;
+    console.log(length, testimonials);
+    console.log(current);
+
+    const carouselScroll = () => {
+        if(current === length - 1) {
+            return setCurrent(0);
+        }
+        return setCurrent(current + 1);
+    }
+
+    useEffect(() => {
+        const carouselInterval = setInterval(() => {carouselScroll()}, 4000)
+        return () => clearInterval(carouselInterval);
+    });
+
 
 
     const nextSlide = () => {

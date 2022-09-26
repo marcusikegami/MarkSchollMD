@@ -201,7 +201,7 @@ a {
   text-align: right;
   flex-direction: column;
   justify-content: flex-end;
-  align-content: flex-end;
+  align-items: flex-end;
 }
 
 #navigation a {
@@ -303,7 +303,7 @@ a {
 
 .logo-links {
   /* display: flex; */
-  height: 75px;
+  height: 65px;
   /* justify-content: flex-end; */
   /* padding: 2rem 0 1rem 0; */
 }
