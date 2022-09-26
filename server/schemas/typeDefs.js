@@ -44,6 +44,8 @@ const typeDefs = gql`
         removePost(_id: ID): Post
         postTestimonial(body: String!, name: String!): Testimonial
         editTestimonial(_id: ID!, approval: Boolean!): Testimonial
+        removeTestimonial(_id: ID!): Testimonial
+
         singleUpload(file: Upload!): File!
     }
 `;

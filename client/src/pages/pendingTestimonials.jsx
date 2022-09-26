@@ -1,10 +1,12 @@
 import { useMutation, useQuery } from '@apollo/client';
 import { EDIT_TESTIMONIAL } from '../utils/mutations';
 import { QUERY_TESTIMONIALS } from '../utils/queries';
+import { REMOVE_TESTIMONIAL } from '../utils/mutations';
 
 import auth from '../utils/auth';
 
 const Approval = () => {
+    const [removeTestimonial] = useMutation(REMOVE_TESTIMONIAL);
     const [editTestimonial] = useMutation(EDIT_TESTIMONIAL);
     const { data } = useQuery(QUERY_TESTIMONIALS);
     const testimonials = data?.testimonials || [];
@@ -18,6 +20,16 @@ const Approval = () => {
                 console.error(err);
             }
         }
+        const handleRemoveTestimonial = async (_id) => {
+            try {
+                await removeTestimonial({
+                    variables: { _id}
+                });
+                window.location.reload();
+            } catch (err) {
+                console.error(err);
+            }
+        }
     
     if(auth.loggedIn()) { 
         return (
@@ -25,16 +37,16 @@ const Approval = () => {
             <div id="testimonials-wrapper">
                 {testimonials?.map(element => {
                     let id = element._id;
-                        if(!element.approval) {
                             return (
                                 <div key={element._id} id="testimonial">
                                     <p>"{element.body}"</p>
                                     <h3>–{element.name}</h3>
-                                    <button className="button" onClick={ () => {handleDecision(id, true)}}>Approve</button>
+                                    <button className="button" onClick={ () => {handleDecision(id, true)}}>Display</button>
+                                    <button className="button" onClick={ () => {handleDecision(id, false)}}>Hide</button>
+                                    <button className="button" onClick={ () => {handleRemoveTestimonial(id)}}>Remove</button>
+
                                 </div>
                             );
-                        } 
-                        return null;
                     })}
             </div>
         </main>

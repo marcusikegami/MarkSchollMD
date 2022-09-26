@@ -104,6 +104,16 @@ const resolvers = {
                 return testimonial;
             }
             throw new AuthenticationError('Not logged in!');
+        },
+        removeTestimonial: async (parent, { _id}, context) => {
+            if(context.admin) {
+                const testimonial = await Testimonial.findOneAndDelete(
+                    { _id: _id },
+                    { new: true } 
+                );
+                return testimonial;
+            }
+            throw new AuthenticationError('Not logged in!');
         }
     }
 };

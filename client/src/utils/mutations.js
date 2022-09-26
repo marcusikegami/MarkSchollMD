@@ -64,3 +64,14 @@ export const EDIT_TESTIMONIAL = gql `
         }
     }
 `;
+
+export const REMOVE_TESTIMONIAL = gql `
+    mutation RemoveTestimonial($_id: ID!) {
+        removeTestimonial(_id: $_id) {
+          _id
+          body
+          name
+          approval
+        }
+    }
+`;
