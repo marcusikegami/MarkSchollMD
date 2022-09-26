@@ -167,7 +167,7 @@ a {
   font-size: 28px;
   color: var(--fire-engine-red);
   margin: 0;
-  word-wrap: none;
+  width: max-content;
 }
 
 #logo {
@@ -302,9 +302,9 @@ a {
 }
 
 .logo-links {
-  /* display: flex; */
+  display: flex;
   height: 65px;
-  /* justify-content: flex-end; */
+  justify-content: flex-end;
   /* padding: 2rem 0 1rem 0; */
 }
 
@@ -588,10 +588,11 @@ a {
 
 @media screen and (min-width: 1100px) {
   #main, #header{
-    padding: 0 10%;
+    padding: 0 5%;
   }
   #header {
     flex-direction: row;
+    align-items: center;
   }
 
   .dropdown {
@@ -607,7 +608,8 @@ a {
   }
 
   #navigation a {
-    padding: 0 0.75rem;
+    padding: 0 0.5rem;
+    width: max-content;
     font-weight: bold;
   }
 
@@ -616,6 +618,10 @@ a {
     flex: 1 1 0;
     align-items: flex-start;
     border-top: 1px solid var(--mandarin)
+  }
+
+  #header-wrapper {
+    padding: 0;
   }
 
   .left-column {
