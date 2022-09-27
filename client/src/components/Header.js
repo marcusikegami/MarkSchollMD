@@ -26,7 +26,7 @@ const Header = () => {
                 <p>Logged in as Admin</p>
                 <div className='actions'>
                     <a href='/create-post'>Create Post</a>
-                    <a href='/pending-testimonials'>Pending Testimonials</a>
+                    <a href='/pending-testimonials'>Review Testimonials</a>
                     <a href='/' onClick={logout}>Logout</a>
                 </div>
             </div>

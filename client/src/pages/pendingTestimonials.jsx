@@ -21,14 +21,18 @@ const Approval = () => {
             }
         }
         const handleRemoveTestimonial = async (_id) => {
-            try {
-                await removeTestimonial({
-                    variables: { _id}
-                });
-                window.location.reload();
-            } catch (err) {
-                console.error(err);
+            const confirmation = window.confirm('Are you sure you want to remove this testimonial?');
+            if(confirmation) {
+                try {
+                    await removeTestimonial({
+                        variables: { _id}
+                    });
+                    window.location.reload();
+                } catch (err) {
+                    console.error(err);
+                }
             }
+            return;
         }
     
     if(auth.loggedIn()) { 
@@ -38,7 +42,7 @@ const Approval = () => {
                 {testimonials?.map(element => {
                     let id = element._id;
                             return (
-                                <div key={element._id} id="testimonial">
+                                <div key={element._id} className={`testimonial ${element.approval ? 'green' : 'light-red'}`}>
                                     <p>"{element.body}"</p>
                                     <h3>–{element.name}</h3>
                                     <button className="button" onClick={ () => {handleDecision(id, true)}}>Display</button>

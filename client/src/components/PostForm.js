@@ -33,6 +33,7 @@ const PostForm = ({post}) => {
     
     return (
         <form id='post-form' onSubmit={handleFormSubmit}>
+            <h3>Header</h3>
                 <input
                         className='form-input'
                         placeholder='Header'
@@ -42,6 +43,7 @@ const PostForm = ({post}) => {
                         value={formState.header}
                         onChange={handleChange}
                     />
+                    <h3>Body</h3>
                 <textarea
                         className='form-textarea'
                         placeholder='Body Text'
@@ -51,6 +53,7 @@ const PostForm = ({post}) => {
                         value={formState.body}
                         onChange={handleChange}
                     />
+                    <h3>Video Link</h3>
                 <input
                         className='form-input'
                         placeholder='Video Link'
@@ -60,6 +63,7 @@ const PostForm = ({post}) => {
                         value={formState.video}
                         onChange={handleChange}
                     />
+                    <h3>Category</h3>
                 <select
                         className='form-select'
                         placeholder='Post Category'

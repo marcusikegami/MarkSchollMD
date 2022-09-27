@@ -42,6 +42,10 @@ code {
   background: var(--fire-engine-red);
 }
 
+.light-red {
+  background: lightcoral;
+}
+
 .orange {
   background: var(--mandarin);
 }
@@ -56,6 +60,10 @@ code {
 
 .black {
   background: var(--rich-black);
+}
+
+.green {
+  background: lightgreen;
 }
 
 h2,
@@ -116,6 +124,7 @@ a {
   border-radius: 4px;
   color: white;
   padding: 0.25rem 0.75rem;
+  margin-bottom: 1rem;
 }
 
 .button:hover {
@@ -219,8 +228,6 @@ a {
 
 #adminMenu {
   padding: 0.5rem 1rem;
-  display: flex;
-  justify-content: space-between;
   background-color: var(--maximum-blue);
 }
 
@@ -269,8 +276,17 @@ a {
   height: auto;
    padding: 0 0 1rem 0;
 }
+.testimonial {
+  width: 75%;
+  padding: 1rem 1rem;
+  margin: 1rem 0;
+}
 
 @media screen and (min-width: 600px) {
+  #adminMenu {
+    display: flex;
+    justify-content: space-between;
+}
   #formal-headshot {
     display: inline;
     max-width: 300px;
@@ -332,7 +348,7 @@ a {
 }
 
 #post-wrapper {
-  padding: 0 4rem;
+  padding: 2% 15%;
 }
 
 .post {
@@ -437,17 +453,21 @@ a {
   padding-left: 0.5rem;
 }
 
-.testimonial {
-  width: 75%;
-}
-
 .form-textarea {
-  height: 400px;
+  min-height: 400px;
 }
 
 .form-container {
   display: flex;
   justify-content: center;
+}
+
+#post-form input, #post-form select, #post-form textarea {
+  margin-bottom: 1rem;
+}
+
+.form-container button {
+  height: min-content;
 }
 
 #post-form {
