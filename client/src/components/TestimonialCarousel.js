@@ -10,8 +10,6 @@ const [current, setCurrent] = useState(0);
     const { loading, data } = useQuery(QUERY_APPROVED_TESTIMONIALS);
     const testimonials = data?.approvedTestimonials;
     const length = testimonials?.length || 0;
-    console.log(length, testimonials);
-    console.log(current);
 
     const carouselScroll = () => {
         if(current === length - 1) {
