@@ -144,6 +144,7 @@ a {
   align-items: center;
   padding: 0 4%;
   max-width: 100%;
+  min-height: 100%;
 }
 
 #header {
@@ -423,6 +424,7 @@ a {
   flex-direction: row;
   height: 500px;
   flex: 1 1 1;
+  padding: 1rem 0;
 }
 
 .slide {
@@ -539,12 +541,14 @@ a {
 /* Slideshow container */
 #slideshow-container {
   max-width: 500px;
-  height: 500px;
+  height: 350px;
   position: relative;
   margin: auto;
   display: flex;
   align-items: center;
   justify-content: center;
+  border-top: 2px solid var(--light-cyan);
+  border-bottom: 2px solid var(--light-cyan);
 }
 
 /* Hide the images by default */

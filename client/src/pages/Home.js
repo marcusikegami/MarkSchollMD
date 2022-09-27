@@ -55,9 +55,11 @@ const Home = () => {
                         {posts && <CategoryPreviews posts={posts} /> }
                     </div>
                 </div>
+                <h2>Testimonials</h2>
+                {main && <TestimonialCarousel />}
             </div>
             <div className='right-column'>
-                {main && <TestimonialCarousel />}
+                <Slideshow />
                 <div id="informal-bio">
                         <img alt='headshot of Dr. Scholl in Running Garb' src={informalheadshot} />
                         <p>
@@ -78,7 +80,6 @@ const Home = () => {
                         achieve that goal.
                         </p>
                 </div>
-                <Slideshow />
             </div>
         </main>
     </div>

@@ -44,7 +44,7 @@ const CreatePost = (props) => {
 
     if(auth.loggedIn()) { 
         return (
-        <main>
+        <main id='main'>
             <div className='form-container'>
                 <form id='post-form' onSubmit={handleFormSubmit}>
                 <h2>Header</h2>

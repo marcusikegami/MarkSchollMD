@@ -38,12 +38,12 @@ export const QUERY_TESTIMONIALS = gql`
 `;
 
 export const QUERY_APPROVED_TESTIMONIALS = gql`
-    query Query {
-        testimonials {
-          _id
-          body
-          name
-          approval
+    query ApprovedTestimonials {
+        approvedTestimonials {
+        _id
+        body
+        name
+        approval
         }
     }
 `;

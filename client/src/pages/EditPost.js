@@ -20,7 +20,7 @@ const EditPost = (props) => {
 
         if(auth.loggedIn() && !loading) { 
         return (
-        <main>
+        <main id='main'>
             <div className='form-container'>
             <button className="button" onClick={() => {window.history.back()}}>Back</button>
                 <PostForm post={post} />

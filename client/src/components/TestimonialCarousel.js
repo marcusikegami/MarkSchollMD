@@ -1,14 +1,14 @@
 import { useState, useEffect } from "react";
 import { useQuery } from "@apollo/client";
-import { QUERY_TESTIMONIALS } from "../utils/queries";
+import { QUERY_APPROVED_TESTIMONIALS } from "../utils/queries";
 import {FaArrowAltCircleRight, FaArrowAltCircleLeft} from 'react-icons/fa';
 
 
 const TestimonialCarousel = () => {
 const [current, setCurrent] = useState(0);
 
-    const { loading, data } = useQuery(QUERY_TESTIMONIALS);
-    const testimonials = data?.testimonials;
+    const { loading, data } = useQuery(QUERY_APPROVED_TESTIMONIALS);
+    const testimonials = data?.approvedTestimonials;
     const length = testimonials?.length || 0;
     console.log(length, testimonials);
     console.log(current);
@@ -21,7 +21,7 @@ const [current, setCurrent] = useState(0);
     }
 
     useEffect(() => {
-        const carouselInterval = setInterval(() => {carouselScroll()}, 4000)
+        const carouselInterval = setInterval(() => {carouselScroll()}, 5000)
         return () => clearInterval(carouselInterval);
     });
 
@@ -42,7 +42,7 @@ const [current, setCurrent] = useState(0);
                 return (
                     <div className={index === current ? 'slide-active' : 'slide'} key={index}>
                         <p>{testimonial.body}</p>
-                        <h3>{testimonial.name}</h3>
+                        <h4>–{testimonial.name}</h4>
                     </div>
                 )
             })}
