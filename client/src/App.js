@@ -62,10 +62,9 @@ function App() {
           <Route path="/edit-post/:_id" element={<EditPost />} />
           <Route path="/post/:_id" element={<SinglePost />} />
         </Routes>
-        {/* <Footer /> */}
+        <Footer />
      </Router>
       
-     {/* <div id='footer'>Mark D. Scholl, M.D., P.C</div> */}
     </ApolloProvider>
   );
 }

@@ -13,6 +13,8 @@ const typeDefs = gql`
         _id: ID
         header: String
         body: String
+        image: String
+        imagecaption: String
         video: String
         category: String
         createdAt: String

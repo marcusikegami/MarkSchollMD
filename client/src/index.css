@@ -247,6 +247,9 @@ a {
   color: var(--light-cyan)
 }
 
+#login-wrapper {
+  padding: 5% 15%
+}
 .actions a {
   text-decoration: none;
   color: var(--maximum-blue);
@@ -536,11 +539,11 @@ a {
 /* Slideshow container */
 #slideshow-container {
   max-width: 500px;
-  max-height: 500px;
+  height: 500px;
   position: relative;
   margin: auto;
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: center;
 }
 
@@ -599,6 +602,26 @@ a {
 
 .text-center {
   text-align: center;
+}
+
+#footer {
+  border-top: 5px solid var(--maximum-blue);
+  background-color: rgb(6, 128, 150);
+  display: flex;
+  flex-grow: 1;
+  justify-content: center;
+  align-items: center;
+}
+
+#slsrugical {
+  padding: 2rem 1rem;
+  height: 60px;
+}
+
+#orthoinfo {
+  padding: 2rem 1rem;
+  height: 60px;
+  padding: none;
 }
 
 @keyframes fade {

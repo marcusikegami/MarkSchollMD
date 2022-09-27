@@ -12,7 +12,7 @@ const PostPreview = ({post}) => {
                 <p className="post-body">{postbody}...</p>
                 <img src={post.image} alt={post.imagecaption} />
                 {/* { post.video && (<iframe title={post.title} className="post-iframe" src={post.video} width="560" height="315" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="true"></iframe>)} */}
-                <p className="ellipse">Read More</p>
+                {/* <p className="ellipse">Read More</p> */}
             </Link>
             <p className="post-category">{post.category}</p>
         </div>

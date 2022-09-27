@@ -5,9 +5,10 @@ import Four from '../assets/images/slideshow/4.jfif';
 import Five from '../assets/images/slideshow/5.jfif';
 import morocco from '../assets/images/slideshow/morocco.jfif';
 import ultra from '../assets/images/slideshow/ultra.jfif';
+import { useEffect } from 'react';
 
 const Slideshow = () => {
-    
+    // const [slideshow] = useEffect();
     if(
         document.getElementById('slideshow-container')
     ) {
@@ -68,9 +69,9 @@ const Slideshow = () => {
             </div>
             <br />
             <div className="text-center">
+            {/* <span className="dot"></span>
             <span className="dot"></span>
-            <span className="dot"></span>
-            <span className="dot"></span>
+            <span className="dot"></span> */}
             </div>
     </div>
     )
