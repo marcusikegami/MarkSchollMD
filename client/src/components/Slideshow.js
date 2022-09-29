@@ -34,37 +34,37 @@ const Slideshow = () => {
             <div className="mySlides fade">
                 <div className="numbertext">1 / 7</div>
                 <img src={One} alt="caption" />
-                <div className="text">Caption Text</div>
+                {/* <div className="text">Caption Text</div> */}
             </div>
             <div className="mySlides fade">
                 <div className="numbertext">2 / 7</div>
                 <img src={Two} alt="caption" />
-                <div className="text">Caption Two</div>
+                {/* <div className="text">Caption Two</div> */}
             </div>
             <div className="mySlides fade">
                 <div className="numbertext">3 / 7</div>
                 <img src={Three} alt="caption" />
-                <div className="text">Caption Three</div>
+                {/* <div className="text">Caption Three</div> */}
             </div>
             <div className="mySlides fade">
                 <div className="numbertext">4 / 7</div>
                 <img src={Four} alt="caption" />
-                <div className="text">Caption Three</div>
+                {/* <div className="text">Caption Three</div> */}
             </div>
             <div className="mySlides fade">
                 <div className="numbertext">5 / 7</div>
                 <img src={Five} alt="caption" />
-                <div className="text">Caption Three</div>
+                {/* <div className="text">Caption Three</div> */}
             </div>
             <div className="mySlides fade">
                 <div className="numbertext">6 / 7</div>
                 <img src={morocco} alt="caption" />
-                <div className="text">Caption Three</div>
+                {/* <div className="text">Caption Three</div> */}
             </div>
             <div className="mySlides fade">
                 <div className="numbertext">7 / 7</div>
                 <img src={ultra} alt="caption" />
-                <div className="text">Caption Three</div>
+                {/* <div className="text">Caption Three</div> */}
             </div>
             </div>
             <br />

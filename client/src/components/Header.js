@@ -45,13 +45,12 @@ const Header = () => {
           </div>
             <nav id='navigation'>
             <a href='/'>Home</a>
-            <a href='/info-for-physical-therapists'>Info for Physical Therapists</a>
             <a href='/patient-education'>Info for Patients</a>
             <a href='/news-and-updates'>News</a>
             <a href='/testimonials'>Testimonials</a>
           </nav>
           <div className='logo-links'>
-                <a href='https://heidenortho.com/'>
+                <a rel="noreferrer" target="_blank" href='https://heidenortho.com/doctors/mark-scholl/'>
                     <img alt="Heiden Orthopedics Logo" src={heidenlogo} />
                 </a>
             </div>

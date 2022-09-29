@@ -10,8 +10,6 @@ import resolvers from './schemas/resolvers.js';
 import authMiddleware from './utils/auth.js';
 
 const __filename = fileURLToPath(import.meta.url);
-
-// 👇️ "/home/john/Desktop/javascript"
 const __dirname = path.dirname(__filename);
 
 const PORT = process.env.PORT || 3001;

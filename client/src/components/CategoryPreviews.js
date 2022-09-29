@@ -33,10 +33,10 @@ const CategoryPreviews = ({posts}) => {
                 <h1 id="patient-preview">INFORMATION FOR PATIENTS</h1>
                 { patientInfo && patientInfo.map(post => <PostPreview key={post._id} post={post} />)}
             </div>
-            <div className="preview">
+            {/* <div className="preview">
                 <h1 id="pt-preview">INFORMATION FOR PHYSICAL THERAPISTS</h1>
                 { ptInfo && ptInfo.map(post => <PostPreview key={post._id} post={post} />)}
-            </div>
+            </div> */}
         </div>
     )
 }

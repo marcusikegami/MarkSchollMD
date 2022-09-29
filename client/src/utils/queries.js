@@ -6,6 +6,8 @@ export const QUERY_POSTS = gql`
             _id
             header
             body
+            image
+            imagecaption
             video
             category 
             createdAt
@@ -19,6 +21,8 @@ export const QUERY_POST = gql`
             _id
             header
             body
+            image
+            imagecaption
             video
             category
             createdAt

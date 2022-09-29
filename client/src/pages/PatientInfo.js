@@ -27,3 +27,6 @@ const PatientInfo = () => {
 };
 
 export default PatientInfo; 
+
+
+// ortho info specific links to 

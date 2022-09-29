@@ -40,7 +40,7 @@ const [current, setCurrent] = useState(0);
                 return (
                     <div className={index === current ? 'slide-active' : 'slide'} key={index}>
                         <p>{testimonial.body}</p>
-                        <h4>–{testimonial.name}</h4>
+                        <h3>–{testimonial.name}</h3>
                     </div>
                 )
             })}

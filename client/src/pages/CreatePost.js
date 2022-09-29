@@ -8,7 +8,7 @@ const CreatePost = (props) => {
     if(!auth.loggedIn()) {
         window.location.assign('/');
     }
-    const [formState, setFormState] = useState({ header: '', body: '', category: '', video: '' });
+    const [formState, setFormState] = useState({ header: '', body: '', category: '', image: '', imagecaption: '', video: '' });
     const [createPost, { error }] = useMutation(ADD_POST);
 
     const handleChange = (event) => {
@@ -23,10 +23,8 @@ const CreatePost = (props) => {
     let urlValidate = /[(http(s)?):\/\/(www\.)?a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/;
 
     const handleFormSubmit = async (event) => {
+        console.log(formState);
         event.preventDefault();
-        let urlValidate = /[(http(s)?):\/\/(www\.)?a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/;
-        if (formState.video.match(urlValidate) || formState.video === '') {
-            console.log(formState);
             try {
                  const { data } = await createPost({
                     variables: { ...formState }
@@ -37,9 +35,6 @@ const CreatePost = (props) => {
                 console.error(error);
                 window.alert(`${err}`);
            }
-        } else {
-            window.alert('submitted');
-        }
     };
 
     if(auth.loggedIn()) { 
@@ -90,6 +85,30 @@ const CreatePost = (props) => {
                         // }}
                     />
                     {(formState.video !== "" && !formState.video.match(urlValidate)) && <p id="invalid">URL IS INVALID</p>}
+                    <h2>Thumbnail/Image URL</h2>
+                <input
+                        className='form-input'
+                        placeholder='Image Link'
+                        name='image'
+                        type='text'
+                        id='post-image'
+                        value={formState.image}
+                        onChange={handleChange}
+                        // onBlur={() => {
+                        //     if()
+                        // }}
+                    />
+                    {((formState.image !== "" || null) && !formState.image.match(urlValidate)) && <p id="invalid">URL IS INVALID</p>}
+                    <h2>Image Caption</h2>
+                <input
+                        className='form-input'
+                        placeholder='Image Caption'
+                        name='imagecaption'
+                        type='text'
+                        id='post-image-caption'
+                        value={formState.imagecaption}
+                        onChange={handleChange}
+                    />
                     <h2>Post Category</h2>
                 <select
                         className='form-select'
@@ -123,3 +142,5 @@ const CreatePost = (props) => {
 }
 
 export default CreatePost;
+
+// File upload,

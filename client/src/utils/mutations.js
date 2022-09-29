@@ -9,11 +9,13 @@ export const LOGIN_ADMIN = gql`
 `;
 
 export const ADD_POST = gql`
-    mutation AddPost($header: String!, $body: String!, $category: String!, $video: String) {
-        addPost(header: $header, body: $body, category: $category, video: $video) {
+    mutation AddPost($header: String!, $body: String!, $category: String!, $image: String, $imagecaption: String, $video: String) {
+        addPost(header: $header, body: $body, category: $category, image: $image, imagecaption: $imagecaption, video: $video) {
           _id
           header
           body
+          image
+          imagecaption
           video
           category
         }
@@ -21,11 +23,13 @@ export const ADD_POST = gql`
 `;
 
 export const EDIT_POST = gql`
-    mutation EditPost($_id: ID!, $header: String!, $body: String!, $category: String!, $video: String) {
-        editPost(_id: $_id, header: $header, body: $body, category: $category, video: $video) {
+    mutation EditPost($_id: ID! $header: String!, $body: String!, $category: String!, $image: String, $imagecaption: String, $video: String) {
+        editPost(_id: $_id header: $header, body: $body, category: $category, image: $image, imagecaption: $imagecaption, video: $video) {
           _id
           header
           body
+          image
+          imagecaption
           video
           category
         }
@@ -38,6 +42,8 @@ export const REMOVE_POST = gql`
           _id
           header
           body
+          image
+          imagecaption
           video
           category
         }

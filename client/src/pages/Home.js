@@ -33,7 +33,10 @@ const Home = () => {
                         special interest in cartilage preservation and maintenance of the biological surfaces of knee
                         and shoulder, as well as restoration of joint stability and ligaments. Dr. Scholl primarily performs
                         surgery arthroscopically or with other minimally invasive techniques, and enjoys developing
-                        advances in improving repair options, and pioneering new procedures.
+                        advances in repair options, and pioneering new procedures.
+                        
+                    </p>
+                    <p>
                         Dr. Scholl has trained at Northwestern University Medical School, and the Emory University
                         Department of Orthopedics for his orthopedic specialist training. He completed a Fellowship in
                         Arthroscopic Surgery and Sports Medicine at the University of Utah. He has been in practice
@@ -48,29 +51,7 @@ const Home = () => {
                         professional athletes from skiers to climbers, runners, cyclists, MMA fighters and the
                         occasional supercross rider, among various other sports.
                     </p>
-                    </div>
-                </div>
-                <div className='category-preview'>
-                    <div id="news-and-updates">
-                        {posts && <CategoryPreviews posts={posts} /> }
-                    </div>
-                </div>
-                <h2>Testimonials</h2>
-                {main && <TestimonialCarousel />}
-            </div>
-            <div className='right-column'>
-                <Slideshow />
-                <div id="informal-bio">
-                        <img alt='headshot of Dr. Scholl in Running Garb' src={informalheadshot} />
-                        <p>
-                        Personally, Mark enjoys time in the mountains and challenges of endurance. He is an allmountain skier and a trail runner / Ultramarathoner having completed dozens of races from trail
-                        marathons to 50 and 100 mile ultra runs. He has more recently taken up hockey and plays in a
-                        Men’s League to enjoy some competition with a scoreboard. For recreation, he likes to travel or
-                        to go camping in the desert or in the mountains with his wife and children. Occasionally, he will
-                        go off-roading in the vast open lands of Utah with some slightly rowdy friends. No surprise for
-                        an orthopedic surgeon, he likes to build things at home, whether Jeep modifications, basement
-                        renovations or building a treehouse fifteen feet in the air with a sliding glass door out to the
-                        balcony, he is always looking for the next project.
+                    <p>
                         In his practice, Dr. Scholl puts a high priority on explaining the injuries, and surgeries (or other
                         therapies) to patients, and educating them about the many steps they will travel together on
                         the journey to recovery. He lists the goal for every patient as: “becoming comfortable and
@@ -78,6 +59,27 @@ const Home = () => {
                         function means, whether it is putting away the dishes without pain or returning to professional
                         sports at the highest level, and Dr. Scholl looks forward to helping anyone with an injury
                         achieve that goal.
+                    </p>
+                    </div>
+                </div>
+                <div className='category-preview'>
+                    <div id="news-and-updates">
+                        {posts && <CategoryPreviews posts={posts} /> }
+                    </div>
+                </div>
+                <h3>TESTIMONIALS</h3>
+                {main && <TestimonialCarousel />}
+            </div>
+            <div className='right-column'>
+                <Slideshow />
+                <div id="informal-bio">
+                        <img alt='headshot of Dr. Scholl in Running Garb' src={informalheadshot} />
+                        <p>
+                        Mark enjoys time in the mountains and challenges of endurance. He is an allmountain skier and a trail runner / Ultramarathoner having completed dozens of races from trail
+                        marathons to 50 and 100 mile ultra runs. He has more recently taken up hockey and plays in a
+                        Men’s League to enjoy some competition with a scoreboard. For relaxation, he likes to travel, and
+                        to go camping in the desert or the mountains with his wife and children.
+                        
                         </p>
                 </div>
             </div>

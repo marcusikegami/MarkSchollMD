@@ -1,8 +1,8 @@
 :root {
   --rich-black: #042a2bff;
-  --maximum-blue: rgb(74, 157, 172);
-  --light-cyan: #cdedf6ff;
-  --mandarin: #ef7b45ff;
+  --maximum-blue: #376996;
+  --light-cyan: #cdedf6;
+  --mandarin: #f7c548ff;
   --fire-engine-red: #c22229ff;
   --white: #
 }
@@ -145,6 +145,7 @@ a {
   padding: 0 4%;
   max-width: 100%;
   min-height: 100%;
+  border-top: 1px solid var(--fire-engine-red);
 }
 
 #header {
@@ -258,9 +259,11 @@ a {
 
 #hero {
   background-image: url('./assets/images/hero.jpeg');
-  background-position: 40%;
+  background-size:cover;
+  background-repeat: no-repeat;
+  background-position-y: 35%;
   width: 100%;
-  height: 300px;
+  height: 350px;
   
   border-top: 1px solid var(--fire-engine-red);
 }
@@ -270,10 +273,16 @@ a {
   align-items: center;
 }
 
+#formal-bio {
+  padding: 1rem 0;
+  border-top: 3px solid var(--fire-engine-red);
+  /* border-bottom: 3px solid var(--fire-engine-red); */
+}
+
+
 #formal-bio h1 {
   color: var(--maximum-blue);
 }
-
 #formal-headshot {
   display: block;
   max-width: 250px;
@@ -370,6 +379,7 @@ a {
   font-size: smaller;
   color: var(--fire-engine-red);
   border-top: 1px solid rgb(169, 169, 169);
+  /* border-bottom: 1px solid rgb(169, 169, 169); */
 }
 
 .post-body {
@@ -378,7 +388,24 @@ a {
   overflow: hidden;
 }
 
+.post-thumbnail {
+  display: inline;
+   float: left;
+   padding: 0 1rem 0rem 0;
+  width: 12%;
+  height: 12%;
+}
+
+.post-image {
+  display: inline;
+   float: right;
+   padding: 0 1rem 0rem 0;
+  width: auto;
+  height: 20%;
+}
+
 #testimonial-form {
+  background-color: var(--light-cyan);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -419,12 +446,15 @@ a {
   padding: 1rem;
 }
 
+
 #testimonial-slideshow {
   display: flex;
   flex-direction: row;
   height: 500px;
   flex: 1 1 1;
   padding: 1rem 0;
+  min-height: 100%;
+  border-top: 2px solid var(--mandarin);
 }
 
 .slide {
@@ -463,6 +493,8 @@ a {
 }
 
 .form-container {
+  padding: 1rem 0;
+  width: 100%;
   display: flex;
   justify-content: center;
 }
@@ -471,15 +503,16 @@ a {
   margin-bottom: 1rem;
 }
 
+
 .form-container button {
-  height: min-content;
+  margin: 0 1rem;
 }
 
 #post-form {
   display: flex;
   flex-direction: column;
   width: 75%;
-  height: 500px;
+  /* height: 500px; */
 }
 
 #post-form h2 {
@@ -487,12 +520,8 @@ a {
   font-size: 1rem;
 }
 
-#previews-wrapper {
-  border-top: 1px solid rgb(169, 169, 169);
-}
-
 #previews-wrapper h1 {
-  background-color: var(--fire-engine-red);
+  background-color: var(--maximum-blue);
 }
 
 .preview h1 {
@@ -541,14 +570,14 @@ a {
 /* Slideshow container */
 #slideshow-container {
   max-width: 500px;
-  height: 350px;
+  height: 500px;
   position: relative;
   margin: auto;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-top: 2px solid var(--light-cyan);
-  border-bottom: 2px solid var(--light-cyan);
+  border-top: 2px solid var(--maximum-blue);
+  border-bottom: 2px solid var(--maximum-blue);
 }
 
 /* Hide the images by default */
@@ -609,21 +638,67 @@ a {
 }
 
 #footer {
-  border-top: 5px solid var(--maximum-blue);
-  background-color: rgb(6, 128, 150);
+  background-color: var(--maximum-blue);
   display: flex;
+  flex-direction: column;
   flex-grow: 1;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+#footer h1 {
+  padding: 0 0.5rem;
+  font-size: 0.75rem;
+  color: var(--maximum-blue)
+}
+
+.footer-logo-links {
+  background-color: var(--light-cyan);
+  padding: 0.5rem 0;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
 }
 
-#slsrugical {
-  padding: 2rem 1rem;
+#footer-links {
+  padding: 1rem 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  color: white;
+}
+
+#footer-links a {
+  font-size: 0.8rem;
+  color: var(--mandarin);
+  text-decoration: underline;
+  padding: 0.5rem 0.5rem;
+}
+
+#footer-links a:hover {
+  color: var(--white);
+}
+
+#footer-links p {
+  font-size: 0.8rem;
+  padding: 0 0.5rem;
+  width: 55%;
+}
+
+.footer-logo-links img{
   height: 60px;
 }
 
+#slsurgical {
+  height: 38px;
+  padding: 1rem 1rem;
+}
+
 #orthoinfo {
-  padding: 2rem 1rem;
+  padding: 1rem 1rem;
   height: 60px;
   padding: none;
 }
@@ -635,7 +710,7 @@ a {
 
 @media screen and (min-width: 1100px) {
   #main, #header{
-    padding: 0 5%;
+    padding: 0 2.5%;
   }
   #header {
     flex-direction: row;
@@ -674,14 +749,14 @@ a {
   .left-column {
     max-height: 100%;
     width: 80%;
-    padding-right: 4%;
-    border-right: 1px solid var(--mandarin);
+    padding-right: 5%;
+    /* border-right: 1px solid var(--mandarin); */
   }
   
   .right-column {
     height: 100%;
     width: 20%;
-    padding-left: 4%;
+    padding-left: 5%;
   }
 
   #posts-wrapper {
@@ -691,9 +766,13 @@ a {
   #informal-bio img {
   max-width: 100%;
   }
+  
 }
 @media screen and (min-width: 1400px) {
-  #main, #header{
+   #header{
+    padding: 0 10%;
+  }
+  #main {
     padding: 0 15%;
   }
 }
