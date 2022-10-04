@@ -1,22 +1,31 @@
-import slslogo from '../assets/images/slslogo.png';
-import orthoinfologo from '../assets/images/orthoinfologo.png';
-import heidenlogo from '../assets/images/heidenlogo.png';
+import slslogo from '../assets/images/slslogow.png';
+// import orthoinfologo from '../assets/images/orthoinfologo.png';
+import heidenlogo from '../assets/images/heidenlogow.png';
 const Footer = () => {
     return (
         <div id="footer">
-            <div className='footer-logo-links'>
-                <a rel="noreferrer" target="_blank" href='https://heidenortho.com/doctors/mark-scholl/'>
-                    <img alt="Heiden Orthopedics Logo" src={heidenlogo} />
-                </a>
-                <a href="https://www.saltlakesurgical.com/">
-                    <img id="slsurgical" alt="Salt Lake Surgical Logo" src={slslogo} />
-                </a>
+            <div id="footer-links-container">
+                <div id="footer-links">
+                    {/* <iframe title="heiden-location" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3027.8140882620214!2d-111.80895598459742!3d40.63398177934046!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8752630076968479%3A0xc5c7cdfff97ee0cc!2sJason+B.+Dickerson%2C+DPM+-+Heiden+Davidson+Orthopedics!5e0!3m2!1sen!2sus!4v1458247272184" width="400" height="250" frameborder="0" allowfullscreen=""></iframe> */}
+                    <h4>Salt Lake City Clinic</h4>
+                    <p>6360 S 3000 E, STE 210 Cottonwood Heights, Utah 84121</p>
+                    <p>PHONE: <a href="tel:+43561588222">435-615-8822</a></p>
+                    <p>HOURS: 8:30am - 5pm MST, Monday - Friday</p>
+                    <p>For appointments, please call Heiden Orthopedics during business hours</p>
+                    <a href='/info-for-physical-therapists'>Info for Physical Therapists</a>
+                </div>
+                <div className='footer-logo-links'>
+                    <a rel="noreferrer" target="_blank" href='https://heidenortho.com/doctors/mark-scholl/'>
+                        <img alt="Heiden Orthopedics Logo" src={heidenlogo} />
+                    </a>
+                    <a href="https://www.saltlakesurgical.com/">
+                        <img id="slsurgical" alt="Salt Lake Surgical Logo" src={slslogo} />
+                    </a>
+                </div>
             </div>
-            <div id="footer-links">
-            <p>For appointments, please call  <a href="tel:+43561588222">435-615-8822</a> during business hours (8:30am – 5pm MST)</p>
-            <a href='/info-for-physical-therapists'>Info for Physical Therapists</a>
+            <div id='footer-copyright'>
+                <h1>&copy;Copyright 2022 Mark D Scholl, M.D., P.C All rights reserved.</h1>
             </div>
-            <h1>Copyright 2022 Mark D Scholl, M.D., P.C All rights reserved.</h1>
         </div>
     )
 }

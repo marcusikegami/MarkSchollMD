@@ -9,8 +9,8 @@ const PostPreview = ({post}) => {
             <Link  className="post-anchor" to={`/post/${post._id}`}>
                 <h2 className="post-title">{post.header}</h2>
                 <p className="post-date">{post.createdAt}</p>
-                <img className="post-thumbnail" src={post.image} alt={post.imagecaption} />
-                <p className="post-body">{postbody}...</p>
+                
+                <p className="post-body"><img className="post-thumbnail" src={post.image} alt={post.imagecaption} />{postbody}...</p>
                 {/* { post.video && (<iframe title={post.title} className="post-iframe" src={post.video} width="560" height="315" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="true"></iframe>)} */}
                 {/* <p className="ellipse">Read More</p> */}
             </Link>
