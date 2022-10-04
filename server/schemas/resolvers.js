@@ -60,10 +60,11 @@ const resolvers = {
             throw new AuthenticationError('Not logged in!');
         },
         editPost: async (parent, args, context) => {
+            console.log(args);
             if (context.admin) {
                 return Post.findOneAndUpdate(
                     { _id: args._id},
-                    { header: args.header, body: args.body, video: args.video, category: args.category },
+                    { header: args.header, body: args.body, video: args.video, image: args.image, imagecaption: args.imagecaption, category: args.category },
                     { new: true }
                 )
             }

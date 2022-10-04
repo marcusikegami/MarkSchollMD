@@ -399,8 +399,8 @@ a {
   display: inline;
    float: right;
    padding: 0 0rem 0rem 0;
-  width: auto;
-  height: 500px;
+  width: 400px;
+  height: auto;
 }
 
 #testimonial-form {

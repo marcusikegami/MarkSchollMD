@@ -127,8 +127,8 @@ const CreatePost = (props) => {
                         <option value=''>Post Category</option>
                         <option value='Patient Education'>Patient Education</option>
                         <option value='Information about surgery with Dr. Scholl'>Information about surgery with Dr. Scholl</option>
-                        <option value='Knee'>Knee</option>
-                        <option value='Shoulder'>Shoulder</option>
+                        {/* <option value='Knee'>Knee</option>
+                        <option value='Shoulder'>Shoulder</option> */}
                         <option value='Information for Physical Therapists'>Information for Physical Therapists</option>
                         <option value='News and Updates'>News and Updates</option>
                     </select>
