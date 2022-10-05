@@ -310,6 +310,12 @@ a {
   height: 70%;
 }
 
+#footer-links p {
+  font-size: 0.8rem;
+  padding: 0 0.5rem;
+  width: 100%;
+}
+
 @media screen and (min-width: 600px) {
   #adminMenu {
     display: flex;
@@ -336,6 +342,11 @@ a {
   .logo-links img {
     max-height: 100%;
     padding: 0 1rem;
+  }
+  #footer-links p {
+    font-size: 0.8rem;
+    padding: 0 0.5rem;
+    width: 55%;
   }
 }
 
@@ -733,14 +744,6 @@ a {
 #footer-links a:hover {
   color: var(--white);
 }
-
-#footer-links p {
-  font-size: 0.8rem;
-  padding: 0 0.5rem;
-  width: 55%;
-}
-
-
 
 #orthoinfo {
   padding: 1rem 1rem;
