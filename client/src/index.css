@@ -147,16 +147,34 @@ a {
   border-top: 1px solid var(--fire-engine-red);
 }
 
+.logo-wrapper {
+  display: flex;
+  flex: 1 1 0;
+  align-items: center;
+}
+
+#logo {
+  max-height: 55px;
+}
+.logo-wrapper h1 {
+  font-size: 22px;
+  color: var(--fire-engine-red);
+  margin: 0;
+  width: max-content;
+}
+
+#dropdown-wrapper {
+  padding-right: 1rem;
+}
+
 #header {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  align-items: flex-end;
-  /* width: 100%; */
+  width: 100%;
 }
 
 #header-wrapper {
-  padding: 0 1rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -172,24 +190,28 @@ a {
   padding: 0;
 }
 
+@media screen and (min-width: 370px) {
 .logo-wrapper {
   display: flex;
   flex: 1 1 0;
   align-items: center;
 }
-
 .logo-wrapper h1 {
   font-size: 28px;
   color: var(--fire-engine-red);
   margin: 0;
   width: max-content;
 }
-
 #logo {
   width: auto;
   height: auto;
   max-height: 70px;
 }
+
+}
+
+
+
 
 .dropdown {
   display: flex;
@@ -306,10 +328,6 @@ a {
   height: 30px;
 }
 
-.logo-links img {
-  height: 70%;
-}
-
 #footer-links p {
   font-size: 0.8rem;
   padding: 0 0.5rem;
@@ -331,6 +349,7 @@ a {
   .headshot-wrapper {
     display: block;
   }
+
   .footer-logo-links img{
     height: 80px;
   }
@@ -339,10 +358,7 @@ a {
     height: 48px;
     padding: 2px;
   }
-  .logo-links img {
-    max-height: 100%;
-    padding: 0 1rem;
-  }
+
   #footer-links p {
     font-size: 0.8rem;
     padding: 0 0.5rem;
@@ -370,8 +386,8 @@ a {
 
 .logo-links {
   display: flex;
-  height: 65px;
   justify-content: flex-end;
+
   /* padding: 2rem 0 1rem 0; */
 }
 
@@ -380,7 +396,9 @@ a {
 }
 
 .logo-links img {
-  max-height: 100%;
+  /* max-height: 100%; */
+
+  height: 57px;
   padding: 0 1rem;
 }
 
@@ -607,6 +625,7 @@ a {
 #slideshow-wrapper {
   overflow: none;
   height: 500px;
+  margin: 0 auto;
 }
 
 /* Slideshow container */
@@ -763,6 +782,10 @@ a {
     flex-direction: row;
     flex-grow: 1;
     justify-content: center;
+  }
+  .logo-links img {
+    height: 57px;
+    padding: 0 1rem;
   }
 }
 

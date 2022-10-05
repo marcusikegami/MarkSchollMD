@@ -52,7 +52,7 @@ const Header = () => {
             <a href='/testimonials'>Testimonials</a>
           </nav>
           <div className='logo-links'>
-                <a rel="noreferrer" target="_blank" href='https://heidenortho.com/doctors/mark-scholl/'>
+                <a className='logo-links' rel="noreferrer" target="_blank" href='https://heidenortho.com/doctors/mark-scholl/'>
                     <img alt="Heiden Orthopedics Logo" src={heidenlogo} />
                 </a>
             </div>
