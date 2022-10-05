@@ -167,6 +167,10 @@ a {
   background: linear-gradient(to left, #042a2bff 0%, #5eb1bfff 15%, #cdedf6ff 50%, #ef7b45ff 75%, #c22229ff 100%);
 }
 
+#logo-wrapper-anchor {
+  padding: 0;
+}
+
 .logo-wrapper {
   display: flex;
   flex: 1 1 0;

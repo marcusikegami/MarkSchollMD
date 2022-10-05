@@ -33,10 +33,12 @@ const Header = () => {
           )}
         <header id='header'>
           <div id='header-wrapper'>
+            <a id='logo-wrapper-anchor' href='/'>
             <div className='logo-wrapper'>
               <img id='logo' src={Logo} alt='Mark D. Scholl, M.D., P.C'/>
               <h1>Mark D. Scholl, M.D.</h1>
             </div>
+            </a>
             <div id="dropdown-wrapper">
               <button className="dropdown" onClick={() => dropdown()}>
                   <img id="hamburger-icon" src={bars} alt="dropdown menu" width="16" height="16"/>
