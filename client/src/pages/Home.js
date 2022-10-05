@@ -71,7 +71,6 @@ const Home = () => {
                 {main && <TestimonialCarousel />}
             </div>
             <div className='right-column'>
-                <Slideshow />
                 <div id="informal-bio">
                         <img alt='headshot of Dr. Scholl in Running Garb' src={informalheadshot} />
                         <p>
@@ -82,6 +81,7 @@ const Home = () => {
                         
                         </p>
                 </div>
+                <Slideshow />
             </div>
         </main>
     </div>

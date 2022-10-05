@@ -9,7 +9,7 @@ const CategoryPreviews = ({posts}) => {
         if(post.category === "News and Updates") {
             news.push(post);
         }
-        if(post.category === "Patient Education") {
+        if(post.category === "Patient Education" || post.category === "Information about surgery with Dr. Scholl") {
             patientInfo.push(post);
         }
         return null;
