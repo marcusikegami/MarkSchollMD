@@ -19,7 +19,7 @@ const [current, setCurrent] = useState(0);
     }
 
     useEffect(() => {
-        const carouselInterval = setInterval(() => {carouselScroll()}, 5000)
+        const carouselInterval = setInterval(() => {carouselScroll()}, 10000)
         return () => clearInterval(carouselInterval);
     });
 
@@ -39,8 +39,8 @@ const [current, setCurrent] = useState(0);
             {testimonials && testimonials.map((testimonial, index) => {
                 return (
                     <div className={index === current ? 'slide-active' : 'slide'} key={index}>
-                        <p>{testimonial.body}</p>
-                        <h3>–{testimonial.name}</h3>
+                        <p>"{testimonial.body}"</p>
+                        <h3>– {testimonial.name}</h3>
                     </div>
                 )
             })}

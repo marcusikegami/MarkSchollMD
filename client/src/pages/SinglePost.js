@@ -21,7 +21,7 @@ const SinglePost = () => {
     return (
         <main>
             <div id='post-wrapper'>
-                <div key={post._id} className="post">
+                <div key={post._id} className="full">
                     {auth.loggedIn() && (<Link className="button" to={`/edit-post/${post._id}`}>Edit Post</Link>)}
                     <h2 className="post-title">{post.header}</h2>
                     <p className="post-date">{post.createdAt}</p>
