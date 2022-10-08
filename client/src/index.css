@@ -223,21 +223,23 @@ a {
 .dropdown {
   display: flex;
   align-items: center;
-  background-color: var(--fire-engine-red);
+  background: linear-gradient(var(--fire-engine-red), rgba(219, 43, 51, 0.789));
   border: 2px solid var(--fire-engine-red);
   border-radius: 4px;
   color: white;
-  padding: 0.2rem 0.2rem;
+  padding: 0.25rem 0.25rem;
 }
 
 .dropdown:active {
-  box-shadow: -2px 1px var(--mandarin);
+  box-shadow: -1px 1px 3px var(--mandarin);
   background-color: rgba(194, 34, 42, 0.846)
 }
 
 
 #hamburger-icon {
-  filter: invert(100%) sepia(0%) saturate(7445%) hue-rotate(75deg) brightness(106%) contrast(100%);
+  width: 16px;
+  height: 16px;
+  filter: invert(100%);
 }
 
 #navigation {
@@ -642,8 +644,13 @@ a {
   padding-left: 0.5rem;
 }
 
+.form-container input {
+  padding: .5rem;
+}
+
 .form-textarea {
   min-height: 400px;
+  padding: .55rem;
 }
 
 .form-container {
@@ -677,6 +684,7 @@ a {
   /* background-color: var(--maximum-blue); */
   background-color: white;
   color: var(--maximum-blue);
+  border-bottom: 2px solid var(--maximum-blue);
   text-shadow: -1px 1px 1px var(--light-cyan);
   text-align: left;
   font-size: 1.75rem;
