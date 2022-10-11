@@ -50,6 +50,7 @@ const Header = () => {
             <a href='/patient-education'>Info for Patients</a>
             <a href='/news-and-updates'>News</a>
             <a href='/testimonials'>Testimonials</a>
+            <a href='/info-for-physical-therapists'>Info for Physical Therapists</a>
           </nav>
           <div className='logo-links'>
                 <a className='logo-links' rel="noreferrer" target="_blank" href='https://heidenortho.com/doctors/mark-scholl/'>

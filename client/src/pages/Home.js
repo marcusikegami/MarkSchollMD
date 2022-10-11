@@ -68,7 +68,7 @@ const Home = () => {
                     </div>
                 </div>
                 <div id='testimonial-slideshow-wrapper'>
-                    <h1 id='testimonial-h1'>TESTIMONIALS</h1>
+                    <h3 id='testimonial-h3'>TESTIMONIALS</h3>
                     {main && <TestimonialCarousel />}
                 </div>
             </div>
