@@ -95,28 +95,10 @@ const CreatePost = (props) => {
 
     
     const gatherParagraphData = () => {
-        const paragraphsArray = [];
         let paragraphs = document.getElementById('paragraphs-form');
-        console.log(paragraphs);
-        let paragraph = {};
-            paragraph.header = paragraphs[0].value;
-            paragraph.image = paragraphs[0 + 1].value;
-            paragraph.imagecaption = paragraphs[0 + 2].value;
-            paragraph.body = paragraphs[0 + 3].value;
-            paragraphsArray.push(paragraph);
-        for (let i = 4; i < paragraphs.length -1; i = i + 5) {
-            let paragraph = {};
-            paragraph.header = paragraphs[i].value;
-            paragraph.image = paragraphs[i + 1].value;
-            paragraph.imagecaption = paragraphs[i + 2].value;
-            paragraph.body = paragraphs[i + 3].value;
-            paragraphsArray.push(paragraph);
-        }
-        setFormState({
-            ...formState,
-            body: paragraphsArray
-        });
-        console.log(formState);
+        
+        const paragraphsArray = paragraphs.children.childNodes;
+        console.log(paragraphsArray);
         return paragraphsArray;
     }
 
@@ -124,7 +106,7 @@ const CreatePost = (props) => {
         return (
         <main id='main'>
             <div className='form-container'>
-                <form className='post-form'>
+                <form className='post-form' id=''>
                 <h2>Header</h2>
                 <input
                         className='form-input'
@@ -205,7 +187,7 @@ const CreatePost = (props) => {
                     </select>
                 </form>
                     <h2>Body</h2>
-                <form className='post-form' id='paragraphs-form'>
+                <form className='post-form' id='paragraphs-form' data-tag='1'>
                     <div id="1" class="post-form paragraph">
                         <input 
                             type="text" 
@@ -227,6 +209,7 @@ const CreatePost = (props) => {
                              class="form-textarea" 
                              placeholder="Body Text">
                         </textarea>
+                        <button type="button" onClick={() => document.querySelectorAll("[data-tag='1']").reset()} value="reset">Clear Paragraph</button>
                     </div>
                 </form>
                     <button type='button' onClick={addParagraph}>Add</button>

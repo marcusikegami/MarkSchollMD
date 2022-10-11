@@ -229,7 +229,7 @@ const PostForm = ({post}) => {
                         )
                     })}
                 </form>
-                    <button type='button' onClick={addParagraph}>Add New Body Paragraph</button>
+                    <button className="button" type='button' onClick={addParagraph}>Add New Body Paragraph</button>
                     <button className="button" type='submit' onClick={handleFormSubmit}>Save Post</button>
             </div>
     )
