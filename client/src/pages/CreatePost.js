@@ -25,6 +25,7 @@ const CreatePost = (props) => {
     const handleFormSubmit = async (event) => {
         event.preventDefault();
                 let paragraphsArray = gatherParagraphData();
+                console.log(paragraphsArray);
                 try {
                      const { data } = await createPost({
                         variables: { ...formState,
@@ -95,9 +96,18 @@ const CreatePost = (props) => {
 
     
     const gatherParagraphData = () => {
-        let paragraphs = document.getElementById('paragraphs-form');
-        
-        const paragraphsArray = paragraphs.children.childNodes;
+        let paragraphsArray = [];
+        let paragraphs = document.getElementById('paragraphs-form').childNodes;
+        let arr = [...paragraphs];
+        arr.map(element => {
+            let obj = {}
+            let contents = element.childNodes;
+            obj.header = contents[0].value;
+            obj.image = contents[1].value;
+            obj.imagecaption = contents[2].value;
+            obj.body = contents[3].value;
+            paragraphsArray.push(obj);
+        });
         console.log(paragraphsArray);
         return paragraphsArray;
     }
@@ -106,7 +116,7 @@ const CreatePost = (props) => {
         return (
         <main id='main'>
             <div className='form-container'>
-                <form className='post-form' id=''>
+                <form className='post-form'>
                 <h2>Header</h2>
                 <input
                         className='form-input'
@@ -187,7 +197,7 @@ const CreatePost = (props) => {
                     </select>
                 </form>
                     <h2>Body</h2>
-                <form className='post-form' id='paragraphs-form' data-tag='1'>
+                <form className='post-form' id='paragraphs-form'>
                     <div id="1" class="post-form paragraph">
                         <input 
                             type="text" 

@@ -88,28 +88,19 @@ const PostForm = ({post}) => {
     
         
         const gatherParagraphData = () => {
-            const paragraphsArray = [];
-            let paragraphs = document.getElementById('paragraphs-form');
-            console.log(paragraphs);
-            let paragraph = {};
-                paragraph.header = paragraphs[0].value;
-                paragraph.image = paragraphs[0 + 1].value;
-                paragraph.imagecaption = paragraphs[0 + 2].value;
-                paragraph.body = paragraphs[0 + 3].value;
-                paragraphsArray.push(paragraph);
-            for (let i = 4; i < paragraphs.length -1; i = i + 5) {
-                let paragraph = {};
-                paragraph.header = paragraphs[i].value;
-                paragraph.image = paragraphs[i + 1].value;
-                paragraph.imagecaption = paragraphs[i + 2].value;
-                paragraph.body = paragraphs[i + 3].value;
-                paragraphsArray.push(paragraph);
-            }
-            setFormState({
-                ...formState,
-                body: paragraphsArray
+            let paragraphsArray = [];
+            let paragraphs = document.getElementById('paragraphs-form').childNodes;
+            let arr = [...paragraphs];
+            arr.map(element => {
+                let obj = {}
+                let contents = element.childNodes;
+                obj.header = contents[0].value;
+                obj.image = contents[1].value;
+                obj.imagecaption = contents[2].value;
+                obj.body = contents[3].value;
+                paragraphsArray.push(obj);
             });
-            console.log(formState);
+            console.log(paragraphsArray);
             return paragraphsArray;
         }
 
