@@ -19,18 +19,103 @@ const PostForm = ({post}) => {
  
      const handleFormSubmit = async (event) => {
          event.preventDefault();
+         let paragraphsArray = gatherParagraphData();
          try {
               const { data } = await editPost({
-                 variables: { _id: _id, ...formState,  }
+                 variables: { ...formState, body: paragraphsArray, _id: _id } 
              });
               window.location.href = `/post/${data.editPost._id}`;
          } catch (err) {
              console.error(error);
          }
         };
+        
         let urlValidate = /[(http(s)?):\/\/(www\.)?a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/;
+        
+        const addParagraph = () => {
+            let paragraphNumber = document.getElementById('paragraphs-form').childElementCount + 1;
+            let form = document.getElementById('paragraphs-form');
+    
+            let paragraph = document.createElement('div');
+                paragraph.id =`${paragraphNumber}`;
+                paragraph.className = 'post-form paragraph';
+                
+    
+            let headerinput = document.createElement('input');
+                headerinput.type = 'text';
+                headerinput.name = 'paragraph-header';
+                headerinput.className = 'form-input';
+                headerinput.placeholder = 'Paragraph Header'
+                headerinput.onChange = function() {
+                    console.log(paragraph.value);
+                }
+    
+            let imageinput = document.createElement('input');
+                imageinput.type = 'text';
+                imageinput.name = 'paragraph-image';
+                imageinput.className = 'form-input';
+                imageinput.placeholder = 'Image URL'
+    
+            let imagecaptioninput = document.createElement('input');
+                imagecaptioninput.type = 'text';
+                imagecaptioninput.name = 'paragraph-imagecaption';
+                imagecaptioninput.className = 'form-input';
+                imagecaptioninput.placeholder = 'Image Caption'
+    
+            let textarea = document.createElement('textarea');
+                textarea.name = 'paragraph-body';
+                textarea.className = 'form-textarea';
+                textarea.placeholder = 'Body Text'
+            
+            let deleteButton = document.createElement('button');
+                deleteButton.type = 'button';
+                deleteButton.innerText = 'Delete Paragraph';
+                deleteButton.setAttribute('paragraph-id', `${paragraphNumber}`);
+                deleteButton.value = 'button';
+                deleteButton.addEventListener('click', (event) =>{
+                    event.preventDefault();
+                    console.log(event);
+                    const element = document.getElementById(event.target.parentElement.id);
+                    element.remove();
+                });
+            paragraph.appendChild(headerinput);
+            paragraph.appendChild(imageinput);
+            paragraph.appendChild(imagecaptioninput);
+            paragraph.appendChild(textarea);
+            paragraph.appendChild(deleteButton);
+            form.appendChild(paragraph);
+        };
+    
+        
+        const gatherParagraphData = () => {
+            const paragraphsArray = [];
+            let paragraphs = document.getElementById('paragraphs-form');
+            console.log(paragraphs);
+            let paragraph = {};
+                paragraph.header = paragraphs[0].value;
+                paragraph.image = paragraphs[0 + 1].value;
+                paragraph.imagecaption = paragraphs[0 + 2].value;
+                paragraph.body = paragraphs[0 + 3].value;
+                paragraphsArray.push(paragraph);
+            for (let i = 4; i < paragraphs.length -1; i = i + 5) {
+                let paragraph = {};
+                paragraph.header = paragraphs[i].value;
+                paragraph.image = paragraphs[i + 1].value;
+                paragraph.imagecaption = paragraphs[i + 2].value;
+                paragraph.body = paragraphs[i + 3].value;
+                paragraphsArray.push(paragraph);
+            }
+            setFormState({
+                ...formState,
+                body: paragraphsArray
+            });
+            console.log(formState);
+            return paragraphsArray;
+        }
+
     return (
-        <form id='post-form' onSubmit={handleFormSubmit}>
+        <div className='form-container'>
+                <form className='post-form' onSubmit={handleFormSubmit}>
                 <h2>Header</h2>
                 <input
                         className='form-input'
@@ -46,20 +131,7 @@ const PostForm = ({post}) => {
                             }
                         }}
                     />
-                    <h2>Body</h2>
-                <textarea
-                        className='form-textarea'
-                        placeholder='Body Text'
-                        name='body'
-                        id='post-body'
-                        value={formState.body}
-                        onChange={handleChange}
-                        onBlur={() => {
-                            if(formState.body === "") {
-                                window.alert('Body is a required field');
-                            }
-                        }}
-                    />
+
                     <h2>Video Link</h2>
                 <input
                         className='form-input'
@@ -87,17 +159,18 @@ const PostForm = ({post}) => {
                         //     if()
                         // }}
                     />
-                    {(formState.image !== "" && !formState.image.match(urlValidate)) && <p id="invalid">URL IS INVALID</p>}
+                    {((formState.image !== "" || null) && !formState.image.match(urlValidate)) && <p id="invalid">URL IS INVALID</p>}
                     <h2>Image Caption</h2>
                 <input
                         className='form-input'
                         placeholder='Image Caption'
-                        name='image-caption'
+                        name='imagecaption'
                         type='text'
                         id='post-image-caption'
                         value={formState.imagecaption}
                         onChange={handleChange}
                     />
+                    
                     <h2>Post Category</h2>
                 <select
                         className='form-select'
@@ -121,8 +194,44 @@ const PostForm = ({post}) => {
                         <option value='Information for Physical Therapists'>Information for Physical Therapists</option>
                         <option value='News and Updates'>News and Updates</option>
                     </select>
-                    <button className="button" type='submit'>Create Post</button>
                 </form>
+                    <h2>Body</h2>
+                <form className='post-form' id='paragraphs-form'>
+                    {formState.body.map((paragraph, index) => {
+                        let id = (index + 1).toString();
+                        return (
+                    <div id={id} key={id} className="post-form paragraph">
+                        <input 
+                            type="text" 
+                            name="paragraph-header" 
+                            className="form-input" 
+                            placeholder="Paragraph Header"
+                            defaultValue={paragraph.header}/>
+                        <input 
+                            type="text" 
+                            name="paragraph-image" 
+                            className="form-input" 
+                            placeholder="Image URL"
+                            defaultValue={paragraph.image}/>
+                        <input 
+                            type="text" 
+                            name="paragraph-imagecaption" 
+                            className="form-input" 
+                            placeholder="Image Caption"
+                            defaultValue={paragraph.imagecaption}/>
+                        <textarea
+                             name="paragraph-body" 
+                             className="form-textarea" 
+                             placeholder="Body Text"
+                             defaultValue={paragraph.body}>
+                        </textarea>
+                    </div>
+                        )
+                    })}
+                </form>
+                    <button type='button' onClick={addParagraph}>Add New Body Paragraph</button>
+                    <button className="button" type='submit' onClick={handleFormSubmit}>Save Post</button>
+            </div>
     )
 };
 

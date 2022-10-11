@@ -6,6 +6,9 @@ import dotenv from'dotenv';
 dotenv.config();
 import GraphQLUpload from 'graphql-upload/GraphQLUpload.mjs';
 import { finished } from 'stream/promises';
+import path from 'path';
+import fs from 'fs';
+const __dirname = path.resolve();
 
 const resolvers = {
     Upload: GraphQLUpload,
@@ -44,15 +47,16 @@ const resolvers = {
             if (context.admin) {
                 const { createReadStream, filename, mimetype, encoding } = await file;
                 const stream = createReadStream();
-                const out = require('fs').createWriteStream('local-file-output.txt');
-                stream.pipe(out);
-                await finished(out);
+                const pathName = path.join(__dirname, `../client/public/assets/${filename}`);
+                await stream.pipe(fs.createWriteStream(pathName));
 
-                return { filename, mimetype, encoding };
+                return { url: `http://localhost:3000/assets/${filename}` };
             }
         },
         addPost: async (parent, args, context) => {
             if (context.admin) {
+                // args.body = JSON.stringify(args.body);
+                console.log(args);
                 const post = await Post.create({...args});
 
                 return post ;

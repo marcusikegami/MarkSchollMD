@@ -5,7 +5,12 @@ export const QUERY_POSTS = gql`
         posts(category: $category) {
             _id
             header
-            body
+            body {
+                header
+                body
+                image
+                imagecaption
+            }
             image
             imagecaption
             video
@@ -20,7 +25,12 @@ export const QUERY_POST = gql`
         post(_id: $_id) {
             _id
             header
-            body
+            body {
+                header
+                body
+                image
+                imagecaption
+            }
             image
             imagecaption
             video

@@ -6,6 +6,7 @@ import {
   ApolloProvider,
   createHttpLink
 } from '@apollo/client';
+import { createUploadLink } from 'apollo-upload-client';
 import { setContext } from '@apollo/client/link/context';
 
 import Home from './pages/Home';
@@ -20,12 +21,10 @@ import News from './pages/News';
 import PatientInfo from './pages/PatientInfo';
 import PtInfo from './pages/PtInfo';
 import SinglePost from './pages/SinglePost';
+import Upload from './pages/Upload';
 
-// const httpLink = createHttpLink({
-//   uri: '/graphql'
-// });
-
-const httpLink = createHttpLink({
+const httpLink = createUploadLink({
+  // header: {'Apollo-Require-Preflight': 'true'},
   uri: 'http://localhost:3001/graphql'
   // uri: '/graphql'
 });
@@ -61,6 +60,7 @@ function App() {
           <Route path="/patient-education" element={<PatientInfo />} />
           <Route path="/edit-post/:_id" element={<EditPost />} />
           <Route path="/post/:_id" element={<SinglePost />} />
+          <Route path="/upload" element={<Upload />} />
         </Routes>
         <Footer />
      </Router>
