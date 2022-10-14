@@ -9,11 +9,14 @@ const PtInfo = () => {
     return (
         <main>
             <div id='uploads-wrapper'>
-            {uploads.map(post => {
+            {uploads.map(upload => {
                     return (
-                        <a href={uploads.url} className='upload'></a>
+                        <div key={upload.createdAt} className='upload'>
+                            <a href={upload.url} className='upload-link'>{upload.filename}</a>
+                            <p className='upload-date'>{upload.createdAt}</p>
+                        </div>
                     )
-                })};
+                })}
             </div>
         </main>
     )

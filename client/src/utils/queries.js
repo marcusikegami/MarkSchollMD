@@ -65,6 +65,7 @@ export const QUERY_APPROVED_TESTIMONIALS = gql`
 export const QUERY_UPLOADS = gql`
     query Uploads {
         uploads {
+          filename
           url
           createdAt
         }

@@ -8,14 +8,13 @@ const UploadForm = () => {
     });
 
     const handleFileChange = event => {
-        // let confirm = window.confirm('Are you sure you want to upload this file?');
-        // console.log(confirm);
-        // if(confirm) {
+        let confirm = window.confirm('Are you sure you want to upload this file?');
+        if(confirm) {
             const file = event.target.files[0];
             console.log(file);
             if(!file) return;
             uploadFile({ variables: { file } })
-        // }
+        }
     }
 
     return (

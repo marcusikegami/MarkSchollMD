@@ -54,13 +54,8 @@ const resolvers = {
                 const stream = createReadStream();
                 const pathName = path.join(__dirname, `../client/public/assets/${filename}`);
                 await stream.pipe(fs.createWriteStream(pathName));
-                const file = await File.create(
-                    {
-                        filename: filename,
-                        url: pathName,
-                    }
-                );
-                return file;
+                const Upload = await File.create({filename: filename, url: pathName});
+                return Upload;
             }
         },
         addPost: async (parent, args, context) => {
