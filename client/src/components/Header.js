@@ -25,6 +25,7 @@ const Header = () => {
             <div id='adminMenu'>
                 <p>Logged in as Admin</p>
                 <div className='actions'>
+                    <a href='/upload'>Upload PDF</a>
                     <a href='/create-post'>Create Post</a>
                     <a href='/pending-testimonials'>Review Testimonials</a>
                     <a href='/' onClick={logout}>Logout</a>

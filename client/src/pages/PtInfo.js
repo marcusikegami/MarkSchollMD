@@ -1,21 +1,18 @@
 import { useQuery } from '@apollo/client';
-import { QUERY_POSTS } from '../utils/queries';
+import { QUERY_UPLOADS } from '../utils/queries';
 import PostPreview from '../components/PostPreview';
 
 const PtInfo = () => {
-    let { data } = useQuery(QUERY_POSTS);
-    let posts = data?.posts || [];
+    let { data } = useQuery(QUERY_UPLOADS);
+    let uploads = data?.uploads || [];
 
     return (
         <main>
-            <div id='posts-wrapper'>
-            {posts.map(post => {
-                    if(post.category === "Information for Physical Therapists") {
-                        return (
-                            <PostPreview post={post} />
-                        )
-                    }
-                    return null;
+            <div id='uploads-wrapper'>
+            {uploads.map(post => {
+                    return (
+                        <a href={uploads.url} className='upload'></a>
+                    )
                 })};
             </div>
         </main>

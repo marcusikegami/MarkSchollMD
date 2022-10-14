@@ -1,6 +1,7 @@
 import { AuthenticationError } from 'apollo-server-express';
 import Post from '../models/Post.js';
 import Testimonial from '../models/Testimonial.js';
+import File from '../models/File.js';
 import signToken from '../utils/signToken.js';
 import dotenv from'dotenv';
 dotenv.config();
@@ -27,6 +28,9 @@ const resolvers = {
         approvedTestimonials: async () => {
             return Testimonial.find({ approval: true });
         },
+        uploads: async () => {
+            return File.find();
+        }
     },
 
     Mutation: {
@@ -44,13 +48,19 @@ const resolvers = {
             return { token };
         },
         singleUpload: async (parent, { file }, context) => {
+            debugger;
             if (context.admin) {
                 const { createReadStream, filename, mimetype, encoding } = await file;
                 const stream = createReadStream();
                 const pathName = path.join(__dirname, `../client/public/assets/${filename}`);
                 await stream.pipe(fs.createWriteStream(pathName));
-
-                return { url: `http://localhost:3000/assets/${filename}` };
+                const file = await File.create(
+                    {
+                        filename: filename,
+                        url: pathName,
+                    }
+                );
+                return file;
             }
         },
         addPost: async (parent, args, context) => {

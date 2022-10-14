@@ -355,7 +355,7 @@ a {
   padding-right: 2.5%;
   width: 100%;
   display: flex;
-  flex-direction: column-reverse;
+  flex-direction: column;
   justify-content: space-between;
   align-items: space-between;
 }
@@ -366,6 +366,13 @@ a {
 #slsurgical {
   height: 30px;
   padding-right: 2.5%;
+}
+
+#upload-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20vh 0;
 }
 
 #footer-links p {
@@ -856,7 +863,7 @@ a {
 #footer-links-container {
   background-color: var(--maximum-blue);
   display: flex;
-  flex-direction: column-reverse;
+  flex-direction: column;
   flex-grow: 1;
   justify-content:flex-start;
   align-content: center;
@@ -877,7 +884,7 @@ a {
 
 .footer-logo-links {
   color: white;
-  /* border-top: 2px solid var(--mandarin); */
+  padding: 1rem 0;
   background-color: var(--maximum-blue);
   /* width: 100%; */
   display: flex;
@@ -892,6 +899,10 @@ a {
   padding: 0;
   display: flex;
   justify-content: center;
+}
+
+.footer-logo-links p {
+  padding: 0 0.5rem;
 }
 
 .footer-logo-links a, .footer-logo-links p {

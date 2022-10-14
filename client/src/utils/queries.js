@@ -54,10 +54,19 @@ export const QUERY_TESTIMONIALS = gql`
 export const QUERY_APPROVED_TESTIMONIALS = gql`
     query ApprovedTestimonials {
         approvedTestimonials {
-        _id
-        body
-        name
-        approval
+          _id
+          body
+          name
+          approval
+        }
+    }
+`;
+
+export const QUERY_UPLOADS = gql`
+    query Uploads {
+        uploads {
+          url
+          createdAt
         }
     }
 `;

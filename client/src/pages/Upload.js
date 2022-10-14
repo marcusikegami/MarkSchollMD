@@ -8,14 +8,18 @@ const UploadForm = () => {
     });
 
     const handleFileChange = event => {
-        const file = event.target.files[0];
-        console.log(file);
-        if(!file) return;
-        uploadFile({ variables: { file } })
+        // let confirm = window.confirm('Are you sure you want to upload this file?');
+        // console.log(confirm);
+        // if(confirm) {
+            const file = event.target.files[0];
+            console.log(file);
+            if(!file) return;
+            uploadFile({ variables: { file } })
+        // }
     }
 
     return (
-        <div>
+        <div id='upload-container'>
             <h1>Upload File</h1>
             <input type="file" onChange={handleFileChange}/>
         </div>

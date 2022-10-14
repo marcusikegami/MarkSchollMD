@@ -4,7 +4,9 @@ const typeDefs = gql`
     scalar Upload
 
     type File {
+        filename: String!
         url: String!
+        createdAt: String
     }
 
     input ParagraphInput {
@@ -49,6 +51,7 @@ const typeDefs = gql`
         testimonials: [Testimonial]
         approvedTestimonials: [Testimonial]
         otherFields: Boolean!
+        uploads: [File]
     }
 
     type Mutation {
