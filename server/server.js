@@ -20,7 +20,7 @@ const startServer = async () => {
     const server = new ApolloServer({
         typeDefs,
         resolvers,
-        csrfPrevention: true,
+        csrfPrevention: false,
         cache: 'bounded',
         plugins: [
             ApolloServerPluginLandingPageLocalDefault({ embed: true}),

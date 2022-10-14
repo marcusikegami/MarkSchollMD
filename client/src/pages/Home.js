@@ -67,8 +67,10 @@ const Home = () => {
                         {posts && <CategoryPreviews posts={posts} /> }
                     </div>
                 </div>
-                <h3>TESTIMONIALS</h3>
-                {main && <TestimonialCarousel />}
+                <div id='testimonial-slideshow-wrapper'>
+                    <h3 id='testimonial-h3'>TESTIMONIALS</h3>
+                    {main && <TestimonialCarousel />}
+                </div>
             </div>
             <div className='right-column'>
                 <div id="informal-bio">

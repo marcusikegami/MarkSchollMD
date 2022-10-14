@@ -35,9 +35,7 @@ const EditPost = (props) => {
         return (
         <main id='main'>
             <button className="button" onClick={() => {window.history.back()}}>Back</button>
-            <div className='form-container'>
                 <PostForm post={post} />
-            </div>
             <button className="button" onClick={() => handleDeletePost()}>Delete</button>
         </main>
     ) } else {

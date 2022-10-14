@@ -4,22 +4,34 @@ const typeDefs = gql`
     scalar Upload
 
     type File {
-        filename: String!
-        mimetype: String!
-        enconding: String!
+        url: String!
+    }
+
+    input ParagraphInput {
+        header: String!
+        body: String!
+        image: String
+        imagecaption: String
+    }
+    
+    type Paragraph {
+        header: String!
+        body: String!
+        image: String
+        imagecaption: String
     }
 
     type Post {
         _id: ID
         header: String
-        body: String
+        video: String
+        body: [Paragraph]
         image: String
         imagecaption: String
-        video: String
         category: String
         createdAt: String
     }
-
+    
     type Testimonial {
         _id: ID
         body: String!
@@ -41,8 +53,8 @@ const typeDefs = gql`
 
     type Mutation {
         login(username: String!, password: String!): Auth
-        addPost(header: String!, body: String!, image: String, imagecaption: String, video: String, category: String!): Post
-        editPost(_id: ID!, header: String!, body: String!, image: String, imagecaption: String, video: String, category: String!): Post
+        addPost(header: String!, body: [ParagraphInput]!, image: String, imagecaption: String, video: String, category: String!): Post
+        editPost(_id: ID!, header: String!, body: [ParagraphInput]!, image: String, imagecaption: String, video: String, category: String!): Post
         removePost(_id: ID): Post
         postTestimonial(body: String!, name: String!): Testimonial
         editTestimonial(_id: ID!, approval: Boolean!): Testimonial

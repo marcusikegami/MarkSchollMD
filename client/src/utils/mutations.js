@@ -9,11 +9,16 @@ export const LOGIN_ADMIN = gql`
 `;
 
 export const ADD_POST = gql`
-    mutation AddPost($header: String!, $body: String!, $category: String!, $image: String, $imagecaption: String, $video: String) {
+    mutation AddPost($header: String!, $body: [ParagraphInput]!, $category: String!, $image: String, $imagecaption: String, $video: String) {
         addPost(header: $header, body: $body, category: $category, image: $image, imagecaption: $imagecaption, video: $video) {
           _id
           header
-          body
+          body {
+            header
+            body
+            image
+            imagecaption
+          }
           image
           imagecaption
           video
@@ -23,11 +28,16 @@ export const ADD_POST = gql`
 `;
 
 export const EDIT_POST = gql`
-    mutation EditPost($_id: ID! $header: String!, $body: String!, $category: String!, $image: String, $imagecaption: String, $video: String) {
-        editPost(_id: $_id header: $header, body: $body, category: $category, image: $image, imagecaption: $imagecaption, video: $video) {
+    mutation EditPost($_id: ID!, $header: String!, $body: [ParagraphInput]!, $category: String!, $image: String, $imagecaption: String, $video: String) {
+        editPost(_id: $_id ,header: $header, body: $body, category: $category, image: $image, imagecaption: $imagecaption, video: $video) {
           _id
           header
-          body
+          body {
+            header
+            body
+            image
+            imagecaption
+          }
           image
           imagecaption
           video
@@ -41,7 +51,12 @@ export const REMOVE_POST = gql`
         removePost(_id: $_id) {
           _id
           header
-          body
+          body {
+            header
+            body
+            image
+            imagecaption
+          }
           image
           imagecaption
           video
@@ -78,6 +93,14 @@ export const REMOVE_TESTIMONIAL = gql `
           body
           name
           approval
+        }
+    }
+`;
+
+export const UPLOAD_FILE = gql `
+    mutation singleUpload($file: Upload!) {
+        singleUpload(file: $file) {
+            url
         }
     }
 `;
