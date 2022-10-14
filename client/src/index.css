@@ -343,6 +343,7 @@ a {
     font-size: 1.5rem;
     color: var(--mandarin);
     margin: 0;
+    border-bottom: 2px solid var(--mandarin);
 }
 
 #slsurgical {
