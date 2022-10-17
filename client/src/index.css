@@ -623,10 +623,15 @@ a {
 }
 .footer-logo-links a, .footer-logo-links p {
   text-align: center;
-  width: 200px;
+  
   font-size: .8rem;
 }
+
+.footer-logo-links p {
+  width: 200px;
 }
+}
+
 
 
 #testimonial-form input {
