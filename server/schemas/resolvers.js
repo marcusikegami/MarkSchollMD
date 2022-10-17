@@ -52,7 +52,7 @@ const resolvers = {
                 const { createReadStream, filename, mimetype, encoding } = await file;
                 const stream = createReadStream();
                 console.log('directory name', __dirname);
-                const pathName = path.join(__dirname, `../client/public/assets/${filename}`);
+                const pathName = path.join(__dirname, `/client/public/assets/${filename}`);
                 await stream.pipe(fs.createWriteStream(pathName));
                 const Upload = await File.create({filename: filename, url: pathName});
             }
