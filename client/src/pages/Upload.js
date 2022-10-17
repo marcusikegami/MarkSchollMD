@@ -1,5 +1,5 @@
 import { useMutation } from '@apollo/client';
-
+import auth from '../utils/auth';
 import { UPLOAD_FILE } from '../utils/mutations';
 
 const UploadForm = () => {
@@ -16,13 +16,16 @@ const UploadForm = () => {
             uploadFile({ variables: { file } })
         }
     }
-
-    return (
-        <div id='upload-container'>
-            <h1>Upload File</h1>
-            <input type="file" onChange={handleFileChange}/>
-        </div>
-    )
+    if (auth.loggedIn()) {
+        return (
+            <div id='upload-container'>
+                <h1>Upload File</h1>
+                <input type="file" onChange={handleFileChange}/>
+            </div>
+        )
+    } else {
+        window.location.assign('/');
+    }
 
 }
 
