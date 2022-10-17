@@ -61,6 +61,7 @@ const resolvers = {
             if (context.admin) {
                 // delete a file
                 try {
+                    console.log(url);
                     fs.unlinkSync(url);
                     const file = await File.findOneAndDelete({url: url}, function (err) {
                         if (err) {
@@ -68,8 +69,8 @@ const resolvers = {
                         } else {
                             console.log("Deleted File: ", url);
                         }
-                        return file;
                     })
+                    return file;
                     console.log('File is deleted.')
                 } catch (error) {
                     console.log(error)
