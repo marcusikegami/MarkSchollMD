@@ -50,6 +50,7 @@ const resolvers = {
         singleUpload: async (parent, { file }, context) => {
             if (context.admin) {
                 const { createReadStream, filename, mimetype, encoding } = await file;
+                filename = filename.replace(/\s+/g, '');
                 const stream = createReadStream();
                 console.log('directory name', __dirname);
                 const pathName = path.join(__dirname, `/client/public/assets/${filename}`);
