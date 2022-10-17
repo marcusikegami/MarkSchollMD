@@ -26,13 +26,14 @@ const PtInfo = () => {
         <main>
             <div id='uploads-wrapper'>
             {uploads.map(upload => {
+                let Url = 'file:///' + upload.url;
                     return (
                         
                         <div key={upload.createdAt} className='upload'>
                             {Auth.loggedIn() && (
                                 <button onClick={() => {return handleDeleteUpload(upload.url)}}>Delete File</button>
                             )}
-                            <a href={upload.url} download={upload.filename} className='upload-link'>{upload.filename}</a>
+                            <a href={Url} download className='upload-link'>{upload.filename}</a>
                             <p className='upload-date'>{upload.createdAt}</p>
                         </div>
                     )
