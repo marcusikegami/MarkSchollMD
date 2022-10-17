@@ -105,3 +105,11 @@ export const UPLOAD_FILE = gql `
         }
     }
 `;
+
+export const REMOVE_FILE = gql `
+    mutation removeUpload($url: String!) {
+        removeUpload(url: $url) {  
+          url
+        }
+    }
+`;

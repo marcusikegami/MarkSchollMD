@@ -48,14 +48,32 @@ const resolvers = {
             return { token };
         },
         singleUpload: async (parent, { file }, context) => {
-            debugger;
             if (context.admin) {
                 const { createReadStream, filename, mimetype, encoding } = await file;
                 const stream = createReadStream();
-                const pathName = path.join(__dirname, `../client/public/assets/${filename}`);
+                const pathName = path.join(__dirname, `./client/public/assets/${filename}`);
                 await stream.pipe(fs.createWriteStream(pathName));
                 const Upload = await File.create({filename: filename, url: pathName});
                 return Upload;
+            }
+        },
+        removeUpload: async (parent, { url }, context) => {
+            if (context.admin) {
+                // delete a file
+                try {
+                    fs.unlinkSync(url);
+                    const file = await File.findOneAndDelete({url: url}, function (err) {
+                        if (err) {
+                            console.error(err);
+                        } else {
+                            console.log("Deleted File: ", url);
+                        }
+                        return file;
+                    })
+                    console.log('File is deleted.')
+                } catch (error) {
+                    console.log(error)
+                }
             }
         },
         addPost: async (parent, args, context) => {

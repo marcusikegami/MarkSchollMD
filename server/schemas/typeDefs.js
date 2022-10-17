@@ -64,6 +64,7 @@ const typeDefs = gql`
         removeTestimonial(_id: ID!): Testimonial
 
         singleUpload(file: Upload!): File!
+        removeUpload(url: String!): File
     }
 `;
 
