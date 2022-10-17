@@ -52,7 +52,7 @@ const resolvers = {
                 const { createReadStream, filename, mimetype, encoding } = await file;
                 const stream = createReadStream();
                 console.log(__dirname);
-                const pathName = path.join(__dirname, `./client/public/assets/${filename}`);
+                const pathName = path.join(__dirname, `../client/public/assets/${filename}`);
                 await stream.pipe(fs.createWriteStream(pathName));
                 const Upload = await File.create({filename: filename, url: pathName});
             }
@@ -70,7 +70,6 @@ const resolvers = {
                             console.log("Deleted File: ", url);
                         }
                     })
-                    return file;
                     console.log('File is deleted.')
                 } catch (error) {
                     console.log(error)
