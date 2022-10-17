@@ -26,14 +26,16 @@ const PtInfo = () => {
         <main>
             <div id='uploads-wrapper'>
             {uploads.map(upload => {
-                let Url = 'file:///' + upload.url;
+                let Url = upload.url.split('public')[1];
+                console.log(Url);
                     return (
                         
-                        <div key={upload.createdAt} className='upload'>
+                        <div key={upload.url} className='upload'>
                             {Auth.loggedIn() && (
                                 <button onClick={() => {return handleDeleteUpload(upload.url)}}>Delete File</button>
                             )}
-                            <a href={Url} download className='upload-link'>{upload.filename}</a>
+                            {/* <a href={Url} download className='upload-link'>{upload.filename}</a> */}
+                            <button onClick={() => window.open(Url)}>{upload.filename}</button>
                             <p className='upload-date'>{upload.createdAt}</p>
                         </div>
                     )
