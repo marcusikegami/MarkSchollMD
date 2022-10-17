@@ -12,7 +12,7 @@ const PtInfo = () => {
             {uploads.map(upload => {
                     return (
                         <div key={upload.createdAt} className='upload'>
-                            <a href={upload.url} className='upload-link'>{upload.filename}</a>
+                            <a href={upload.url} download={upload.filename} className='upload-link'>{upload.filename}</a>
                             <p className='upload-date'>{upload.createdAt}</p>
                         </div>
                     )
