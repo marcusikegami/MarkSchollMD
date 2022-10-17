@@ -118,7 +118,7 @@ p {
 
 a {
   text-decoration: none;
-  padding: 1rem 0.5rem;
+  /* padding: 1rem 0.5rem; */
 }
 
 .d-none {
@@ -348,7 +348,6 @@ a {
 
 #slsurgical {
   height: 30px;
-  margin-bottom: 3rem;
 }
 
 .fll-wrapper {
@@ -456,17 +455,10 @@ a {
   }
 
   .footer-logo-links img{
-    height: 80px;
+    height: 85px;
   }
   
-  .fll-wrapper {
-    padding-right: 2.5%;
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: space-between;
-  }
+  v
 
   #footer-links p {
     font-size: 0.8rem;
@@ -621,17 +613,16 @@ a {
   align-items: center;
   padding: 1rem 0;
 }
-.footer-logo-links a, .footer-logo-links p {
+.footer-logo-links p {
   text-align: center;
-  
+  width: 200px;
   font-size: .8rem;
 }
-
-.footer-logo-links p {
-  width: 200px;
+.footer-logo-links a {
+  text-align: center;
+  font-size: .8rem; 
 }
 }
-
 
 
 #testimonial-form input {
@@ -921,18 +912,17 @@ a {
 
 .footer-logo-links a {
   color: var(--mandarin);
-  text-decoration: underline;;
-  padding: 0;
+  text-decoration: underline;
   display: flex;
-  justify-content: center;
+  padding: 0.5rem;
 }
 
 .footer-logo-links p {
-  padding: 0 0.5rem;
+  padding: 0 1.5rem;
 }
 
 .footer-logo-links a, .footer-logo-links p {
-  text-align: center;
+  text-align: left;
   font-size: .8rem;
 }
 
@@ -942,6 +932,7 @@ a {
   flex-direction: column;
   justify-content: center;
   color: white;
+  text-align: center;
 }
 
 #footer-links  h4 {
@@ -972,6 +963,14 @@ a {
 }
 
 @media screen and (min-width: 800px) {
+  .fll-wrapper {
+    padding-right: 2.5%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: space-between;
+  }
   #footer-links-container {
     background-color: var(--maximum-blue);
     display: flex;
@@ -982,6 +981,9 @@ a {
   .logo-links img {
     height: 57px;
     padding: 0 1rem;
+  }
+  #footer-links {
+    text-align: left;
   }
 }
 

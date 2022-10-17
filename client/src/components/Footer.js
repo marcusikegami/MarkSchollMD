@@ -10,9 +10,9 @@ const Footer = () => {
                     {/* <p>For appointments with Dr. Scholl, please contact Heiden Orthopedics</p> */}
                     {/* <p>6360 S 3000 E, STE 210 Cottonwood Heights, Utah 84121</p> */}
                     <p>For appointments, please call Heiden Orthopedics during business hours</p>
-                    <p>PHONE: <a href="tel:+43561588222">435-615-8822</a></p>
+                    <p><a href="tel:+43561588222">435-615-8822</a></p>
                     <p>HOURS: 8:30am - 5pm MST, Monday - Friday</p>
-                    <a href='/info-for-physical-therapists'>Info for Physical Therapists</a>
+                    {/* <a href='/info-for-physical-therapists'>Info for Physical Therapists</a> */}
                 </div>
                 <div className="fll-wrapper">
                 <div className='footer-logo-links'>
