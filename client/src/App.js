@@ -25,8 +25,8 @@ import Upload from './pages/Upload';
 
 const httpLink = createUploadLink({
   // header: {'Apollo-Require-Preflight': 'true'},
-  // uri: 'http://localhost:3001/graphql'
-  uri: '/graphql'
+  uri: 'http://localhost:3001/graphql'
+  // uri: '/graphql'
 });
 
 const authLink = setContext((_, { headers }) => {
