@@ -54,8 +54,8 @@ const resolvers = {
                 console.log(filename);
                 const stream = createReadStream();
                 console.log('directory name', __dirname);
-                // const pathName = path.join(__dirname, `../client/public/assets/${filename}`);
-                const pathName = path.join(__dirname, `./client/public/assets/${filename}`);
+                const pathName = path.join(__dirname, `../client/public/assets/${filename}`);
+                // const pathName = path.join(__dirname, `./client/public/assets/${filename}`);
                 await stream.pipe(fs.createWriteStream(pathName));
                 const Upload = await File.create({filename: filename, url: pathName});
                 return Upload;
@@ -65,7 +65,7 @@ const resolvers = {
             if (context.admin) {
                 // delete a file
                 try {
-                    console.log(url);
+                    console.log('url', url);
                     fs.unlinkSync(url);
                     const file = await File.findOneAndDelete({url: url}, function (err) {
                         if (err) {
