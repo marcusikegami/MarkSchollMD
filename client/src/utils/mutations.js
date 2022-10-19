@@ -113,3 +113,23 @@ export const REMOVE_FILE = gql `
         }
     }
 `;
+
+export const ADD_PDF = gql `
+    mutation addPdf($pdfname: String!, $url: String!) {
+      addPdf(pdfname: $pdfname, url: $url) {
+        pdfname
+        createdAt
+        url
+      }
+    }
+`;
+
+export const REMOVE_PDF = gql `
+    mutation removePdf($url: String!) {
+      removePdf(url: $url) {
+        pdfname
+        url
+        createdAt
+      }
+    }
+`;

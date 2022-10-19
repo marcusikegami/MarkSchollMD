@@ -1,4 +1,2 @@
-const typeDefs = require('./typeDefs');
-const resolvers = require('./resolvers');
-
-export default = { typeDefs, resolvers };
+export {default as typeDefs} from './typeDefs';
+export {default as resolvers } from './resolvers';

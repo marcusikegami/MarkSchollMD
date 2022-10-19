@@ -9,6 +9,7 @@ import GraphQLUpload from 'graphql-upload/GraphQLUpload.mjs';
 import { finished } from 'stream/promises';
 import path from 'path';
 import fs from 'fs';
+import Pdf from '../models/Pdf.js';
 const __dirname = path.resolve();
 
 const resolvers = {
@@ -30,6 +31,9 @@ const resolvers = {
         },
         uploads: async () => {
             return File.find();
+        },
+        pdfs: async () => {
+            return Pdf.find();
         }
     },
 
@@ -47,6 +51,20 @@ const resolvers = {
 
             return { token };
         },
+        addPdf: async (parent, {pdfname, url}, context) => {
+            if(context.admin) {
+                const pdf = await Pdf.create({ pdfname: pdfname, url: url })
+                return pdf;
+            }
+            throw new AuthenticationError('Not logged in!');
+        },
+        removePdf: async (parent, { url }, context) => {
+            if (context.admin) {
+                const pdf = await Pdf.findOneAndDelete({ url: url }, { new: true })
+                return pdf;
+            }
+            throw new AuthenticationError('Not logged in!');
+        },
         singleUpload: async (parent, { file }, context) => {
             if (context.admin) {
                 let { createReadStream, filename, mimetype, encoding } = await file;
@@ -60,6 +78,7 @@ const resolvers = {
                 const Upload = await File.create({filename: filename, url: pathName});
                 return Upload;
             }
+            throw new AuthenticationError('Not logged in!');
         },
         removeUpload: async (parent, { url }, context) => {
             if (context.admin) {
@@ -80,6 +99,7 @@ const resolvers = {
                     console.log(error)
                 }
             }
+            throw new AuthenticationError('Not logged in!');
         },
         addPost: async (parent, args, context) => {
             if (context.admin) {

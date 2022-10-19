@@ -1,14 +1,15 @@
 import { useQuery, useMutation } from '@apollo/client';
-import { QUERY_UPLOADS } from '../utils/queries';
+import { QUERY_UPLOADS, QUERY_PDFS } from '../utils/queries';
 import { REMOVE_FILE } from '../utils/mutations';
 import PostPreview from '../components/PostPreview';
 import Auth from '../utils/auth';
+import PdfLinks from '../components/PdfLinks';
 const PtInfo = () => {
     let { data } = useQuery(QUERY_UPLOADS);
     let [removeUpload] = useMutation(REMOVE_FILE);
     let uploads = data?.uploads || [];
 
-
+   
 
     const handleDeleteUpload = async (url) => {
         try {
@@ -41,6 +42,7 @@ const PtInfo = () => {
                     )
                 })}
             </div>
+            <PdfLinks />
         </main>
     )
 };

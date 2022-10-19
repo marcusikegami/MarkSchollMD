@@ -9,6 +9,12 @@ const typeDefs = gql`
         createdAt: String
     }
 
+    type Pdf {
+        pdfname: String!
+        url: String!
+        createdAt: String
+    }
+
     input ParagraphInput {
         header: String!
         body: String!
@@ -52,6 +58,7 @@ const typeDefs = gql`
         approvedTestimonials: [Testimonial]
         otherFields: Boolean!
         uploads: [File]
+        pdfs: [Pdf]
     }
 
     type Mutation {
@@ -62,6 +69,9 @@ const typeDefs = gql`
         postTestimonial(body: String!, name: String!): Testimonial
         editTestimonial(_id: ID!, approval: Boolean!): Testimonial
         removeTestimonial(_id: ID!): Testimonial
+
+        addPdf(pdfname: String! url: String!): Pdf
+        removePdf(url: String!): Pdf
 
         singleUpload(file: Upload!): File!
         removeUpload(url: String!): File

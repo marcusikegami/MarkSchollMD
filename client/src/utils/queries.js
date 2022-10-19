@@ -71,3 +71,13 @@ export const QUERY_UPLOADS = gql`
         }
     }
 `;
+
+export const QUERY_PDFS = gql`
+    query Pdfs {
+        pdfs {
+            pdfname
+            url
+            createdAt
+        }
+    }
+`;
