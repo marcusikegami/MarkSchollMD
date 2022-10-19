@@ -385,10 +385,23 @@ a {
   display: flex;
   flex-direction: column;
   align-items: center;
+  border-radius: 5px;
+  box-shadow: -1px 1px 5px rgba(0, 0, 0, 0.143);
+  padding: 1rem;
+}
+
+.upload:hover {
+  animation: fade-shadow 0.5s forwards ;
 }
 
 .upload-link {
+  font-size: 1.1rem;
   padding: 0;
+  color: var(--fire-engine-red);
+}
+.upload-link:hover {
+  text-decoration: underline;
+  color: var(--mandarin);
 }
 
 .upload-date {
