@@ -223,7 +223,6 @@ const CreatePost = (props) => {
                     </div>
                 </form>
                     <button type='button' onClick={addParagraph}>Add</button>
-                    <button type='button' onClick={gatherParagraphData}>Save Paragraphs</button>
                     <button className="button" type='submit' onClick={handleFormSubmit}>Create Post</button>
             </div>
         </main>
