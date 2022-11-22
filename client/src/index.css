@@ -1111,4 +1111,11 @@ a {
   #main {
     padding: 0 12%;
   }
+  #footer {
+    padding: 0 12%;
+  }
+  #footer-links, .fll-wrapper {
+    padding-left: 0;
+    padding-right: 0;
+  }
 }
