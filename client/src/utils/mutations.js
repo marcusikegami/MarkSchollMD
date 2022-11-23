@@ -115,11 +115,12 @@ export const REMOVE_FILE = gql `
 `;
 
 export const ADD_PDF = gql `
-    mutation addPdf($pdfname: String!, $url: String!) {
-      addPdf(pdfname: $pdfname, url: $url) {
+    mutation addPdf($pdfname: String!, $url: String!, $category: String!) {
+      addPdf(pdfname: $pdfname, url: $url, category: $category) {
         pdfname
         createdAt
         url
+        category
       }
     }
 `;
@@ -130,6 +131,7 @@ export const REMOVE_PDF = gql `
         pdfname
         url
         createdAt
+        category
       }
     }
 `;

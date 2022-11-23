@@ -4,7 +4,7 @@ import auth from '../utils/auth';
 import { UPLOAD_FILE, ADD_PDF } from '../utils/mutations';
 
 const UploadForm = () => {
-    const [formState, setFormState] = useState({ pdfname: '', url: ''});
+    const [formState, setFormState] = useState({ pdfname: '', url: '', category: 'Select Category'});
     const [addPdf] = useMutation(ADD_PDF, {
         onCompleted: data => console.log(data)
     });
@@ -23,6 +23,7 @@ const UploadForm = () => {
     }
 
     const handleChange = event => {
+        console.log(event.target);
         const { name, value } = event.target;
 
         setFormState({
@@ -33,10 +34,14 @@ const UploadForm = () => {
 
     const handleFormSubmit = async (event) => {
         event.preventDefault();
+        if(formState.category === '' || formState.category === 'Select Category') {
+            window.alert('Please select a category');
+            return;
+        }
                 try {
                      const { data } = await addPdf({ variables: { ...formState} });
                      window.alert('Completed');
-                     setFormState({ pdfname: '', url: ''});
+                     setFormState({ pdfname: '', url: '', category: ''});
                 } catch (err) {
                     console.error(err);
                     window.alert(`${err}`);
@@ -54,35 +59,53 @@ const UploadForm = () => {
                 <form onSubmit={handleFormSubmit}>
                     <h2>PDF Name</h2>
                     <input
-                            className='form-input'
-                            placeholder='Filename'
-                            name='pdfname'
-                            type='text'
-                            id='post-filename'
-                            value={formState.pdfname}
-                            onChange={handleChange}
-                            onBlur={() => {
-                                if(formState.pdfname === "") {
-                                    window.alert('Filename is a required field');
-                                }
-                            }}
-                        />
-
-                        <h2>PDF Link</h2>
+                        className='form-input'
+                        placeholder='Filename'
+                        name='pdfname'
+                        type='text'
+                        id='post-filename'
+                        value={formState.pdfname}
+                        onChange={handleChange}
+                        onBlur={() => {
+                            if(formState.pdfname === "") {
+                                window.alert('Filename is a required field');
+                            }
+                        }}
+                    />
+                    <h2>PDF Link</h2>
                     <input
-                            className='form-input'
-                            placeholder='Google Drive URL'
-                            name='url'
-                            type='text'
-                            id='post-url'
-                            value={formState.url}
-                            onChange={handleChange}
-                            onBlur={() => {
-                                if(formState.url === "") {
-                                    window.alert('URL is a required field');
-                                }
-                            }}
-                        />
+                        className='form-input'
+                        placeholder='Google Drive URL'
+                        name='url'
+                        type='text'
+                        id='post-url'
+                        value={formState.url}
+                        onChange={handleChange}
+                        onBlur={() => {
+                            if(formState.url === "") {
+                                window.alert('URL is a required field');
+                            }
+                        }}
+                    />
+                    <h2>Category</h2>
+                    <select
+                        className='form-select'
+                        placeholder='PDF Category'
+                        name='category'
+                        type='select'
+                        id='post-category'
+                        value={formState.category}
+                        onChange={handleChange}
+                        onBlur={() => {
+                            if(formState.category === "") {
+                                window.alert('Category is a required field');
+                            }
+                        }}
+                    >
+                        <option value='Select Category'>Select Category</option>
+                        <option value='Info for Patients'>Info for Patients</option>
+                        <option value='Info for Physical Therapists'>Info for Physical Therapists</option>
+                    </select>
                     <button type='submit'>Submit</button>
                 </form>
             </div>

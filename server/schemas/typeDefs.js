@@ -12,6 +12,7 @@ const typeDefs = gql`
     type Pdf {
         pdfname: String!
         url: String!
+        category: String
         createdAt: String
     }
 
@@ -58,7 +59,8 @@ const typeDefs = gql`
         approvedTestimonials: [Testimonial]
         otherFields: Boolean!
         uploads: [File]
-        pdfs: [Pdf]
+        ptpdfs: [Pdf]
+        pipdfs: [Pdf]
     }
 
     type Mutation {
@@ -70,7 +72,7 @@ const typeDefs = gql`
         editTestimonial(_id: ID!, approval: Boolean!): Testimonial
         removeTestimonial(_id: ID!): Testimonial
 
-        addPdf(pdfname: String! url: String!): Pdf
+        addPdf(pdfname: String! url: String! category: String!): Pdf
         removePdf(url: String!): Pdf
 
         singleUpload(file: Upload!): File!

@@ -22,7 +22,6 @@ const PtInfo = () => {
         }
         return;
     };
-
     return (
         <main>
             <div id='uploads-wrapper'>

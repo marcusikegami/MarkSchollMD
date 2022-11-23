@@ -72,12 +72,24 @@ export const QUERY_UPLOADS = gql`
     }
 `;
 
-export const QUERY_PDFS = gql`
-    query Pdfs {
-        pdfs {
+export const QUERY_PT_PDFS = gql`
+    query PtPdfs {
+        ptpdfs {
             pdfname
             url
+            category
             createdAt
         }
     }
+`;
+
+export const QUERY_PI_PDFS = gql`
+    query PiPdfs {
+        pipdfs {
+          pdfname
+          url
+          category
+          createdAt
+        }
+    } 
 `;

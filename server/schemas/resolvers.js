@@ -32,9 +32,12 @@ const resolvers = {
         uploads: async () => {
             return File.find();
         },
-        pdfs: async () => {
-            return Pdf.find();
-        }
+        ptpdfs: async () => {
+            return Pdf.find({category: 'Info for Physical Therapists'});
+        },
+        pipdfs: async () => {
+            return Pdf.find({category: 'Info for Patients'});
+        },
     },
 
     Mutation: {
@@ -51,9 +54,9 @@ const resolvers = {
 
             return { token };
         },
-        addPdf: async (parent, {pdfname, url}, context) => {
+        addPdf: async (parent, {pdfname, url, category}, context) => {
             if(context.admin) {
-                const pdf = await Pdf.create({ pdfname: pdfname, url: url })
+                const pdf = await Pdf.create({ pdfname: pdfname, url: url, category: category })
                 return pdf;
             }
             throw new AuthenticationError('Not logged in!');
