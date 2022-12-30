@@ -6,6 +6,7 @@ const PdfLinks = () => {
     let { data } = useQuery(QUERY_PT_PDFS);
     let [removePdf] = useMutation(REMOVE_PDF);
 
+
    let pdfs = data?.pdfs || [];
 
     const handleDeletePdf = async (url) => {
