@@ -35,7 +35,7 @@ const PtInfo = () => {
                                 <button onClick={() => {return handleDeleteUpload(upload.url)}}>Delete File</button>
                             )}
                             {/* <a href={Url} download className='upload-link'>{upload.filename}</a> */}
-                            <button onClick={() => window.open(Url)}>{upload.filename}</button>
+                            <button onClick={() => window.open(Url)}>{upload.pdfname}</button>
                             <p className='upload-date'>{upload.createdAt}</p>
                         </div>
                     )
