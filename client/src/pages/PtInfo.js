@@ -7,7 +7,7 @@ import PdfLinks from '../components/PdfLinks';
 const PtInfo = () => {
     let { data } = useQuery(QUERY_UPLOADS);
     let [removeUpload] = useMutation(REMOVE_FILE);
-    let uploads = data?.uploads || [];
+    let uploads = data?.ptpdfs || [];
 
    
 
