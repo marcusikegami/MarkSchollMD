@@ -10,7 +10,14 @@ import { finished } from 'stream/promises';
 import path from 'path';
 import fs from 'fs';
 import Pdf from '../models/Pdf.js';
+import AWS from 'aws-sdk';
 const __dirname = path.resolve();
+
+// Set the region 
+AWS.config.update({region: 'us-west-2'});
+
+// Create S3 service object
+var s3 = new AWS.S3({apiVersion: '2006-03-01'});
 
 const resolvers = {
     Upload: GraphQLUpload,
