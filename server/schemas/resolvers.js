@@ -65,7 +65,6 @@ const resolvers = {
         },
         addPdf: async (parent, {pdfname, url, category}, context) => {
             if(context.admin) {
-                console.log(typeof(category));
                 category = category.toString();
                 const pdf = await Pdf.create({ pdfname: pdfname, url: url, category: category })
                 return pdf;
