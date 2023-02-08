@@ -12,6 +12,15 @@ import fs from 'fs';
 import Pdf from '../models/Pdf.js';
 const __dirname = path.resolve();
 
+import AWS from 'aws-sdk';
+AWS.config.update({region: 'us-west-2'});
+const s3 = new AWS.S3({
+    apiVersion: '2006-03-01',
+    accessKeyId: process.env.AWS_S3_ACCESS_KEY_ID,
+    secretAccessKey: process.env.AWS_S3_SECRET_ACCESS_KEY,
+    Bucket: process.env.AWS_S3_BUCKET_NAME
+});
+
 const resolvers = {
     Upload: GraphQLUpload,
 
@@ -56,6 +65,8 @@ const resolvers = {
         },
         addPdf: async (parent, {pdfname, url, category}, context) => {
             if(context.admin) {
+                console.log(typeof(category));
+                category = category.toString();
                 const pdf = await Pdf.create({ pdfname: pdfname, url: url, category: category })
                 return pdf;
             }
@@ -63,25 +74,47 @@ const resolvers = {
         },
         removePdf: async (parent, { url }, context) => {
             if (context.admin) {
-                const pdf = await Pdf.findOneAndDelete({ url: url }, { new: true })
-                return pdf;
+                const Pdf = await Pdf.findOneAndDelete({ url: url }, { new: true })
+                return Pdf;
             }
             throw new AuthenticationError('Not logged in!');
         },
+        // singleUpload: async (parent, { file }, context) => {
+        //     if (context.admin) {
+        //         let { createReadStream, filename, mimetype, encoding } = await file;
+        //         filename = filename.replace(/\s+/g, '');
+        //         console.log(file);
+        //         const stream = createReadStream();
+        //         console.log('directory name', __dirname);
+        //         const pathName = path.join(__dirname, `../client/public/assets/${filename}`);
+        //         await stream.pipe(fs.createWriteStream(pathName));
+        //         const Upload = await File.create({filename: filename, url: pathName});
+        //         return Upload;
+        //     }
+        //     throw new AuthenticationError('Not logged in!');
+        // },
         singleUpload: async (parent, { file }, context) => {
+            // check if user is logged in before uploading
             if (context.admin) {
-                let { createReadStream, filename, mimetype, encoding } = await file;
-                filename = filename.replace(/\s+/g, '');
-                console.log(filename);
-                const stream = createReadStream();
-                console.log('directory name', __dirname);
-                const pathName = path.join(__dirname, `../client/public/assets/${filename}`);
-                // const pathName = path.join(__dirname, `./client/public/assets/${filename}`);
-                await stream.pipe(fs.createWriteStream(pathName));
-                const Upload = await File.create({filename: filename, url: pathName});
-                return Upload;
+                const { createReadStream, filename, mimetype, encoding } = await file;
+                const formattedFilename = filename.replace(/\s+/g, '');
+                const fileContent = createReadStream();
+                const params = {
+                    Bucket: process.env.AWS_S3_BUCKET_NAME,
+                    Key: formattedFilename,
+                    Body: fileContent,
+                };
+
+                try {
+                    const data = await s3.upload(params).promise();
+                    const Upload = await File.create({filename: formattedFilename, url: data.Location});
+                    return Upload;
+                } catch (err) {
+                    console.log(err);
+                }
+            } else {
+                throw new AuthenticationError('Not logged in!');
             }
-            throw new AuthenticationError('Not logged in!');
         },
         removeUpload: async (parent, { url }, context) => {
             if (context.admin) {

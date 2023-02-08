@@ -2,10 +2,8 @@ import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { ADD_POST } from '../utils/mutations';
 
-import auth from '../utils/auth';
-
-const CreatePost = (props) => {
-    if(!auth.loggedIn()) {
+const CreatePost = (user) => {
+    if(!user) {
         window.location.assign('/');
     }
     const [formState, setFormState] = useState({ header: '', body: [], category: '', image: '', imagecaption: '', video: '' });
@@ -111,8 +109,6 @@ const CreatePost = (props) => {
         console.log(paragraphsArray);
         return paragraphsArray;
     }
-
-    if(auth.loggedIn()) { 
         return (
         <main id='main'>
             <div className='form-container'>
@@ -226,9 +222,7 @@ const CreatePost = (props) => {
                     <button className="button" type='submit' onClick={handleFormSubmit}>Create Post</button>
             </div>
         </main>
-    ) } else {
-        window.location.assign('/');
-    }
+    ) 
 }
 
 export default CreatePost;

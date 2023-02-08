@@ -12,7 +12,7 @@ const typeDefs = gql`
     type Pdf {
         pdfname: String!
         url: String!
-        category: String
+        category: String!
         createdAt: String
     }
 

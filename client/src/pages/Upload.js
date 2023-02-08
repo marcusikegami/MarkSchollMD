@@ -4,7 +4,7 @@ import auth from '../utils/auth';
 import { UPLOAD_FILE, ADD_PDF } from '../utils/mutations';
 
 const UploadForm = () => {
-    const [formState, setFormState] = useState({ pdfname: '', url: '', category: 'Select Category'});
+    const [formState, setFormState] = useState({ pdfname: '', category: '', url: ''});
     const [addPdf] = useMutation(ADD_PDF, {
         onCompleted: data => console.log(data)
     });
@@ -12,20 +12,28 @@ const UploadForm = () => {
         onCompleted: data => console.log(data)
     });
 
-    const handleFileChange = event => {
+    const handleFileChange = async (event) => {
         let confirm = window.confirm('Are you sure you want to upload this file?');
         if(confirm) {
             const file = event.target.files[0];
+            formState.pdfname = file.name;
             console.log(file);
             if(!file) return;
-            uploadFile({ variables: { file } })
+            try {
+                const { data } = await uploadFile({ variables: { file } })
+                formState.url = data.singleUpload.url;
+                console.log(formState.url);
+            } catch (err) {
+                console.error(err);
+                window.alert(`${err}`);
+            };
+            
         }
-    }
+    };
 
     const handleChange = event => {
-        console.log(event.target);
+        console.log(event.target.name, ':', event.target.value);
         const { name, value } = event.target;
-
         setFormState({
             ...formState,
             [name]: value,
@@ -34,11 +42,12 @@ const UploadForm = () => {
 
     const handleFormSubmit = async (event) => {
         event.preventDefault();
-        if(formState.category === '' || formState.category === 'Select Category') {
+        if(formState.category === '') {
             window.alert('Please select a category');
             return;
         }
                 try {
+                     console.log(formState);
                      const { data } = await addPdf({ variables: { ...formState} });
                      window.alert('Completed');
                      setFormState({ pdfname: '', url: '', category: ''});
@@ -69,21 +78,6 @@ const UploadForm = () => {
                         onBlur={() => {
                             if(formState.pdfname === "") {
                                 window.alert('Filename is a required field');
-                            }
-                        }}
-                    />
-                    <h2>PDF Link</h2>
-                    <input
-                        className='form-input'
-                        placeholder='Google Drive URL'
-                        name='url'
-                        type='text'
-                        id='post-url'
-                        value={formState.url}
-                        onChange={handleChange}
-                        onBlur={() => {
-                            if(formState.url === "") {
-                                window.alert('URL is a required field');
                             }
                         }}
                     />
