@@ -11,6 +11,15 @@ const UploadForm = () => {
     const [uploadFile] = useMutation(UPLOAD_FILE, {
         onCompleted: data => console.log(data)
     });
+    
+        const handleChange = event => {
+            console.log(event.target.name, ':', event.target.value);
+            const { name, value } = event.target;
+            setFormState({
+                ...formState,
+                [name]: value,
+            });
+        };
 
     const handleFileChange = async (event) => {
         let confirm = window.confirm('Are you sure you want to upload this file?');
@@ -29,15 +38,6 @@ const UploadForm = () => {
             };
             
         }
-    };
-
-    const handleChange = event => {
-        console.log(event.target.name, ':', event.target.value);
-        const { name, value } = event.target;
-        setFormState({
-            ...formState,
-            [name]: value,
-        });
     };
 
     const handleFormSubmit = async (event) => {

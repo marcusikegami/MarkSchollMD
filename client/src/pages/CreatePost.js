@@ -1,14 +1,19 @@
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { ADD_POST } from '../utils/mutations';
+import { UPLOAD_FILE } from '../utils/mutations';
+import auth from '../utils/auth';
 
 const CreatePost = (user) => {
-    if(!user) {
-        window.location.assign('/');
-    }
-    const [formState, setFormState] = useState({ header: '', body: [], category: '', image: '', imagecaption: '', video: '' });
+    
+    
+    const [formState, setFormState] = useState({ header: '', body: [], category: '', image: '', imagecaption: '', video: '', urls: [] });
     const [createPost, { error }] = useMutation(ADD_POST);
 
+    const [uploadFile] = useMutation(UPLOAD_FILE, {
+        onCompleted: data => console.log(data)
+    });
+    
     const handleChange = (event) => {
         const { name, value } = event.target;
 
@@ -16,6 +21,25 @@ const CreatePost = (user) => {
             ...formState,
             [name]: value,
         });
+    };
+
+    const handleFileChange = async (event) => {
+        let confirm = window.confirm('Are you sure you want to upload this file?');
+        if(confirm) {
+            const file = event.target.files[0];
+            formState.pdfname = file.name;
+            console.log(file);
+            if(!file) return;
+            try {
+                const { data } = await uploadFile({ variables: { file } })
+                formState.urls = formState.urls.concat(data.singleUpload.url);
+                console.log(formState.urls);
+            } catch (err) {
+                console.error(err);
+                window.alert(`${err}`);
+            };
+            
+        }
     };
 
     let urlValidate = /[(http(s)?):\/\/(www\.)?a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/;
@@ -109,7 +133,7 @@ const CreatePost = (user) => {
         console.log(paragraphsArray);
         return paragraphsArray;
     }
-        return (
+        if(auth.loggedIn()) { return (
         <main id='main'>
             <div className='form-container'>
                 <form className='post-form'>
@@ -134,10 +158,10 @@ const CreatePost = (user) => {
                         className='form-input'
                         placeholder='Video Link'
                         name='video'
-                        type='text'
+                        type='file'
                         id='post-video'
                         value={formState.video}
-                        onChange={handleChange}
+                        onChange={handleFileChange}
                         // onBlur={() => {
                         //     if()
                         // }}
@@ -222,8 +246,10 @@ const CreatePost = (user) => {
                     <button className="button" type='submit' onClick={handleFormSubmit}>Create Post</button>
             </div>
         </main>
-    ) 
-}
+    )} else {
+    window.location.assign('/');
+} 
+};
 
 export default CreatePost;
 
