@@ -5,12 +5,10 @@ import { UPLOAD_FILE } from '../utils/mutations';
 import auth from '../utils/auth';
 
 const CreatePost = (user) => {
-    
-    
     const [formState, setFormState] = useState({ header: '', body: [], category: '', image: '', imagecaption: '', video: '', urls: [] });
     const [createPost, { error }] = useMutation(ADD_POST);
 
-    const [uploadFile] = useMutation(UPLOAD_FILE, {
+    const [uploadFile, { loading }] = useMutation(UPLOAD_FILE, {
         onCompleted: data => console.log(data)
     });
     
@@ -23,11 +21,37 @@ const CreatePost = (user) => {
         });
     };
 
+    // This function uploads the Thumbnail image or the Video file to the S3 bucket
+    const handleMainFileChange = async (event) => {
+        let confirm = window.confirm('Are you sure you want to upload this file?');
+        debugger;
+        if(confirm) {
+            console.log(event.target);
+            const file = event.target.files[0];
+            console.log(file);
+            if(!file) return;
+            try {
+                const { data } = await uploadFile({ variables: { file } })
+                if (event.target.name === 'image') {
+                    formState.image = data.singleUpload.url;
+                } else if (event.target.name === 'video') {
+                    formState.video = data.singleUpload.url;
+                }
+                console.log(formState);
+            } catch (err) {
+                console.error(err);
+                window.alert(`${err}`);
+            };
+            
+        }
+    };
+
     const handleFileChange = async (event) => {
         let confirm = window.confirm('Are you sure you want to upload this file?');
+        debugger;
         if(confirm) {
+            console.log(event.target);
             const file = event.target.files[0];
-            formState.pdfname = file.name;
             console.log(file);
             if(!file) return;
             try {
@@ -46,6 +70,7 @@ const CreatePost = (user) => {
 
     const handleFormSubmit = async (event) => {
         event.preventDefault();
+        debugger;
                 let paragraphsArray = gatherParagraphData();
                 console.log(paragraphsArray);
                 try {
@@ -81,10 +106,9 @@ const CreatePost = (user) => {
             }
 
         let imageinput = document.createElement('input');
-            imageinput.type = 'text';
+            imageinput.type = 'file';
             imageinput.name = 'paragraph-image';
-            imageinput.className = 'form-input';
-            imageinput.placeholder = 'Image URL'
+            imageinput.className = 'form-upload';
 
         let imagecaptioninput = document.createElement('input');
             imagecaptioninput.type = 'text';
@@ -135,6 +159,7 @@ const CreatePost = (user) => {
     }
         if(auth.loggedIn()) { return (
         <main id='main'>
+            {loading && (<div>Loading...</div>)}
             <div className='form-container'>
                 <form className='post-form'>
                 <h2>Header</h2>
@@ -155,13 +180,12 @@ const CreatePost = (user) => {
 
                     <h2>Video Link</h2>
                 <input
-                        className='form-input'
+                        className='form-upload'
                         placeholder='Video Link'
                         name='video'
                         type='file'
                         id='post-video'
-                        value={formState.video}
-                        onChange={handleFileChange}
+                        onChange={ async () => { formState.video = await handleMainFileChange}}
                         // onBlur={() => {
                         //     if()
                         // }}
@@ -169,13 +193,11 @@ const CreatePost = (user) => {
                     {(formState.video !== "" && !formState.video.match(urlValidate)) && <p id="invalid">URL IS INVALID</p>}
                     <h2>Thumbnail/Image URL</h2>
                 <input
-                        className='form-input'
-                        placeholder='Image Link'
+                        className='form-upload'
                         name='image'
-                        type='text'
+                        type='file'
                         id='post-image'
-                        value={formState.image}
-                        onChange={handleChange}
+                        onChange={handleMainFileChange}
                         // onBlur={() => {
                         //     if()
                         // }}
@@ -210,8 +232,6 @@ const CreatePost = (user) => {
                         <option value=''>Post Category</option>
                         <option value='Patient Education'>Patient Education</option>
                         <option value='Information about surgery with Dr. Scholl'>Information about surgery with Dr. Scholl</option>
-                        {/* <option value='Knee'>Knee</option>
-                        <option value='Shoulder'>Shoulder</option> */}
                         <option value='Information for Physical Therapists'>Information for Physical Therapists</option>
                         <option value='News and Updates'>News and Updates</option>
                     </select>
@@ -225,10 +245,9 @@ const CreatePost = (user) => {
                             class="form-input" 
                             placeholder="Paragraph Header"/>
                         <input 
-                            type="text" 
+                            type="file"
                             name="paragraph-image" 
-                            class="form-input" 
-                            placeholder="Image URL"/>
+                            class="form-upload" />
                         <input 
                             type="text" 
                             name="paragraph-imagecaption" 
