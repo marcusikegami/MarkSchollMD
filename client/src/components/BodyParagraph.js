@@ -39,7 +39,11 @@ const BodyParagraph = ({id, header, image, imagecaption, body}) => {
                 name="paragraph-image" 
                 className="form-upload" 
                 onChange={handleFileChange}/>
-            <p>{url ? url : image}</p>
+            <textarea
+                name="paragraph-body" 
+                className="form-url" 
+                placeholder="image url"
+                defaultValue={url ? url : image} />
             <input 
                 type="text" 
                 name="paragraph-imagecaption" 

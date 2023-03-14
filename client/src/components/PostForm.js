@@ -90,7 +90,7 @@ const PostForm = ({post}) => {
             let contents = element.childNodes;
             console.log(contents[2].innerText);
             obj.header = contents[0].value;
-            obj.image = contents[2].innerText;
+            obj.image = contents[2].value;
             obj.imagecaption = contents[3].value;
             obj.body = contents[4].value;
             paragraphsArray.push(obj);
