@@ -3,18 +3,15 @@ import { useMutation } from '@apollo/client';
 import { ADD_POST } from '../utils/mutations';
 import { UPLOAD_FILE } from '../utils/mutations';
 import auth from '../utils/auth';
-import BodyParagraph from '../components/BodyParagraph';
 
 const CreatePost = (user) => {
-    const [formState, setFormState] = useState({ header: '', category: '', image: '', imagecaption: '', video: '', urls: [] });
-    const [paragraphs, setParagraphs] = useState([<BodyParagraph key={0} />]);
-    
+    const [formState, setFormState] = useState({ header: '', body: [], category: '', image: '', imagecaption: '', video: '', urls: [] });
     const [createPost, { error }] = useMutation(ADD_POST);
+
     const [uploadFile, { loading }] = useMutation(UPLOAD_FILE, {
         onCompleted: data => console.log(data)
     });
     
-    // This function updates the state of primary input fields before the body paragraphs
     const handleChange = (event) => {
         const { name, value } = event.target;
 
@@ -49,6 +46,28 @@ const CreatePost = (user) => {
         }
     };
 
+    const handleFileChange = async (event) => {
+        let confirm = window.confirm('Are you sure you want to upload this file?');
+        debugger;
+        if(confirm) {
+            console.log(event.target);
+            const file = event.target.files[0];
+            console.log(file);
+            if(!file) return;
+            try {
+                const { data } = await uploadFile({ variables: { file } })
+                formState.urls = formState.urls.concat(data.singleUpload.url);
+                console.log(formState.urls);
+            } catch (err) {
+                console.error(err);
+                window.alert(`${err}`);
+            };
+            
+        }
+    };
+
+    let urlValidate = /[(http(s)?):\/\/(www\.)?a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/;
+
     const handleFormSubmit = async (event) => {
         event.preventDefault();
         debugger;
@@ -68,18 +87,60 @@ const CreatePost = (user) => {
             return;
     };
 
-    const addParagraph = (e) => {
-        e.preventDefault();
-        setParagraphs([...paragraphs, <BodyParagraph key={paragraphs.length} />]);
+    const addParagraph = () => {
+        let paragraphNumber = document.getElementById('paragraphs-form').childElementCount + 1;
+        let form = document.getElementById('paragraphs-form');
+
+        let paragraph = document.createElement('div');
+            paragraph.id =`${paragraphNumber}`;
+            paragraph.className = 'post-form paragraph';
+            
+
+        let headerinput = document.createElement('input');
+            headerinput.type = 'text';
+            headerinput.name = 'paragraph-header';
+            headerinput.className = 'form-input';
+            headerinput.placeholder = 'Paragraph Header'
+            headerinput.onChange = function() {
+                console.log(paragraph.value);
+            }
+
+        // let imageinput = document.createElement('input');
+        //     imageinput.type = 'file';
+        //     imageinput.name = 'paragraph-image';
+        //     imageinput.className = 'form-upload';
+
+        // let imagecaptioninput = document.createElement('input');
+        //     imagecaptioninput.type = 'text';
+        //     imagecaptioninput.name = 'paragraph-imagecaption';
+        //     imagecaptioninput.className = 'form-input';
+        //     imagecaptioninput.placeholder = 'Image Caption'
+
+        let textarea = document.createElement('textarea');
+            textarea.name = 'paragraph-body';
+            textarea.className = 'form-textarea';
+            textarea.placeholder = 'Body Text'
+        
+        let deleteButton = document.createElement('button');
+            deleteButton.type = 'button';
+            deleteButton.innerText = 'Delete Paragraph';
+            deleteButton.setAttribute('paragraph-id', `${paragraphNumber}`);
+            deleteButton.value = 'button';
+            deleteButton.addEventListener('click', (event) =>{
+                event.preventDefault();
+                console.log(event);
+                const element = document.getElementById(event.target.parentElement.id);
+                element.remove();
+            });
+        paragraph.appendChild(headerinput);
+        // paragraph.appendChild(imageinput);
+        // paragraph.appendChild(imagecaptioninput);
+        paragraph.appendChild(textarea);
+        paragraph.appendChild(deleteButton);
+        form.appendChild(paragraph);
     };
 
-    const removeParagraph = (e) => {
-        e.preventDefault();
-        if(paragraphs.length > 1) {
-            setParagraphs(paragraphs.slice(0, -1));
-        }
-    }
-
+    
     const gatherParagraphData = () => {
         let paragraphsArray = [];
         let paragraphs = document.getElementById('paragraphs-form').childNodes;
@@ -87,11 +148,10 @@ const CreatePost = (user) => {
         arr.map(element => {
             let obj = {}
             let contents = element.childNodes;
-            console.log(contents[2].innerText);
             obj.header = contents[0].value;
-            obj.image = contents[2].innerText;
-            obj.imagecaption = contents[3].value;
-            obj.body = contents[4].value;
+            // obj.image = contents[1].value;
+            // obj.imagecaption = contents[2].value;
+            obj.body = contents[3].value;
             paragraphsArray.push(obj);
         });
         console.log(paragraphsArray);
@@ -125,11 +185,12 @@ const CreatePost = (user) => {
                         name='video'
                         type='file'
                         id='post-video'
-                        onChange={handleMainFileChange}
+                        onChange={ async () => { formState.video = await handleMainFileChange}}
                         // onBlur={() => {
                         //     if()
                         // }}
                     />
+                    {(formState.video !== "" && !formState.video.match(urlValidate)) && <p id="invalid">URL IS INVALID</p>}
                     <h2>Thumbnail/Image URL</h2>
                 <input
                         className='form-upload'
@@ -141,6 +202,7 @@ const CreatePost = (user) => {
                         //     if()
                         // }}
                     />
+                    {((formState.image !== "" || null) && !formState.image.match(urlValidate)) && <p id="invalid">URL IS INVALID</p>}
                     <h2>Image Caption</h2>
                 <input
                         className='form-input'
@@ -176,10 +238,30 @@ const CreatePost = (user) => {
                 </form>
                     <h2>Body</h2>
                 <form className='post-form' id='paragraphs-form'>
-                    {paragraphs}
+                    <div id="1" class="post-form paragraph">
+                        <input 
+                            type="text" 
+                            name="paragraph-header" 
+                            class="form-input" 
+                            placeholder="Paragraph Header"/>
+                        <input 
+                            type="file"
+                            name="paragraph-image" 
+                            class="form-upload" />
+                        <input 
+                            type="text" 
+                            name="paragraph-imagecaption" 
+                            class="form-input" 
+                            placeholder="Image Caption"/>
+                        <textarea
+                             name="paragraph-body" 
+                             class="form-textarea" 
+                             placeholder="Body Text">
+                        </textarea>
+                        <button type="button" onClick={() => document.querySelectorAll("[data-tag='1']").reset()} value="reset">Clear Paragraph</button>
+                    </div>
                 </form>
-                    {(paragraphs.length > 1) && (<button type='button' onClick={removeParagraph}>Remove Paragraph</button>)}
-                    <button type='button' onClick={addParagraph}>Add New Body Paragraph</button>
+                    <button type='button' onClick={addParagraph}>Add</button>
                     <button className="button" type='submit' onClick={handleFormSubmit}>Create Post</button>
             </div>
         </main>

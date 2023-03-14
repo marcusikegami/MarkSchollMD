@@ -1,109 +1,103 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useMutation } from '@apollo/client';
 import { EDIT_POST } from '../utils/mutations';
+import { UPLOAD_FILE } from '../utils/mutations';
+import BodyParagraph from '../components/BodyParagraph';
 
 const PostForm = ({post}) => {
     const { header, body, image, imagecaption, video, category, _id } = post ;
 
-     const [formState, setFormState] = useState({ _id: _id, header: header, body: body, category: category, image: image, imagecaption: imagecaption, video: video });
-    //  const [formState, setFormState] = useState({ header: '', body: '', category: '', video: '' });
-     const [editPost, { error }] = useMutation(EDIT_POST);
- 
-     const handleChange = (event) => {
-         const { name, value } = event.target;
-         setFormState({
-             ...formState,
-             [name]: value,
-         });
-     };
- 
-     const handleFormSubmit = async (event) => {
-         event.preventDefault();
-         let paragraphsArray = gatherParagraphData();
-         try {
-              const { data } = await editPost({
-                 variables: { ...formState, body: paragraphsArray, _id: _id } 
-             });
-              window.location.href = `/post/${data.editPost._id}`;
-         } catch (err) {
-             console.error(error);
-         }
-        };
-        
-        let urlValidate = /[(http(s)?):\/\/(www\.)?a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/;
-        
-        const addParagraph = () => {
-            let paragraphNumber = document.getElementById('paragraphs-form').childElementCount + 1;
-            let form = document.getElementById('paragraphs-form');
+    const [formState, setFormState] = useState({ _id: _id, header: header, body: body, category: category, image: image, imagecaption: imagecaption, video: video });
+    const [paragraphs, setParagraphs] = useState(() => {
+        // This initializes the body paragraphs from the post data
+        const paragraphsArr = [];
+        formState.body.map(({header, image, imagecaption, body}, index) => {
+            let id = (index).toString();
+            let paragraph = <BodyParagraph key={index} id={id} header={header} image={image} imagecaption={imagecaption} body={body} />;
+            paragraphsArr.push(paragraph);
+        });
+        return paragraphsArr;
+    });
+    const [editPost, { error }] = useMutation(EDIT_POST);
+    const [uploadFile, { loading }] = useMutation(UPLOAD_FILE);
     
-            let paragraph = document.createElement('div');
-                paragraph.id =`${paragraphNumber}`;
-                paragraph.className = 'post-form paragraph';
-                
-    
-            let headerinput = document.createElement('input');
-                headerinput.type = 'text';
-                headerinput.name = 'paragraph-header';
-                headerinput.className = 'form-input';
-                headerinput.placeholder = 'Paragraph Header'
-                headerinput.onChange = function() {
-                    console.log(paragraph.value);
-                }
-    
-            let imageinput = document.createElement('input');
-                imageinput.type = 'text';
-                imageinput.name = 'paragraph-image';
-                imageinput.className = 'form-input';
-                imageinput.placeholder = 'Image URL'
-    
-            let imagecaptioninput = document.createElement('input');
-                imagecaptioninput.type = 'text';
-                imagecaptioninput.name = 'paragraph-imagecaption';
-                imagecaptioninput.className = 'form-input';
-                imagecaptioninput.placeholder = 'Image Caption'
-    
-            let textarea = document.createElement('textarea');
-                textarea.name = 'paragraph-body';
-                textarea.className = 'form-textarea';
-                textarea.placeholder = 'Body Text'
-            
-            let deleteButton = document.createElement('button');
-                deleteButton.type = 'button';
-                deleteButton.innerText = 'Delete Paragraph';
-                deleteButton.setAttribute('paragraph-id', `${paragraphNumber}`);
-                deleteButton.value = 'button';
-                deleteButton.addEventListener('click', (event) =>{
-                    event.preventDefault();
-                    console.log(event);
-                    const element = document.getElementById(event.target.parentElement.id);
-                    element.remove();
-                });
-            paragraph.appendChild(headerinput);
-            paragraph.appendChild(imageinput);
-            paragraph.appendChild(imagecaptioninput);
-            paragraph.appendChild(textarea);
-            paragraph.appendChild(deleteButton);
-            form.appendChild(paragraph);
-        };
-    
-        
-        const gatherParagraphData = () => {
-            let paragraphsArray = [];
-            let paragraphs = document.getElementById('paragraphs-form').childNodes;
-            let arr = [...paragraphs];
-            arr.map(element => {
-                let obj = {}
-                let contents = element.childNodes;
-                obj.header = contents[0].value;
-                obj.image = contents[1].value;
-                obj.imagecaption = contents[2].value;
-                obj.body = contents[3].value;
-                paragraphsArray.push(obj);
-            });
-            console.log(paragraphsArray);
-            return paragraphsArray;
-        }
+        // This function updates the state of primary input fields before the body paragraphs
+    const handleChange = (event) => {
+        const { name, value } = event.target;
 
+        setFormState({
+            ...formState,
+            [name]: value,
+        });
+    };
+ 
+    const handleFormSubmit = async (event) => {
+        event.preventDefault();
+        let paragraphsArray = gatherParagraphData();
+        try {
+             const { data } = await editPost({
+                variables: { ...formState, body: paragraphsArray, _id: _id } 
+            });
+             window.location.href = `/post/${data.editPost._id}`;
+        } catch (err) {
+            console.error(error);
+        }
+       };
+        
+    // This function uploads the Thumbnail image or the Video file to the S3 bucket
+    const handleMainFileChange = async (event) => {
+        let confirm = window.confirm('Are you sure you want to upload this file?');
+        debugger;
+        if(confirm) {
+            console.log(event.target);
+            const file = event.target.files[0];
+            console.log(file);
+            if(!file) return;
+            try {
+                const { data } = await uploadFile({ variables: { file } })
+                if (event.target.name === 'image') {
+                    formState.image = data.singleUpload.url;
+                } else if (event.target.name === 'video') {
+                    formState.video = data.singleUpload.url;
+                }
+                console.log(formState);
+            } catch (err) {
+                console.error(err);
+                window.alert(`${err}`);
+            };
+            
+        }
+    };
+
+    const addParagraph = (e) => {
+        e.preventDefault();
+        setParagraphs([...paragraphs, <BodyParagraph key={paragraphs.length} />]);
+    };
+
+    const removeParagraph = (e) => {
+        e.preventDefault();
+        if(paragraphs.length > 1) {
+            setParagraphs(paragraphs.slice(0, -1));
+        }
+    }
+
+    const gatherParagraphData = () => {
+        let paragraphsArray = [];
+        let paragraphs = document.getElementById('paragraphs-form').childNodes;
+        let arr = [...paragraphs];
+        arr.map(element => {
+            let obj = {}
+            let contents = element.childNodes;
+            console.log(contents[2].innerText);
+            obj.header = contents[0].value;
+            obj.image = contents[2].innerText;
+            obj.imagecaption = contents[3].value;
+            obj.body = contents[4].value;
+            paragraphsArray.push(obj);
+        });
+        console.log(paragraphsArray);
+        return paragraphsArray;
+    };
     return (
         <div className='form-container'>
                 <form className='post-form' onSubmit={handleFormSubmit}>
@@ -132,11 +126,7 @@ const PostForm = ({post}) => {
                         id='post-video'
                         value={formState.video}
                         onChange={handleChange}
-                        // onBlur={() => {
-                        //     if()
-                        // }}
                     />
-                    {(formState.video !== "" && !formState.video.match(urlValidate)) && <p id="invalid">URL IS INVALID</p>}
                     <h2>Thumbnail/Image URL</h2>
                 <input
                         className='form-input'
@@ -146,11 +136,7 @@ const PostForm = ({post}) => {
                         id='post-image'
                         value={formState.image}
                         onChange={handleChange}
-                        // onBlur={() => {
-                        //     if()
-                        // }}
                     />
-                    {((formState.image !== "" || null) && !formState.image.match(urlValidate)) && <p id="invalid">URL IS INVALID</p>}
                     <h2>Image Caption</h2>
                 <input
                         className='form-input'
@@ -180,46 +166,15 @@ const PostForm = ({post}) => {
                         <option value=''>Post Category</option>
                         <option value='Patient Education'>Patient Education</option>
                         <option value='Information about surgery with Dr. Scholl'>Information about surgery with Dr. Scholl</option>
-                        {/* <option value='Knee'>Knee</option>
-                        <option value='Shoulder'>Shoulder</option> */}
                         <option value='Information for Physical Therapists'>Information for Physical Therapists</option>
                         <option value='News and Updates'>News and Updates</option>
                     </select>
                 </form>
                     <h2>Body</h2>
                 <form className='post-form' id='paragraphs-form'>
-                    {formState.body.map((paragraph, index) => {
-                        let id = (index + 1).toString();
-                        return (
-                    <div id={id} key={id} className="post-form paragraph">
-                        <input 
-                            type="text" 
-                            name="paragraph-header" 
-                            className="form-input" 
-                            placeholder="Paragraph Header"
-                            defaultValue={paragraph.header}/>
-                        <input 
-                            type="text" 
-                            name="paragraph-image" 
-                            className="form-input" 
-                            placeholder="Image URL"
-                            defaultValue={paragraph.image}/>
-                        <input 
-                            type="text" 
-                            name="paragraph-imagecaption" 
-                            className="form-input" 
-                            placeholder="Image Caption"
-                            defaultValue={paragraph.imagecaption}/>
-                        <textarea
-                             name="paragraph-body" 
-                             className="form-textarea" 
-                             placeholder="Body Text"
-                             defaultValue={paragraph.body}>
-                        </textarea>
-                    </div>
-                        )
-                    })}
+                    {paragraphs}
                 </form>
+                    {(paragraphs.length > 1) && (<button type='button' onClick={removeParagraph}>Remove Paragraph</button>)}
                     <button className="button" type='button' onClick={addParagraph}>Add New Body Paragraph</button>
                     <button className="button" type='submit' onClick={handleFormSubmit}>Save Post</button>
             </div>
