@@ -661,7 +661,7 @@ a {
 
 #testimonials-wrapper {
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
   align-items: center;
   padding: 1rem;
 }
