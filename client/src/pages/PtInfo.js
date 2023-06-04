@@ -1,51 +1,53 @@
-import { useQuery, useMutation } from '@apollo/client';
-import { QUERY_UPLOADS, QUERY_PT_PDFS } from '../utils/queries';
-import { REMOVE_FILE } from '../utils/mutations';
-import PostPreview from '../components/PostPreview';
-import Auth from '../utils/auth';
-import PdfLinks from '../components/PdfLinks';
+import { useQuery, useMutation } from "@apollo/client";
+import { QUERY_UPLOADS, QUERY_PT_PDFS } from "../utils/queries";
+import { REMOVE_FILE } from "../utils/mutations";
+import PostPreview from "../components/PostPreview";
+import Auth from "../utils/auth";
+import PdfLinks from "../components/PdfLinks";
 // import SaveFile from '!file-loader!../assets/images/savefile.svg'
 const PtInfo = () => {
-    let { data } = useQuery(QUERY_PT_PDFS);
-    let [removeUpload] = useMutation(REMOVE_FILE);
-    let uploads = data?.ptpdfs || [];
+  let { data } = useQuery(QUERY_PT_PDFS);
+  let [removeUpload] = useMutation(REMOVE_FILE);
+  let uploads = data?.ptpdfs || [];
 
-   
-
-    const handleDeleteUpload = async (url) => {
-        try {
-             const { data } = await removeUpload({
-                variables: { url: url }
-            })
-            window.location.reload();
-        } catch (err) {
-            console.log(err);
-        }
-        return;
-    };
-    return (
-        <main>
-            <div id='uploads-wrapper'>
-            {uploads.map(upload => {
-                let Url = upload.url;
-                console.log(Url);
-                    return (
-                        
-                        <div key={upload.url} className='upload'>
-                            {Auth.loggedIn() && (
-                                <button onClick={() => {return handleDeleteUpload(upload.url)}}>Delete File</button>
-                            )}
-                            {/* <a href={Url} download className='upload-link'>{upload.filename}</a> */}
-                            <a href={Url} target='__blank' download className='upload-link'>{upload.pdfname}.pdf</a>
-                            <p className='upload-date'>{upload.createdAt}</p>
-                            {/* <img src={SaveFile} alt='save file' className='save-file' /> */}
-                        </div>
-                    )
-                })}
+  const handleDeleteUpload = async (url) => {
+    try {
+      const { data } = await removeUpload({
+        variables: { url: url },
+      });
+      window.location.reload();
+    } catch (err) {
+      console.log(err);
+    }
+    return;
+  };
+  return (
+    <main>
+      <div id="uploads-wrapper">
+        {uploads.map((upload) => {
+          let Url = upload.url;
+          console.log(Url);
+          return (
+            <div key={upload.url} className="upload">
+              {Auth.loggedIn() && (
+                <button
+                  onClick={() => {
+                    return handleDeleteUpload(upload.url);
+                  }}
+                >
+                  Delete File
+                </button>
+              )}
+              <a href={Url} target="__blank" download className="upload-link">
+                {upload.pdfname}.pdf
+              </a>
             </div>
-            <PdfLinks />
-        </main>
-    )
+          );
+        })}
+      </div>
+      <PdfLinks />
+    </main>
+  );
 };
 
 export default PtInfo;
