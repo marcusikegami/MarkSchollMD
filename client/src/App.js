@@ -18,10 +18,14 @@ import PtInfo from "./pages/PtInfo";
 import SinglePost from "./pages/SinglePost";
 import Upload from "./pages/Upload";
 
+const isLocalhost = window.location.hostname === "localhost";
+
+const uri = isLocalhost
+  ? "http://localhost:3001/graphql"
+  : "https://your-production-uri/graphql";
+
 const httpLink = createUploadLink({
-  // header: {'Apollo-Require-Preflight': 'true'},
-  // uri: "http://localhost:3001/graphql",
-  uri: "/graphql",
+  uri: uri,
 });
 
 const authLink = setContext((_, { headers }) => {

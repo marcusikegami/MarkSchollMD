@@ -38,7 +38,7 @@ const PtInfo = () => {
                   Delete File
                 </button>
               )}
-              <a href={Url} target="__blank" download className="upload-link">
+              <a href={Url} target="__blank" className="upload-link">
                 {upload.pdfname}.pdf
               </a>
             </div>

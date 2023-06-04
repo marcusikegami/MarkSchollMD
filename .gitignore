@@ -2,3 +2,5 @@ node_modules
 log.txt
 notes.txt
 .env
+
+NOTES.md
