@@ -20,9 +20,7 @@ import Upload from "./pages/Upload";
 
 const isLocalhost = window.location.hostname === "localhost";
 
-const uri = isLocalhost
-  ? "http://localhost:3001/graphql"
-  : "https://your-production-uri/graphql";
+const uri = isLocalhost ? "http://localhost:3001/graphql" : "/graphql";
 
 const httpLink = createUploadLink({
   uri: uri,
