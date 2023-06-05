@@ -1,10 +1,8 @@
 import { useQuery, useMutation } from "@apollo/client";
-import { QUERY_UPLOADS, QUERY_PT_PDFS } from "../utils/queries";
+import { QUERY_PT_PDFS } from "../utils/queries";
 import { REMOVE_PDF } from "../utils/mutations";
-import PostPreview from "../components/PostPreview";
 import Auth from "../utils/auth";
-import PdfLinks from "../components/PdfLinks";
-// import SaveFile from '!file-loader!../assets/images/savefile.svg'
+
 const PtInfo = () => {
   let { data } = useQuery(QUERY_PT_PDFS);
   let [removePdf] = useMutation(REMOVE_PDF);

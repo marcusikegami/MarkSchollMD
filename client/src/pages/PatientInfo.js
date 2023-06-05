@@ -1,8 +1,6 @@
 import { useQuery, useMutation } from "@apollo/client";
-import { QUERY_POSTS } from "../utils/queries";
 import { QUERY_PI_PDFS } from "../utils/queries";
 import { REMOVE_PDF } from "../utils/mutations";
-import PostPreview from "../components/PostPreview";
 import orthoinfologo from "../assets/images/orthoinfologo.png";
 import Auth from "../utils/auth";
 import { useEffect, useState } from "react";
