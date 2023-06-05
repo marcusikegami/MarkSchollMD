@@ -37,7 +37,12 @@ const PdfLinks = () => {
                   Delete File
                 </button>
               )}
-              <a href={Url} target="__blank" className="upload-link">
+              <a
+                href={Url}
+                target="_blank"
+                rel="noreferrer"
+                className="upload-link"
+              >
                 {upload.pdfname}.pdf
               </a>
               <p className="upload-date">{upload.createdAt}</p>
