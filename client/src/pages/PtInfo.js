@@ -12,7 +12,7 @@ const PtInfo = () => {
 
   const handleDeleteUpload = async (url) => {
     try {
-      const { data } = await removePdf({
+      await removePdf({
         variables: { url: url },
       });
       window.location.reload();
@@ -26,13 +26,12 @@ const PtInfo = () => {
       <div id="uploads-wrapper">
         {uploads.map((upload) => {
           let Url = upload.url;
-          console.log(Url);
           return (
             <div key={upload.url} className="upload">
               {Auth.loggedIn() && (
                 <button
                   onClick={() => {
-                    return handleDeleteUpload(upload.url);
+                    handleDeleteUpload(upload.url);
                   }}
                 >
                   Delete File
