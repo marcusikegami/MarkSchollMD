@@ -1,4 +1,4 @@
-orthopatient.com logo up above Scholl desert headshot
+orthopatient.com logo up above Scholl desert headshot xx
 Remove date from pdfs on patient/pt info XX
 
 put orthopatient.com logo up above Scholl desert headshot XX
