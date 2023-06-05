@@ -11,9 +11,10 @@ const PtInfo = () => {
   let uploads = data?.ptpdfs || [];
 
   const handleDeleteUpload = async (url) => {
+    const pdfUrl = url;
     try {
       await removePdf({
-        variables: { url: url },
+        variables: { url: pdfUrl },
       });
       window.location.reload();
     } catch (err) {
@@ -31,7 +32,7 @@ const PtInfo = () => {
               {Auth.loggedIn() && (
                 <button
                   onClick={() => {
-                    handleDeleteUpload(upload.url);
+                    handleDeleteUpload(Url);
                   }}
                 >
                   Delete File
@@ -49,7 +50,6 @@ const PtInfo = () => {
           );
         })}
       </div>
-      <PdfLinks />
     </main>
   );
 };
