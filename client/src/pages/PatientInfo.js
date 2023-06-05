@@ -5,19 +5,22 @@ import { REMOVE_PDF } from "../utils/mutations";
 import PostPreview from "../components/PostPreview";
 import orthoinfologo from "../assets/images/orthoinfologo.png";
 import Auth from "../utils/auth";
+import { useEffect, useState } from "react";
 
 const PatientInfo = () => {
   let { data } = useQuery(QUERY_POSTS);
   let posts = data?.posts || [];
+  let [pdfs, setPdfs] = useState();
   let GetPdfs = () => {
     let { data } = useQuery(QUERY_PI_PDFS);
     let pdfs = data?.pipdfs || [];
-    return pdfs;
+    setPdfs(pdfs);
   };
-  let [removePdf] = useMutation(REMOVE_PDF);
 
-  let { pdfs } = GetPdfs();
-  console.log(pdfs);
+  useEffect(() => {
+    GetPdfs();
+  });
+  let [removePdf] = useMutation(REMOVE_PDF);
 
   const handleDeletePdf = async (url) => {
     try {
@@ -60,7 +63,7 @@ const PatientInfo = () => {
                   rel="noreferrer"
                   className="upload-link"
                 >
-                  {upload.pdfname}.pdf
+                  {upload.pdfname}
                 </a>
               </div>
             );
