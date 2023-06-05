@@ -131,7 +131,7 @@ const resolvers = {
         // delete a file
         try {
           console.log("url", url);
-          fs.unlinkSync(url);
+          // fs.unlinkSync(url);
           const file = await File.findOneAndDelete(
             { url: url },
             function (err) {

@@ -85,13 +85,14 @@ const Home = () => {
           </div>
         </div>
         <div className="right-column">
-          <div>
+          <div className="orthopatient-logo">
             <a
               href="https://orthopatient.com/dr/scholl"
               target="_blank"
               rel="noreferrer"
             >
               <img
+                id="orthopatient-logo"
                 src={orthopatientlogo}
                 alt="orthopatient.com logo and link to scholls directory"
               />
