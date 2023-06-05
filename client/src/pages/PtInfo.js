@@ -44,7 +44,7 @@ const PtInfo = () => {
                 rel="noreferrer"
                 className="upload-link"
               >
-                {upload.pdfname}.pdf
+                {upload.pdfname}
               </a>
             </div>
           );

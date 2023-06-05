@@ -81,6 +81,7 @@ const resolvers = {
         const Pdf = await Pdf.findOneAndDelete({ url: url }, { new: true });
         return Pdf;
       }
+      res.json({ message: "Not logged in!" });
       throw new AuthenticationError("Not logged in!");
     },
     // singleUpload: async (parent, { file }, context) => {
