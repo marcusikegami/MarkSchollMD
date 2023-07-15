@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
 import { createUploadLink } from "apollo-upload-client";
@@ -11,33 +10,13 @@ import CreatePost from "./pages/CreatePost";
 import EditPost from "./pages/EditPost";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
-=======
-import React from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
-import { createUploadLink } from "apollo-upload-client";
-import { setContext } from "@apollo/client/link/context";
-
-import Home from "./pages/Home";
-import Login from "./pages/Login";
-import Header from "./components/Header";
-import Footer from "./components/Footer";
-import CreatePost from "./pages/CreatePost";
-import EditPost from "./pages/EditPost";
-import Testimonials from "./pages/Testimonials";
-import Approval from "./pages/pendingTestimonials";
->>>>>>> 8b40927eb32e27013e6a0a0b51d0be33224940dd
 import News from "./pages/News";
 import PatientInfo from "./pages/PatientInfo";
 import PtInfo from "./pages/PtInfo";
 import SinglePost from "./pages/SinglePost";
-<<<<<<< HEAD
 import Testimonials from "./pages/Testimonials";
 import Upload from "./pages/Upload";
 import Approval from "./pages/pendingTestimonials";
-=======
-import Upload from "./pages/Upload";
->>>>>>> 8b40927eb32e27013e6a0a0b51d0be33224940dd
 
 const isLocalhost = window.location.hostname === "localhost";
 

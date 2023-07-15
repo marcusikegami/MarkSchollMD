@@ -17,7 +17,6 @@ const PatientInfo = () => {
 
 
   let { pdfs } = GetPdfs();
-  console.log(pdfs);
 
   const handleDeletePdf = async (url) => {
     try {

@@ -19,10 +19,6 @@
   font-family: "AvenirNext-DemiBold";
   src: url("./assets/AvenirNext-DemiBold.ttf");
 }
-<<<<<<< HEAD
-=======
-
->>>>>>> 8b40927eb32e27013e6a0a0b51d0be33224940dd
 html,
 body {
   margin: 0;
@@ -117,9 +113,6 @@ a {
   padding: 0.25rem 0.75rem;
   margin: 1rem 0;
 }
-<<<<<<< HEAD
-=======
-
 .button-save {
   background-color: green;
   border: 2px solid green;
@@ -128,8 +121,6 @@ a {
   padding: 0.25rem 0.75rem;
   margin: 1rem 0;
 }
-
->>>>>>> 8b40927eb32e27013e6a0a0b51d0be33224940dd
 .button:hover {
   background-color: var(--mandarin);
   border-color: var(--mandarin);
@@ -175,29 +166,22 @@ a {
 .header-border {
   display: block;
   padding-top: 1px;
-  background: linear-gradient(
-    to left,
-    #042a2bff 0%,
-    #5eb1bfff 15%,
-    #cdedf6ff 50%,
-    #ef7b45ff 75%,
-    #c22229ff 100%
-  );
+  background: linear-gradient(to left,
+      #042a2bff 0%,
+      #5eb1bfff 15%,
+      #cdedf6ff 50%,
+      #ef7b45ff 75%,
+      #c22229ff 100%);
 }
 #logo-wrapper-anchor {
   padding: 0;
 }
-<<<<<<< HEAD
-=======
-
 .orthopatient-logo {
   max-height: 30%;
   max-width: 30%;
   margin: 0 auto;
   padding-bottom: 4rem;
 }
-
->>>>>>> 8b40927eb32e27013e6a0a0b51d0be33224940dd
 @media screen and (min-width: 370px) {
   .logo-wrapper {
     display: flex;
@@ -216,10 +200,6 @@ a {
     max-height: 70px;
   }
 }
-<<<<<<< HEAD
-=======
-
->>>>>>> 8b40927eb32e27013e6a0a0b51d0be33224940dd
 .dropdown {
   display: flex;
   align-items: center;
@@ -233,10 +213,6 @@ a {
   box-shadow: -1px 1px 3px var(--mandarin);
   background-color: rgba(194, 34, 42, 0.846);
 }
-<<<<<<< HEAD
-=======
-
->>>>>>> 8b40927eb32e27013e6a0a0b51d0be33224940dd
 #hamburger-icon {
   width: 16px;
   height: 16px;
@@ -259,21 +235,12 @@ a {
   animation: hover 0.3s ease forwards;
 }
 @keyframes hover {
-<<<<<<< HEAD
   from {}
-=======
-  from {
-  }
->>>>>>> 8b40927eb32e27013e6a0a0b51d0be33224940dd
   to {
     color: var(--mandarin);
     text-decoration: underline;
   }
 }
-<<<<<<< HEAD
-=======
-
->>>>>>> 8b40927eb32e27013e6a0a0b51d0be33224940dd
 #adminMenu {
   padding: 0.5rem 1rem;
   background-color: var(--maximum-blue);
@@ -305,12 +272,8 @@ a {
   background-position-y: 35%;
   width: 100%;
   height: 350px;
-<<<<<<< HEAD
   border-top: 1px solid var(--fire-engine-red);
-=======
-
   /* border-top: 1px solid var(--fire-engine-red); */
->>>>>>> 8b40927eb32e27013e6a0a0b51d0be33224940dd
 }
 .headshot-wrapper {
   display: flex;
@@ -322,10 +285,6 @@ a {
   border-top: 3px solid var(--fire-engine-red);
   /* border-bottom: 3px solid var(--fire-engine-red); */
 }
-<<<<<<< HEAD
-=======
-
->>>>>>> 8b40927eb32e27013e6a0a0b51d0be33224940dd
 #formal-bio h1 {
   color: var(--maximum-blue);
 }
@@ -340,14 +299,12 @@ a {
   padding: 1rem 1rem;
   margin: 1rem 0;
 }
-<<<<<<< HEAD
 #testimonial-h3 {
   font-size: 1.5rem;
   color: var(--mandarin);
   margin: 0;
   border-bottom: 2px solid var(--mandarin);
-=======
-
+}
 #testimonial-h1 {
   font-size: 1.75rem;
   color: var(--mandarin);
@@ -355,7 +312,6 @@ a {
   padding: 0.25rem 0;
   border-bottom: 2px solid var(--mandarin);
   text-align: left;
->>>>>>> 8b40927eb32e27013e6a0a0b51d0be33224940dd
 }
 #slsurgical {
   height: 30px;
@@ -415,10 +371,6 @@ a {
   font-size: 0.8rem;
   padding: 0 0.5rem;
   width: 100%;
-<<<<<<< HEAD
-=======
-
->>>>>>> 8b40927eb32e27013e6a0a0b51d0be33224940dd
   margin: 0;
 }
 #testimonial-form form {
@@ -432,10 +384,6 @@ a {
   margin: 1rem 0;
   padding: 0 0.25rem;
 }
-<<<<<<< HEAD
-=======
-
->>>>>>> 8b40927eb32e27013e6a0a0b51d0be33224940dd
 .full {
   width: 100%;
   white-space: pre-wrap;
@@ -473,35 +421,22 @@ a {
   .headshot-wrapper {
     display: block;
   }
-<<<<<<< HEAD
   .footer-logo-links img {
     height: 85px;
   }
-=======
-
   .footer-logo-links img {
     height: 85px;
   }
-
->>>>>>> 8b40927eb32e27013e6a0a0b51d0be33224940dd
-  v #footer-links p {
+  #footer-links p {
     font-size: 0.8rem;
     padding: 0 0.5rem;
     width: 80%;
   }
-<<<<<<< HEAD
-=======
-
->>>>>>> 8b40927eb32e27013e6a0a0b51d0be33224940dd
   #post-wrapper {
     margin: 1rem 0;
     padding: 0 1rem;
   }
 }
-<<<<<<< HEAD
-=======
-
->>>>>>> 8b40927eb32e27013e6a0a0b51d0be33224940dd
 #formal-headshot img {
   height: 100%;
 }
@@ -536,15 +471,10 @@ a {
 .right-column {
   padding-top: 4%;
 }
-<<<<<<< HEAD
-=======
-
 .right-column img {
   max-width: 100%;
   padding-bottom: 4%;
 }
-
->>>>>>> 8b40927eb32e27013e6a0a0b51d0be33224940dd
 .post {
   white-space: pre-wrap;
   display: block;
@@ -594,10 +524,6 @@ a {
   border-top: 1px solid rgb(169, 169, 169);
   /* border-bottom: 1px solid rgb(169, 169, 169); */
 }
-<<<<<<< HEAD
-=======
-
->>>>>>> 8b40927eb32e27013e6a0a0b51d0be33224940dd
 .post-body {
   max-width: 100%;
   /* height: 400px; */
@@ -647,10 +573,6 @@ a {
     font-size: 0.8rem;
   }
 }
-<<<<<<< HEAD
-=======
-
->>>>>>> 8b40927eb32e27013e6a0a0b51d0be33224940dd
 #testimonial-form input {
   width: 100%;
   margin: 0.5rem 0;
@@ -674,13 +596,6 @@ a {
   align-items: center;
   padding: 1rem;
 }
-<<<<<<< HEAD
-=======
-
-#testimonial-slideshow-wrapper {
-  /* margin-bottom: 2rem; */
-}
->>>>>>> 8b40927eb32e27013e6a0a0b51d0be33224940dd
 #testimonial-slideshow {
   display: flex;
   flex-direction: row;
@@ -747,20 +662,12 @@ a {
   flex-direction: column;
   align-items: center;
 }
-<<<<<<< HEAD
-=======
-
->>>>>>> 8b40927eb32e27013e6a0a0b51d0be33224940dd
 .post-form input,
 .post-form select,
 .post-form textarea {
   width: 100%;
   margin-bottom: 1rem;
 }
-<<<<<<< HEAD
-=======
-
->>>>>>> 8b40927eb32e27013e6a0a0b51d0be33224940dd
 .post-form {
   display: flex;
   flex-direction: column;
@@ -806,10 +713,6 @@ a {
 #pt-preview {
   background-color: var(--maximum-blue);
 }
-<<<<<<< HEAD
-=======
-
->>>>>>> 8b40927eb32e27013e6a0a0b51d0be33224940dd
 .post-anchor,
 .post-anchor:any-link {
   color: inherit;
@@ -824,10 +727,6 @@ a {
   text-shadow: -1px 1px var(--light-cyan);
   margin: 0;
 }
-<<<<<<< HEAD
-=======
-
->>>>>>> 8b40927eb32e27013e6a0a0b51d0be33224940dd
 #slideshow-wrapper {
   overflow: none;
   height: 500px;
@@ -884,10 +783,6 @@ a {
   display: inline-block;
   transition: background-color 0.6s ease;
 }
-<<<<<<< HEAD
-=======
-
->>>>>>> 8b40927eb32e27013e6a0a0b51d0be33224940dd
 .active,
 .dot:hover {
   background-color: #717171;
@@ -955,10 +850,6 @@ a {
   color: white;
   text-align: center;
 }
-<<<<<<< HEAD
-=======
-
->>>>>>> 8b40927eb32e27013e6a0a0b51d0be33224940dd
 #footer-links h4 {
   padding: 0.5rem 0.5rem;
 }
@@ -978,17 +869,10 @@ a {
 }
 @keyframes fade {
   from {
-<<<<<<< HEAD
     opacity: .4
   }
   to {
-    opacity: 1
-=======
-    opacity: 0.4;
-  }
-  to {
     opacity: 1;
->>>>>>> 8b40927eb32e27013e6a0a0b51d0be33224940dd
   }
 }
 @media screen and (min-width: 800px) {
@@ -1053,25 +937,16 @@ a {
     padding-right: 3%;
     /* border-right: 1px solid var(--mandarin); */
   }
-<<<<<<< HEAD
-=======
-
->>>>>>> 8b40927eb32e27013e6a0a0b51d0be33224940dd
   .right-column {
     height: 100%;
     width: 20%;
     padding-left: 3%;
   }
-<<<<<<< HEAD
-=======
-
   .orthopatient-logo {
     max-height: 100%;
     max-width: 100%;
     padding-bottom: 0;
   }
-
->>>>>>> 8b40927eb32e27013e6a0a0b51d0be33224940dd
   .form-container {
     padding-top: 1rem;
     width: 100%;
@@ -1079,10 +954,6 @@ a {
     flex-direction: column;
     align-items: center;
   }
-<<<<<<< HEAD
-=======
-
->>>>>>> 8b40927eb32e27013e6a0a0b51d0be33224940dd
   .post-form input,
   .post-form select,
   .post-form textarea {
@@ -1095,10 +966,6 @@ a {
   #informal-bio img {
     max-width: 100%;
   }
-<<<<<<< HEAD
-=======
-
->>>>>>> 8b40927eb32e27013e6a0a0b51d0be33224940dd
   #footer-links {
     padding: 1.5rem 0 1.5rem 2.5%;
   }

@@ -1,6 +1,7 @@
-<<<<<<< HEAD
 import { useMutation, useQuery } from "@apollo/client";
+import PdfLinks from "../components/PdfLinks";
 import Auth from "../utils/auth";
+import { REMOVE_FILE } from "../utils/mutations";
 import { QUERY_PT_PDFS } from "../utils/queries";
 
 const PtInfo = () => {
@@ -10,27 +11,9 @@ const PtInfo = () => {
 
   const handleDeleteUpload = async (url) => {
     try {
-      const { data } = await removeUpload({
+      await removeUpload({
         variables: { url: url }
-      })
-=======
-import { useQuery, useMutation } from "@apollo/client";
-import { QUERY_PT_PDFS } from "../utils/queries";
-import { REMOVE_PDF } from "../utils/mutations";
-import Auth from "../utils/auth";
-
-const PtInfo = () => {
-  let { data } = useQuery(QUERY_PT_PDFS);
-  let [removePdf] = useMutation(REMOVE_PDF);
-  let uploads = data?.ptpdfs || [];
-
-  const handleDeleteUpload = async (url) => {
-    const pdfUrl = url;
-    try {
-      await removePdf({
-        variables: { url: pdfUrl },
       });
->>>>>>> 8b40927eb32e27013e6a0a0b51d0be33224940dd
       window.location.reload();
     } catch (err) {
       console.log(err);
@@ -39,7 +22,6 @@ const PtInfo = () => {
   };
   return (
     <main>
-<<<<<<< HEAD
       <div id='uploads-wrapper'>
         {uploads.map(upload => {
           let Url = upload.url;
@@ -61,36 +43,6 @@ const PtInfo = () => {
       <PdfLinks />
     </main>
   )
-=======
-      <div id="uploads-wrapper">
-        {uploads.map((upload) => {
-          let Url = upload.url;
-          return (
-            <div key={upload.url} className="upload">
-              {Auth.loggedIn() && (
-                <button
-                  onClick={() => {
-                    handleDeleteUpload(Url);
-                  }}
-                >
-                  Delete File
-                </button>
-              )}
-              <a
-                href={Url}
-                target="_blank"
-                rel="noreferrer"
-                className="upload-link"
-              >
-                {upload.pdfname}
-              </a>
-            </div>
-          );
-        })}
-      </div>
-    </main>
-  );
->>>>>>> 8b40927eb32e27013e6a0a0b51d0be33224940dd
 };
 
 export default PtInfo;
