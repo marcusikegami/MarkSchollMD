@@ -1,5 +1,6 @@
 import { AuthenticationError } from 'apollo-server-express';
 import dotenv from 'dotenv';
+import fs from 'fs';
 import GraphQLUpload from 'graphql-upload/GraphQLUpload.mjs';
 import path from 'path';
 import File from '../models/File.js';
@@ -13,10 +14,10 @@ const __dirname = path.resolve();
 import AWS from 'aws-sdk';
 AWS.config.update({ region: 'us-west-2' });
 const s3 = new AWS.S3({
-    apiVersion: '2006-03-01',
+    apiVersion: "2006-03-01",
     accessKeyId: process.env.AWS_S3_ACCESS_KEY_ID,
     secretAccessKey: process.env.AWS_S3_SECRET_ACCESS_KEY,
-    Bucket: process.env.AWS_S3_BUCKET_NAME
+    Bucket: process.env.AWS_S3_BUCKET_NAME,
 });
 
 const resolvers = {
@@ -113,28 +114,24 @@ const resolvers = {
                 throw new AuthenticationError('Not logged in!');
             }
         },
-        removeUpload: async (parent, { _id }, context) => {
+        removeUpload: async (parent, { url }, context) => {
             if (context.admin) {
                 // delete a file
-                // Find the upload document in MongoDB
-                const upload = await Upload.findById(_id);
-
-                if (!upload) {
-                    throw new Error('Upload not found');
+                try {
+                    console.log('url', url);
+                    fs.unlinkSync(url);
+                    const file = await File.findOneAndDelete({ url: url }, function (err) {
+                        if (err) {
+                            console.error(err);
+                        } else {
+                            console.log("Deleted File: ", url);
+                        }
+                    })
+                    console.log('File is deleted.')
+                    return file;
+                } catch (error) {
+                    console.log(error)
                 }
-
-                // Remove the file from the S3 bucket
-                const s3Params = {
-                    Bucket: process.env.AWS_S3_BUCKET_NAME,
-                    Key: upload.fileName,
-                };
-
-                await s3.deleteObject(s3Params).promise();
-
-                // Remove the upload document from MongoDB
-                await Upload.findByIdAndDelete(_id);
-
-                return 'Upload removed successfully';
             }
             throw new AuthenticationError('Not logged in!');
         },

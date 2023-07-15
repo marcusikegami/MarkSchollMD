@@ -22,16 +22,7 @@ const UploadForm = () => {
         });
     };
 
-    const handleFormSubmit = async (event) => {
-        event.preventDefault();
-        if (formState.category === '') {
-            window.alert('Please select a category');
-            return;
-        }
-        if (formState.pdfname === '') {
-            window.alert('Please enter a filename');
-            return;
-        }
+    const handleFileChange = async (event) => {
         let confirm = window.confirm('Are you sure you want to upload this file?');
         if (confirm) {
             const file = event.target.files[0];
@@ -47,12 +38,18 @@ const UploadForm = () => {
                 window.alert(`${err}`);
             };
 
-        } else {
+        }
+    };
+
+    const handleFormSubmit = async (event) => {
+        event.preventDefault();
+        if (formState.category === '') {
+            window.alert('Please select a category');
             return;
         }
         try {
             console.log(formState);
-            await addPdf({ variables: { ...formState } });
+            const { data } = await addPdf({ variables: { ...formState } });
             window.alert('Completed');
             setFormState({ pdfname: '', url: '', category: '' });
         } catch (err) {

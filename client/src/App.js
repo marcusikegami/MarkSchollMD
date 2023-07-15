@@ -1,27 +1,29 @@
-import React from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
-import { createUploadLink } from "apollo-upload-client";
+import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
+import { createUploadLink } from "apollo-upload-client";
+import React from "react";
+import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 
-import Home from "./pages/Home";
-import Login from "./pages/Login";
-import Header from "./components/Header";
 import Footer from "./components/Footer";
+import Header from "./components/Header";
 import CreatePost from "./pages/CreatePost";
 import EditPost from "./pages/EditPost";
-import Testimonials from "./pages/Testimonials";
-import Approval from "./pages/pendingTestimonials";
+import Home from "./pages/Home";
+import Login from "./pages/Login";
 import News from "./pages/News";
 import PatientInfo from "./pages/PatientInfo";
 import PtInfo from "./pages/PtInfo";
 import SinglePost from "./pages/SinglePost";
+import Testimonials from "./pages/Testimonials";
 import Upload from "./pages/Upload";
+import Approval from "./pages/pendingTestimonials";
+
+const isLocalhost = window.location.hostname === "localhost";
+
+const uri = isLocalhost ? "http://localhost:3001/graphql" : "/graphql";
 
 const httpLink = createUploadLink({
-  // header: {'Apollo-Require-Preflight': 'true'},
-  uri: "http://localhost:3001/graphql",
-  // uri: '/graphql'
+  uri: uri,
 });
 
 const authLink = setContext((_, { headers }) => {
