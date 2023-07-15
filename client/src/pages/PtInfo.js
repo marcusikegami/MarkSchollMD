@@ -1,12 +1,8 @@
 import { useMutation, useQuery } from "@apollo/client";
 import Auth from "../utils/auth";
-import { REMOVE_PDF } from "../utils/mutations";
 import { QUERY_PT_PDFS } from "../utils/queries";
 
 const PtInfo = () => {
-  let { data } = useQuery(QUERY_PT_PDFS);
-  let [removePdf] = useMutation(REMOVE_PDF);
-  let uploads = data?.ptpdfs || [];
   let { data } = useQuery(QUERY_PT_PDFS);
   let [removeUpload] = useMutation(REMOVE_FILE);
   let uploads = data?.ptpdfs || [];

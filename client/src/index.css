@@ -561,9 +561,6 @@ a {
   align-items: center;
   padding: 1rem;
 }
-#testimonial-slideshow-wrapper {
-  /* margin-bottom: 2rem; */
-}
 #testimonial-slideshow {
   display: flex;
   flex-direction: row;
