@@ -2,4 +2,8 @@ node_modules
 log.txt
 notes.txt
 .env
+<<<<<<< HEAD
+=======
+
+>>>>>>> 8b40927eb32e27013e6a0a0b51d0be33224940dd
 NOTES.md

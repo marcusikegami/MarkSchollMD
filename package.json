@@ -26,7 +26,14 @@
   },
   "homepage": "https://github.com/marcusikegami/documentation-creator#readme",
   "devDependencies": {
+<<<<<<< HEAD
     "concurrently": "^7.3.0",
     "heroku": "^8.1.7"
+=======
+    "concurrently": "^7.3.0"
+  },
+  "dependencies": {
+    "heroku": "^7.62.0"
+>>>>>>> 8b40927eb32e27013e6a0a0b51d0be33224940dd
   }
 }
