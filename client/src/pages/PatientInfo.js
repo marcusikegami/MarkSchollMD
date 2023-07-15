@@ -1,10 +1,9 @@
-import { useQuery, useMutation } from "@apollo/client";
-import { QUERY_POSTS } from "../utils/queries";
-import { QUERY_PI_PDFS } from "../utils/queries";
-import { REMOVE_PDF } from "../utils/mutations";
-import PostPreview from "../components/PostPreview";
+import { useMutation, useQuery } from "@apollo/client";
 import orthoinfologo from "../assets/images/orthoinfologo.png";
+import PostPreview from "../components/PostPreview";
 import Auth from "../utils/auth";
+import { REMOVE_FILE, REMOVE_PDF } from "../utils/mutations";
+import { QUERY_PI_PDFS, QUERY_POSTS } from "../utils/queries";
 
 const PatientInfo = () => {
   let { data } = useQuery(QUERY_POSTS);
@@ -15,15 +14,20 @@ const PatientInfo = () => {
     return pdfs;
   };
   let [removePdf] = useMutation(REMOVE_PDF);
+  let [removeFile] = useMutation(REMOVE_FILE);
 
   let { pdfs } = GetPdfs();
   console.log(pdfs);
 
-  const handleDeletePdf = async (url) => {
+  const handleDeletePdf = async (_id) => {
     try {
       await removePdf({
-        variables: { url: url },
+        variables: { _id: id },
       });
+      await removeFile({
+        variables: { _id: id },
+      });
+
       window.location.reload();
     } catch (err) {
       console.log(err);
@@ -48,7 +52,7 @@ const PatientInfo = () => {
                 {Auth.loggedIn() && (
                   <button
                     onClick={() => {
-                      return handleDeletePdf(upload.url);
+                      return handleDeletePdf(upload._id);
                     }}
                   >
                     Delete File

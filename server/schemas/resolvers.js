@@ -1,19 +1,17 @@
 import { AuthenticationError } from 'apollo-server-express';
+import dotenv from 'dotenv';
+import GraphQLUpload from 'graphql-upload/GraphQLUpload.mjs';
+import path from 'path';
+import File from '../models/File.js';
+import Pdf from '../models/Pdf.js';
 import Post from '../models/Post.js';
 import Testimonial from '../models/Testimonial.js';
-import File from '../models/File.js';
 import signToken from '../utils/signToken.js';
-import dotenv from'dotenv';
 dotenv.config();
-import GraphQLUpload from 'graphql-upload/GraphQLUpload.mjs';
-import { finished } from 'stream/promises';
-import path from 'path';
-import fs from 'fs';
-import Pdf from '../models/Pdf.js';
 const __dirname = path.resolve();
 
 import AWS from 'aws-sdk';
-AWS.config.update({region: 'us-west-2'});
+AWS.config.update({ region: 'us-west-2' });
 const s3 = new AWS.S3({
     apiVersion: '2006-03-01',
     accessKeyId: process.env.AWS_S3_ACCESS_KEY_ID,
@@ -25,11 +23,11 @@ const resolvers = {
     Upload: GraphQLUpload,
 
     Query: {
-        post: async(parent, { _id }) => {
+        post: async (parent, { _id }) => {
             return Post.findOne({ _id });
         },
         posts: async (parent, { category }) => {
-            const params = category ? { category} : {};
+            const params = category ? { category } : {};
             return Post.find(params);
         },
         testimonials: async () => {
@@ -42,10 +40,10 @@ const resolvers = {
             return File.find();
         },
         ptpdfs: async () => {
-            return Pdf.find({category: 'Info for Physical Therapists'});
+            return Pdf.find({ category: 'Info for Physical Therapists' });
         },
         pipdfs: async () => {
-            return Pdf.find({category: 'Info for Patients'});
+            return Pdf.find({ category: 'Info for Patients' });
         },
     },
 
@@ -54,7 +52,7 @@ const resolvers = {
             const admin = process.env.DB_USERNAME;
             const pass = process.env.DB_PASSWORD;
 
-            if(admin != username || pass != password) {
+            if (admin != username || pass != password) {
 
                 throw new AuthenticationError(`Incorrect credentials ${admin} ${username}`);
             }
@@ -63,8 +61,8 @@ const resolvers = {
 
             return { token };
         },
-        addPdf: async (parent, {pdfname, url, category}, context) => {
-            if(context.admin) {
+        addPdf: async (parent, { pdfname, url, category }, context) => {
+            if (context.admin) {
                 category = category.toString();
                 const pdf = await Pdf.create({ pdfname: pdfname, url: url, category: category })
                 return pdf;
@@ -106,7 +104,7 @@ const resolvers = {
 
                 try {
                     const data = await s3.upload(params).promise();
-                    const Upload = await File.create({filename: formattedFilename, url: data.Location});
+                    const Upload = await File.create({ filename: formattedFilename, url: data.Location });
                     return Upload;
                 } catch (err) {
                     console.log(err);
@@ -115,24 +113,28 @@ const resolvers = {
                 throw new AuthenticationError('Not logged in!');
             }
         },
-        removeUpload: async (parent, { url }, context) => {
+        removeUpload: async (parent, { _id }, context) => {
             if (context.admin) {
                 // delete a file
-                try {
-                    console.log('url', url);
-                    fs.unlinkSync(url);
-                    const file = await File.findOneAndDelete({url: url}, function (err) {
-                        if (err) {
-                            console.error(err);
-                        } else {
-                            console.log("Deleted File: ", url);
-                        }
-                    })
-                    console.log('File is deleted.')
-                    return file;
-                } catch (error) {
-                    console.log(error)
+                // Find the upload document in MongoDB
+                const upload = await Upload.findById(_id);
+
+                if (!upload) {
+                    throw new Error('Upload not found');
                 }
+
+                // Remove the file from the S3 bucket
+                const s3Params = {
+                    Bucket: process.env.AWS_S3_BUCKET_NAME,
+                    Key: upload.fileName,
+                };
+
+                await s3.deleteObject(s3Params).promise();
+
+                // Remove the upload document from MongoDB
+                await Upload.findByIdAndDelete(_id);
+
+                return 'Upload removed successfully';
             }
             throw new AuthenticationError('Not logged in!');
         },
@@ -140,9 +142,9 @@ const resolvers = {
             if (context.admin) {
                 // args.body = JSON.stringify(args.body);
                 console.log(args);
-                const post = await Post.create({...args});
+                const post = await Post.create({ ...args });
 
-                return post ;
+                return post;
             }
             throw new AuthenticationError('Not logged in!');
         },
@@ -150,7 +152,7 @@ const resolvers = {
             console.log(args);
             if (context.admin) {
                 return Post.findOneAndUpdate(
-                    { _id: args._id},
+                    { _id: args._id },
                     { header: args.header, body: args.body, video: args.video, image: args.image, imagecaption: args.imagecaption, category: args.category },
                     { new: true }
                 )
@@ -169,7 +171,7 @@ const resolvers = {
         },
         postTestimonial: async (parent, args) => {
             try {
-                const testimonial = await Testimonial.create({...args});
+                const testimonial = await Testimonial.create({ ...args });
                 return testimonial;
             } catch (err) {
                 console.error(err);
@@ -178,19 +180,19 @@ const resolvers = {
         editTestimonial: async (parent, { _id, approval }, context) => {
             if (context.admin) {
                 const testimonial = await Testimonial.findOneAndUpdate(
-                    { _id: _id,},
-                    { approval: approval},
+                    { _id: _id, },
+                    { approval: approval },
                     { new: true }
                 );
                 return testimonial;
             }
             throw new AuthenticationError('Not logged in!');
         },
-        removeTestimonial: async (parent, { _id}, context) => {
-            if(context.admin) {
+        removeTestimonial: async (parent, { _id }, context) => {
+            if (context.admin) {
                 const testimonial = await Testimonial.findOneAndDelete(
                     { _id: _id },
-                    { new: true } 
+                    { new: true }
                 );
                 return testimonial;
             }

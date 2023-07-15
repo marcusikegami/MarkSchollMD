@@ -75,7 +75,7 @@ export const POST_TESTIMONIAL = gql`
     }
 `;
 
-export const EDIT_TESTIMONIAL = gql `
+export const EDIT_TESTIMONIAL = gql`
     mutation EditTestimonial($_id: ID!, $approval: Boolean!) {
         editTestimonial(_id: $_id, approval: $approval) {
           _id
@@ -86,7 +86,7 @@ export const EDIT_TESTIMONIAL = gql `
     }
 `;
 
-export const REMOVE_TESTIMONIAL = gql `
+export const REMOVE_TESTIMONIAL = gql`
     mutation RemoveTestimonial($_id: ID!) {
         removeTestimonial(_id: $_id) {
           _id
@@ -97,24 +97,24 @@ export const REMOVE_TESTIMONIAL = gql `
     }
 `;
 
-export const UPLOAD_FILE = gql `
+export const UPLOAD_FILE = gql`
     mutation singleUpload($file: Upload!) {
         singleUpload(file: $file) {
-          filename  
+          filename
           url
         }
     }
 `;
 
-export const REMOVE_FILE = gql `
-    mutation removeUpload($url: String!) {
-        removeUpload(url: $url) {  
-          url
+export const REMOVE_FILE = gql`
+    mutation removeUpload($_id: ID!) {
+        removeUpload(_id: $_id) {
+          _id
         }
     }
 `;
 
-export const ADD_PDF = gql `
+export const ADD_PDF = gql`
     mutation addPdf($pdfname: String!, $url: String!, $category: String!) {
       addPdf(pdfname: $pdfname, url: $url, category: $category) {
         pdfname
@@ -125,9 +125,10 @@ export const ADD_PDF = gql `
     }
 `;
 
-export const REMOVE_PDF = gql `
-    mutation removePdf($url: String!) {
-      removePdf(url: $url) {
+export const REMOVE_PDF = gql`
+    mutation removePdf($_id: ID!) {
+      removePdf(_id: $_id) {
+        _id
         pdfname
         url
         createdAt

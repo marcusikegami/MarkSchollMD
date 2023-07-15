@@ -22,7 +22,7 @@ const typeDefs = gql`
         image: String
         imagecaption: String
     }
-    
+
     type Paragraph {
         header: String!
         body: String!
@@ -40,12 +40,12 @@ const typeDefs = gql`
         category: String
         createdAt: String
     }
-    
+
     type Testimonial {
-        _id: ID
+        _id: ID!
         body: String!
         name: String!
-        approval: Boolean
+        approval: Boolean!
     }
 
     type Auth {
