@@ -316,6 +316,10 @@ a {
 #slsurgical {
   height: 30px;
 }
+.mdc-logo {
+  height: 115px !important;
+  width: auto !important;
+}
 .fll-wrapper {
   padding-right: 2.5%;
   width: 100%;
@@ -834,7 +838,7 @@ a {
   text-decoration: underline;
   display: flex;
   justify-content: center;
-  padding: 0.5rem;
+  /* padding: 0.5rem; */
   text-align: center;
   font-size: 0.8rem;
 }
@@ -842,6 +846,7 @@ a {
   padding: 0.5rem 1.5rem 0 1.5rem;
   font-size: 0.8rem;
   text-align: center;
+  margin-bottom: 0;
 }
 #footer-links {
   padding: 1rem;
@@ -873,6 +878,12 @@ a {
   }
   to {
     opacity: 1;
+  }
+}
+@media screen and (max-width: 600px) {
+  .orthopatient-logo {
+    max-width: 60%;
+    padding: 2rem 0;
   }
 }
 @media screen and (min-width: 800px) {
@@ -994,7 +1005,7 @@ a {
 }
 @media screen and (min-width: 1400px) {
   #header {
-    padding: 0 10%;
+    padding: 0.5rem 10%;
   }
   #main {
     padding: 0 12%;

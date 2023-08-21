@@ -1,4 +1,4 @@
-import slslogo from '../assets/images/slslogow.png';
+import mdclogo from '../assets/images/mdc-logo.png';
 // import orthoinfologo from '../assets/images/orthoinfologo.png';
 import heidenlogo from '../assets/images/heidenlogow.png';
 const Footer = () => {
@@ -15,18 +15,18 @@ const Footer = () => {
                     <a href='/info-for-physical-therapists'>Info for Physical Therapists</a>
                 </div>
                 <div className="fll-wrapper">
-                <div className='footer-logo-links'>
-                    <a rel="noreferrer" target="_blank" href='https://heidenortho.com/doctors/mark-scholl/'>
-                        <img alt="Heiden Orthopedics Logo" src={heidenlogo} />
-                    </a>
-                    
-                </div>
-                <div className='footer-logo-links'>
-                    <p>If you're seeing Dr. Scholl through Salt Lake Surgical, please call <a href="tel:+8013043274">801-304-3274</a> </p>
-                        <a href="https://www.saltlakesurgical.com/">
-                        <img id="slsurgical" alt="Salt Lake Surgical Logo" src={slslogo} />
-                    </a>
-                </div>
+                    <div className='footer-logo-links'>
+                        <a rel="noreferrer" target="_blank" href='https://heidenortho.com/doctors/mark-scholl/'>
+                            <img alt="Heiden Orthopedics Logo" src={heidenlogo} />
+                        </a>
+
+                    </div>
+                    <div className='footer-logo-links'>
+                        <p>If you're seeing Dr. Scholl through Salt Lake Surgical, please call <a href="tel:+3854469788">385-446-9788</a> </p>
+                        <a href="https://mdslc.com/">
+                            <img class="mdc-logo" alt="Salt Lake Surgical Logo" src={mdclogo} />
+                        </a>
+                    </div>
                 </div>
             </div>
             <div id='footer-copyright'>
