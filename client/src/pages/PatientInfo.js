@@ -11,10 +11,10 @@ const PatientInfo = () => {
   let GetPdfs = () => {
     let { data } = useQuery(QUERY_PI_PDFS);
     let pdfs = data?.pipdfs || [];
+    console.log(pdfs);
     return pdfs;
   }
   let [removePdf] = useMutation(REMOVE_PDF);
-
 
   let { pdfs } = GetPdfs();
 
@@ -59,7 +59,7 @@ const PatientInfo = () => {
             )
           }
           return null;
-        })};
+        })}
       </div>
     </main>
   )

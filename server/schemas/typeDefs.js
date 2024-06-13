@@ -61,6 +61,7 @@ const typeDefs = gql`
         uploads: [File]
         ptpdfs: [Pdf]
         pipdfs: [Pdf]
+        getPdf(id: ID!): Pdf
     }
 
     type Mutation {

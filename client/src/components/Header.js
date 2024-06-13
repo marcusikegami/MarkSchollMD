@@ -1,6 +1,7 @@
 import bars from '../assets/images/bars.svg';
 import heidenlogo from '../assets/images/heidenlogo.png';
 import Logo from '../assets/images/logo.jpg';
+import ytlogo from '../assets/images/ytlogo.png';
 import auth from '../utils/auth';
 
 const Header = () => {
@@ -54,6 +55,9 @@ const Header = () => {
           <a href='/info-for-physical-therapists'>Info for Physical Therapists</a>
         </nav>
         <div className='logo-links'>
+          <a className='logo-links ytlogo' rel="noreferrer" target="_blank" href='https://youtube.com/@markdschollmd?si=l_cKxI-4QnsiVm1s'>
+            <img alt="Youtube Logo" src={ytlogo} />
+          </a>
           <a className='logo-links' rel="noreferrer" target="_blank" href='https://heidenortho.com/doctors/mark-scholl/'>
             <img alt="Heiden Orthopedics Logo" src={heidenlogo} />
           </a>

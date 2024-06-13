@@ -14,7 +14,7 @@ export const QUERY_POSTS = gql`
             image
             imagecaption
             video
-            category 
+            category
             createdAt
         }
     }
@@ -91,5 +91,5 @@ export const QUERY_PI_PDFS = gql`
           category
           createdAt
         }
-    } 
+    }
 `;

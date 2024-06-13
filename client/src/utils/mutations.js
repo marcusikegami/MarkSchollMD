@@ -107,9 +107,9 @@ export const UPLOAD_FILE = gql`
 `;
 
 export const REMOVE_FILE = gql`
-    mutation removeUpload($_id: ID!) {
-        removeUpload(_id: $_id) {
-          _id
+    mutation removeUpload($url: String!) {
+        removeUpload(url: $url) {
+          url
         }
     }
 `;
@@ -125,10 +125,21 @@ export const ADD_PDF = gql`
     }
 `;
 
-export const REMOVE_PDF = gql`
-    mutation removePdf($_id: ID!) {
-      removePdf(_id: $_id) {
+export const EDIT_PDF = gql`
+    mutation editPdf($_id: ID!, $pdfname: String!, $url: String!, $category: String!) {
+      editPdf(_id: $_id, pdfname: $pdfname, url: $url, category: $category) {
         _id
+        pdfname
+        url
+        createdAt
+        category
+      }
+    }
+`;
+
+export const REMOVE_PDF = gql`
+    mutation removePdf($url: String!) {
+      removePdf(url: $url) {
         pdfname
         url
         createdAt

@@ -15,9 +15,10 @@ const CategoryPreviews = ({ posts }) => {
   return (
     <div id="previews-wrapper">
       {/* <h1>Recent Posts</h1> */}
+      <h1 id="news-preview">NEWS</h1>
       <div className="preview">
-        <h1 id="news-preview">NEWS</h1>
         {news && news.map((post) => <PostPreview key={post._id} post={post} />)}
+
       </div>
     </div>
   );

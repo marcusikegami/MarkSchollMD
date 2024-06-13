@@ -24,7 +24,7 @@ const Footer = () => {
                     <div className='footer-logo-links'>
                         <p>If you're seeing Dr. Scholl through Salt Lake Surgical, please call <a href="tel:+3854469788">385-446-9788</a> </p>
                         <a href="https://mdslc.com/">
-                            <img class="mdc-logo" alt="Salt Lake Surgical Logo" src={mdclogo} />
+                            <img className="mdc-logo" alt="Salt Lake Surgical Logo" src={mdclogo} />
                         </a>
                     </div>
                 </div>

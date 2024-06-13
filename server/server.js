@@ -1,12 +1,12 @@
-import mongoose from 'mongoose';
-import graphqlUploadExpress from 'graphql-upload/graphqlUploadExpress.mjs';
-import express from 'express';
-import { ApolloServer } from 'apollo-server-express';
 import { ApolloServerPluginLandingPageLocalDefault } from 'apollo-server-core';
+import { ApolloServer } from 'apollo-server-express';
+import express from 'express';
+import graphqlUploadExpress from 'graphql-upload/graphqlUploadExpress.mjs';
+import mongoose from 'mongoose';
 import path from 'path';
-import {fileURLToPath} from 'url';
-import typeDefs from './schemas/typeDefs.js';
+import { fileURLToPath } from 'url';
 import resolvers from './schemas/resolvers.js';
+import typeDefs from './schemas/typeDefs.js';
 import authMiddleware from './utils/auth.js';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -23,7 +23,7 @@ const startServer = async () => {
         csrfPrevention: false,
         cache: 'bounded',
         plugins: [
-            ApolloServerPluginLandingPageLocalDefault({ embed: true}),
+            ApolloServerPluginLandingPageLocalDefault({ embed: true }),
         ],
         context: authMiddleware,
     });
@@ -50,15 +50,15 @@ app.use(express.static(path.join(__dirname, '../client/public')));
 // app.use(express.static(path.join(__dirname, './client/public')));
 
 mongoose.connect(
-  process.env.MONGODB_URI || 'mongodb://localhost:27017/documentation-creator',
-  {
-      useNewUrlParser: true,
-      useUnifiedTopology: true
-  }
+    process.env.MONGODB_URI || 'mongodb://localhost:27017/documentation-creator',
+    {
+        useNewUrlParser: true,
+        useUnifiedTopology: true
+    }
 );
 
 mongoose.connection.once('open', () => {
     app.listen(PORT, () => {
         console.log(`API server running on port ${PORT}!`);
     });
-  });
+});
