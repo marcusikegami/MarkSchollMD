@@ -16,8 +16,8 @@ const PatientInfo = () => {
   }
   let [removePdf] = useMutation(REMOVE_PDF);
 
-  let { pdfs } = GetPdfs();
-
+  let pdfs = GetPdfs();
+  console.log(pdfs);
   const handleDeletePdf = async (url) => {
     try {
       await removePdf({
