@@ -635,6 +635,7 @@ a {
   width: 90%;
   animation-name: fade;
   animation-duration: 1s;
+  overflow: auto;
 }
 @keyframes fade {
   from {
@@ -991,6 +992,8 @@ a {
   }
   #posts-wrapper {
     padding: 2% 15%;
+    display: flex;
+    flex-direction: column-reverse;
   }
   #informal-bio img {
     max-width: 100%;
