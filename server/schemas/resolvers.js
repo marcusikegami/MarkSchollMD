@@ -101,9 +101,10 @@ const resolvers = {
     singleUpload: async (parent, { file }, context) => {
       // check if user is logged in before uploading
       if (context.admin) {
-        const ContentType = file.mimetype;
+        debugger;
         let Bucket = "scholl-"
         file.mimetype === "application/pdf" ? (Bucket += "pdfs") : (Bucket += "static-images");
+        const ContentType = file.mimetype;
         console.log("file", file);
         const { createReadStream, filename, mimetype, encoding } = await file;
         const formattedFilename = filename.replace(/\s+/g, "");
