@@ -32,8 +32,8 @@ const UploadForm = () => {
       setFormState({
         pdfname: file.name,
       });
-      console.log(file);
       if (!file) return;
+      console.log(uploadFile({ variables: { file } }));
       try {
         const { data } = await uploadFile({ variables: { file } });
         setFormState({

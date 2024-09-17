@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
-const { Schema } = mongoose;
 import { dateFormat } from '../utils/dateFormat.js';
+const { Schema } = mongoose;
 
 const fileSchema = new Schema(
     {
