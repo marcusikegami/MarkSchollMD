@@ -103,7 +103,7 @@ const resolvers = {
       if (context.admin) {
         debugger;
         let Bucket = "scholl-"
-        file.mimetype === "application/pdf" ? (Bucket += "pdfs") : (Bucket += "static-images");
+        file.type === "application/pdf" ? (Bucket += "pdfs") : (Bucket += "static-images");
         const ContentType = file.mimetype;
         console.log("file", file);
         const { createReadStream, filename, mimetype, encoding } = await file;
